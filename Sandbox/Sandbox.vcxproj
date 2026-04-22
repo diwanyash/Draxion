@@ -154,6 +154,9 @@
       <Project>{1bb04267-17cf-4f27-92b6-53bcbacc1376}</Project>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Layers\ExampleLayer.h" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

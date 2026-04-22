@@ -22,7 +22,8 @@ namespace Draxion
 		while (!m_Window->ShouldClose())
 		{
 			m_Window->OnUpdate();
-			OnUpdate();
+			for (Layer* lay : m_Layer_Stack)
+				lay->OnUpdate();
 		}
 	}
 	Application& Application::Get()
@@ -37,11 +38,6 @@ namespace Draxion
 	void Application::PushOverLay( Layer* iOverLay )
 	{
 		m_Layer_Stack.PushOverLay( iOverLay );
-	}
-	void Application::OnUpdate()
-	{
-		for (Layer* lay : m_Layer_Stack)
-			lay->OnUpdate();
 	}
 	void Application::OnEvent(Event& e)
 	{
