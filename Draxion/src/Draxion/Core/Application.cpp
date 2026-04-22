@@ -30,6 +30,19 @@ namespace Draxion
 		return *s_Instance;
 	}
 
+	void Application::PushLayer( Layer* iLayer )
+	{
+		m_Layer_Stack.PushLayer( iLayer );
+	}
+	void Application::PushOverLay( Layer* iOverLay )
+	{
+		m_Layer_Stack.PushOverLay( iOverLay );
+	}
+	void Application::OnUpdate()
+	{
+		for (Layer* lay : m_Layer_Stack)
+			lay->OnUpdate();
+	}
 	void Application::OnEvent(Event& e)
 	{
 		EventDispatcher d(e);
@@ -49,6 +62,14 @@ namespace Draxion
 			}
 			return true;
 		});
+
+		for ( auto it = m_Layer_Stack.end(); it != m_Layer_Stack.begin(); )
+		{
+			(*--it)->OnEvent(e);
+
+			if ( e.Handled )
+				break;
+		}
 	}
 
 	Window& Application::GetWindow()

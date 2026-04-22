@@ -178,6 +178,7 @@ copy /Y "$(SolutionDir)Vendor\GLFW\lib-vc2022\glfw3.dll" "$(SolutionDir)bin\$(Co
     <ClCompile Include="..\Vendor\Glad\src\glad.c" />
     <ClCompile Include="src\Draxion\Core\Application.cpp" />
     <ClCompile Include="src\Draxion\Core\Core.h" />
+    <ClCompile Include="src\Draxion\Core\LayerStack.cpp" />
     <ClCompile Include="src\Draxion\Input\Input.cpp" />
     <ClCompile Include="src\Draxion\Core\Logger.cpp" />
     <ClCompile Include="src\Draxion\Platform\Windows\Window.cpp" />
@@ -188,6 +189,8 @@ copy /Y "$(SolutionDir)Vendor\GLFW\lib-vc2022\glfw3.dll" "$(SolutionDir)bin\$(Co
     <ClInclude Include="DraxionMain.h" />
     <ClInclude Include="src\Draxion\Core\Application.h" />
     <ClInclude Include="src\Draxion\Core\EntryPoint.h" />
+    <ClInclude Include="src\Draxion\Core\Layer.h" />
+    <ClInclude Include="src\Draxion\Core\LayerStack.h" />
     <ClInclude Include="src\Draxion\Events\Event.h" />
     <ClInclude Include="src\Draxion\Events\EventDispatcher.h" />
     <ClInclude Include="src\Draxion\Events\KeyEvent.h" />

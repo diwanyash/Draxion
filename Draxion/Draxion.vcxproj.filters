@@ -39,6 +39,9 @@
     <ClCompile Include="src\Draxion\Platform\Windows\WindowsInput.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Draxion\Core\LayerStack.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Draxion\Core\Logger.h">
@@ -78,6 +81,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Draxion\Events\MouseEvent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Draxion\Core\Layer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Draxion\Core\LayerStack.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
