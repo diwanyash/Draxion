@@ -3,7 +3,7 @@
 
 namespace Draxion
 {
-	class KeyPressedEvent : public Event
+	class DRX_API KeyPressedEvent : public Event
 	{
 	public:
 		KeyPressedEvent( int KeyCode)

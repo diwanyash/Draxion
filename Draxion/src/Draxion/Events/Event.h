@@ -1,9 +1,9 @@
 #pragma once
-
+#include "../Core/Core.h"
 
 namespace Draxion
 {
-	class Event
+	class DRX_API Event
 	{
 	public:
 		virtual const char* GetName() const = 0;

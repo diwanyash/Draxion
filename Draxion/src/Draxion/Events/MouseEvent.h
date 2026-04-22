@@ -3,7 +3,7 @@
 
 namespace Draxion
 {
-	class MouseEvent : public Event
+	class DRX_API MouseEvent : public Event
 	{
 	public:
 		MouseEvent( int MouseButton, int xpos, int ypos)
@@ -14,7 +14,7 @@ namespace Draxion
 		{}
 		const char* GetName() const override { return "MouseKey_is_Pressed"; }
 
-		int GetKeyCode() const { return button; };
+		int GetMouseButton() const { return button; };
 		int GetXpos() const { return x; };
 		int GetYpos() const { return y; };
 	private:

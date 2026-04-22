@@ -4,7 +4,7 @@
 
 namespace Draxion
 {
-	class EventDispatcher
+	class DRX_API EventDispatcher
 	{
 	public:
 		EventDispatcher(Event& event)

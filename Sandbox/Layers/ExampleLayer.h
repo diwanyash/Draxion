@@ -23,14 +23,22 @@ namespace Draxion
 
 		void OnUpdate() override
 		{
-			static int count = 0;
-			if( ++count % 144 == 0 )
-			LOG_ENGINE_TRACE("Example Layer Updated");
 		}
 
 		void OnEvent( Event& e ) override
 		{
-			LOG_ENGINE_TRACE( e.GetName() );
+			//LOG_ENGINE_TRACE( e.GetName() );
+			EventDispatcher d(e);
+
+			d.Dispatch<KeyPressedEvent>([](KeyPressedEvent& e)
+			{
+				if ((e.GetKeyCode()) == Draxion::Key::A)
+				{
+					LOG_CLIENT_TRACE("Keyboard Event \"A\" Handled by ExampleLayer");
+					return true;
+				}
+				return false;
+			});
 		}
 	};
 }
