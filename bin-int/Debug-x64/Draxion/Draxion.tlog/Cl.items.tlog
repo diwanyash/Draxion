@@ -1,0 +1,8 @@
+E:\Engine_V1\Draxion\Vendor\Glad\src\glad.c;E:\Engine_V1\Draxion\bin-int\Debug-x64\Draxion\glad.obj
+E:\Engine_V1\Draxion\Draxion\src\Draxion\Core\Application.cpp;E:\Engine_V1\Draxion\bin-int\Debug-x64\Draxion\Application.obj
+E:\Engine_V1\Draxion\Draxion\src\Draxion\Core\Core.h;E:\Engine_V1\Draxion\bin-int\Debug-x64\Draxion\Core.obj
+E:\Engine_V1\Draxion\Draxion\src\Draxion\Input\Input.cpp;E:\Engine_V1\Draxion\bin-int\Debug-x64\Draxion\Input.obj
+E:\Engine_V1\Draxion\Draxion\src\Draxion\Core\Logger.cpp;E:\Engine_V1\Draxion\bin-int\Debug-x64\Draxion\Logger.obj
+E:\Engine_V1\Draxion\Draxion\src\Draxion\Platform\Windows\Window.cpp;E:\Engine_V1\Draxion\bin-int\Debug-x64\Draxion\Window.obj
+E:\Engine_V1\Draxion\Draxion\src\Draxion\Platform\Windows\WindowsInput.cpp;E:\Engine_V1\Draxion\bin-int\Debug-x64\Draxion\WindowsInput.obj
+E:\Engine_V1\Draxion\Draxion\src\Draxion\Platform\Windows\WindowsWindow.cpp;E:\Engine_V1\Draxion\bin-int\Debug-x64\Draxion\WindowsWindow.obj
