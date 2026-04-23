@@ -17,4 +17,20 @@ namespace Draxion
 	private:
 		int m_KeyCode;
 	};
+
+	class DRX_API KeyReleasedEvent : public Event
+	{
+	public:
+		KeyReleasedEvent(int KeyCode)
+			:
+			m_KeyCode(KeyCode)
+		{
+		}
+
+		int GetKeyCode() const { return m_KeyCode; }
+
+		const char* GetName() const override { return "KeyReleased"; }
+	private:
+		int m_KeyCode;
+	};
 }

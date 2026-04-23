@@ -6,6 +6,7 @@
 #include "../../Events/KeyEvent.h"
 #include "../../Events/MouseEvent.h"
 #include "../../Core/Application.h"
+#include "../../Renderer/Renderer.h"
 #include <Core/Logger.h>
 
 namespace Draxion
@@ -14,7 +15,7 @@ namespace Draxion
 	{
 		if (!glfwInit())
 		{
-			assert(false);
+			LOG_ENGINE_ERROR("GLFW Init Failed");
 		}
 
 		m_Window = glfwCreateWindow(width, height, title.c_str(), NULL, NULL);
@@ -24,26 +25,55 @@ namespace Draxion
 
 		if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
 		{
-			assert(false && "OPENGL failed At GLADLoadGLLoader");
+			LOG_ENGINE_ERROR("OPENGL failed At GLADLoadGLLoader");
 		}
-		glfwSetWindowUserPointer(m_Window, this);
+
+		Renderer::Init();
+		auto ver = glGetString(GL_VERSION);
+		LOG_ENGINE_TRACE(ver);
+		glViewport(0, 0, width, height);
+
+		glfwSetFramebufferSizeCallback(m_Window, []( GLFWwindow* window, int width, int height) 
+		{
+			glViewport(0, 0, width, height);
+		});
 
 		glfwSetKeyCallback(m_Window, [](GLFWwindow* window, int key, int scancode, int action, int mods)
 		{
-			if (action == GLFW_PRESS)
+			switch (action)
+			{
+			case GLFW_PRESS:
 			{
 				Draxion::KeyPressedEvent event(key);
 				Draxion::Application::Get().OnEvent(event);
+				break;
+			}
+			case GLFW_RELEASE:
+			{
+				Draxion::KeyReleasedEvent event(key);
+				Draxion::Application::Get().OnEvent(event);
+				break;
+			}
+			default:
+				break;
 			}
 		});
 		glfwSetMouseButtonCallback(m_Window, [](GLFWwindow* window, int button, int action, int mods)
 		{
-			if (action == GLFW_PRESS)
+			double posx = 0.0, posy = 0.0;
+			glfwGetCursorPos(window, &posx, &posy);
+			Draxion::MouseEvent event(button, (int)posx, (int)posy);
+
+			switch(action)
 			{
-				double posx = 0.0, posy = 0.0;
-				glfwGetCursorPos(window, &posx, &posy);
-				Draxion::MouseEvent event(button, posx, posy);
+			case GLFW_PRESS:
 				Draxion::Application::Get().OnEvent(event);
+				break;
+			case GLFW_RELEASE:
+				Draxion::Application::Get().OnEvent(event);
+				break;
+			default:
+				break;
 			}
 		});
 	}
@@ -58,9 +88,6 @@ namespace Draxion
 	}
 	void WindowsWindow::OnUpdate()
 	{
-		glViewport(0, 0, 800, 600);
-		glClearColor( 0.0f, 1.0f, 1.0f, 1.0f);
-		glClear(GL_COLOR_BUFFER_BIT);
 		glfwPollEvents();
 		glfwSwapBuffers(m_Window);
 	}

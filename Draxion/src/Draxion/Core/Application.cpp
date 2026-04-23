@@ -5,6 +5,7 @@
 #include <Events/KeyEvent.h>
 #include <Events/MouseEvent.h>
 #include <Input/KeyCodes.h>
+#include "../Renderer/RendererCommand.h"
 
 namespace Draxion
 {
@@ -21,6 +22,11 @@ namespace Draxion
 	{
 		while (!m_Window->ShouldClose())
 		{
+			RendererCommand::SetClearColor(0.2f, 0.3f, 0.8f, 1.0f);
+			RendererCommand::Clear();
+
+			RendererCommand::Draw();
+
 			m_Window->OnUpdate();
 			for (Layer* lay : m_Layer_Stack)
 				lay->OnUpdate();
@@ -30,7 +36,10 @@ namespace Draxion
 	{
 		return *s_Instance;
 	}
-
+	void Application::OnUpdate()
+	{
+		//Later // to avoid warnings
+	}
 	void Application::PushLayer( Layer* iLayer )
 	{
 		m_Layer_Stack.PushLayer( iLayer );
@@ -41,15 +50,15 @@ namespace Draxion
 	}
 	void Application::OnEvent(Event& e)
 	{
-		//EventDispatcher d(e);
-		//d.Dispatch<KeyPressedEvent>([&](KeyPressedEvent& e)
-		//{
-		//	if ((e.GetKeyCode()) == Draxion::Key::VK_ESCAPE)
-		//	{
-		//		GetWindow().SetShouldClose(true);
-		//	}
-		//	return true;
-		//});
+		EventDispatcher d(e);
+		d.Dispatch<KeyPressedEvent>([&](KeyPressedEvent& e)
+		{
+			if ((e.GetKeyCode()) == Draxion::Key::VK_ESCAPE)
+			{
+				GetWindow().SetShouldClose(true);
+			}
+			return true;
+		});
 		//d.Dispatch<MouseEvent>([&](MouseEvent& e)
 		//{
 		//	if ((e.GetKeyCode()) == Draxion::Key::MOUSE_BUTTON_LEFT)

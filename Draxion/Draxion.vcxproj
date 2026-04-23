@@ -184,6 +184,8 @@ copy /Y "$(SolutionDir)Vendor\GLFW\lib-vc2022\glfw3.dll" "$(SolutionDir)bin\$(Co
     <ClCompile Include="src\Draxion\Platform\Windows\Window.cpp" />
     <ClCompile Include="src\Draxion\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\Draxion\Platform\Windows\WindowsWindow.cpp" />
+    <ClCompile Include="src\Draxion\Renderer\Renderer.cpp" />
+    <ClCompile Include="src\Draxion\Renderer\RendererCommand.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DraxionMain.h" />
@@ -201,6 +203,11 @@ copy /Y "$(SolutionDir)Vendor\GLFW\lib-vc2022\glfw3.dll" "$(SolutionDir)bin\$(Co
     <ClInclude Include="src\Draxion\Platform\Windows\Window.h" />
     <ClInclude Include="src\Draxion\Platform\Windows\WindowsInput.h" />
     <ClInclude Include="src\Draxion\Platform\Windows\WindowsWindow.h" />
+    <ClInclude Include="src\Draxion\Renderer\RendererCommand.h" />
+    <ClInclude Include="src\Draxion\Renderer\Renderer.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="src\Shaders\Rect.frag" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

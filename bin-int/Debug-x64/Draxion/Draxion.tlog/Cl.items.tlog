@@ -7,3 +7,5 @@ E:\Engine_V1\Draxion\Draxion\src\Draxion\Core\Logger.cpp;E:\Engine_V1\Draxion\bi
 E:\Engine_V1\Draxion\Draxion\src\Draxion\Platform\Windows\Window.cpp;E:\Engine_V1\Draxion\bin-int\Debug-x64\Draxion\Window.obj
 E:\Engine_V1\Draxion\Draxion\src\Draxion\Platform\Windows\WindowsInput.cpp;E:\Engine_V1\Draxion\bin-int\Debug-x64\Draxion\WindowsInput.obj
 E:\Engine_V1\Draxion\Draxion\src\Draxion\Platform\Windows\WindowsWindow.cpp;E:\Engine_V1\Draxion\bin-int\Debug-x64\Draxion\WindowsWindow.obj
+E:\Engine_V1\Draxion\Draxion\src\Draxion\Renderer\Renderer.cpp;E:\Engine_V1\Draxion\bin-int\Debug-x64\Draxion\Renderer.obj
+E:\Engine_V1\Draxion\Draxion\src\Draxion\Renderer\RendererCommand.cpp;E:\Engine_V1\Draxion\bin-int\Debug-x64\Draxion\RendererCommand.obj

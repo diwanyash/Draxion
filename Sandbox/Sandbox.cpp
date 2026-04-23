@@ -1,6 +1,5 @@
 #include "DraxionMain.h"
 #include "Layers/ExampleLayer.h"
-#include "Layers/TestLayer.h"
 
 class Sandbox : public Draxion::Application
 {
@@ -9,7 +8,6 @@ public:
 	{
 		LOG_CLIENT_TRACE("SandBox Constructed");
 		PushLayer(new Draxion::ExampleLayer() );
-		PushLayer(new Draxion::TestLayer() );
 	}
 	~Sandbox()
 	{
