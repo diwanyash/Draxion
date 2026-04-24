@@ -9,7 +9,15 @@
 #include "src/Draxion/Events/KeyEvent.h"
 #include "src/Draxion/Events/MouseEvent.h"
 
+//---------Rendering_Helpers---------
+#include "src/Draxion/Renderer/Buffer/VertexArray.h"
+#include "src/Draxion/Renderer/Buffer/VertexBuffer.h"
+#include "src/Draxion/Renderer/Buffer/IndexBuffer.h"
+#include "src/Draxion/Renderer/Shader/Shader.h"
+#include "src/Draxion/Renderer/RendererCommand.h"
+//-----------------------------------
+
 
 //-----ENTRY POINT--------------
-#include "src/Draxion/Core/EntryPoint.h"
+//#include "src/Draxion/Core/EntryPoint.h"
 //------------------------------

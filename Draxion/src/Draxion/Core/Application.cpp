@@ -25,11 +25,11 @@ namespace Draxion
 			RendererCommand::SetClearColor(0.2f, 0.3f, 0.8f, 1.0f);
 			RendererCommand::Clear();
 
-			RendererCommand::Draw();
 
-			m_Window->OnUpdate();
 			for (Layer* lay : m_Layer_Stack)
 				lay->OnUpdate();
+
+			m_Window->OnUpdate();
 		}
 	}
 	Application& Application::Get()
