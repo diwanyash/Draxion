@@ -1,13 +1,12 @@
 #include "WindowsWindow.h"
 #include "glad/glad.h"
 #include "GLFW/glfw3.h"
-#include <cassert>
-#include <string>
 #include "../../Events/KeyEvent.h"
 #include "../../Events/MouseEvent.h"
 #include "../../Core/Application.h"
 #include "../../Renderer/Renderer.h"
-#include <Core/Logger.h>
+#include "Core/Logger.h"
+#include <cassert>
 
 namespace Draxion
 {
@@ -25,7 +24,7 @@ namespace Draxion
 
 		if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
 		{
-			LOG_ENGINE_ERROR("OPENGL failed At GLADLoadGLLoader");
+			LOG_ENGINE_FATAL("OPENGL failed At GLADLoadGLLoader");
 		}
 
 		Renderer::Init();

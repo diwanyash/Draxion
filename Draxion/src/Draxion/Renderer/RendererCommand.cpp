@@ -1,14 +1,10 @@
 #include "RendererCommand.h"
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
-#include "../Core/Logger.h"
-
-////// LATER TO_BE REMOVED/////////
-#include <string>
-///////////////////////////////////
 
 namespace Draxion
 {
+	bool RendererCommand::isWireframe = false;
 	void RendererCommand::Init()
 	{
 		glEnable(GL_BLEND);
@@ -28,5 +24,18 @@ namespace Draxion
 	{
 		vao.Bind();
 		glDrawElements(GL_TRIANGLES,count, GL_UNSIGNED_INT, nullptr );
+	}
+	void RendererCommand::PrimitiveChange()
+	{
+		if(isWireframe)
+		{
+			glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+			isWireframe = false;
+		}
+		else
+		{
+			glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+			isWireframe = true;
+		}
 	}
 }

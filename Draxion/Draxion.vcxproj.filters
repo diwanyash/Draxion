@@ -27,9 +27,6 @@
     <ClCompile Include="src\Draxion\Platform\Windows\WindowsWindow.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vendor\Glad\src\glad.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\Draxion\Input\Input.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -58,6 +55,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Draxion\Renderer\Shader\Shader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Vendor\stb\stb_image.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vendor\glad\src\glad.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -125,5 +128,20 @@
     <ClInclude Include="src\Draxion\Renderer\Shader\Shader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\Draxion\Renderer\Shader\LoadShader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Vendor\stb\stb_image.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="src\Draxion\Asset\OpenGL\Shaders\Basic.vs" />
+    <None Include="src\Draxion\Asset\OpenGL\Shaders\Basic.fs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="src\Draxion\Asset\Images\Keqing.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

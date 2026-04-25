@@ -1,8 +1,8 @@
 #pragma once
 #include "../Core/Core.h"
 #include "../Events/Event.h"
-#include <memory>
 #include "LayerStack.h"
+#include <memory>
 
 namespace Draxion
 {

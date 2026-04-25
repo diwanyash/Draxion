@@ -1,4 +1,4 @@
-E:\Engine_V1\Draxion\Vendor\Glad\src\glad.c;E:\Engine_V1\Draxion\bin-int\Debug-x64\Draxion\glad.obj
+E:\Engine_V1\Draxion\Vendor\glad\src\glad.c;E:\Engine_V1\Draxion\bin-int\Debug-x64\Draxion\glad.obj
 E:\Engine_V1\Draxion\Draxion\src\Draxion\Core\Application.cpp;E:\Engine_V1\Draxion\bin-int\Debug-x64\Draxion\Application.obj
 E:\Engine_V1\Draxion\Draxion\src\Draxion\Core\Core.h;E:\Engine_V1\Draxion\bin-int\Debug-x64\Draxion\Core.obj
 E:\Engine_V1\Draxion\Draxion\src\Draxion\Core\LayerStack.cpp;E:\Engine_V1\Draxion\bin-int\Debug-x64\Draxion\LayerStack.obj
@@ -13,3 +13,4 @@ E:\Engine_V1\Draxion\Draxion\src\Draxion\Renderer\Buffer\VertexBuffer.cpp;E:\Eng
 E:\Engine_V1\Draxion\Draxion\src\Draxion\Renderer\Renderer.cpp;E:\Engine_V1\Draxion\bin-int\Debug-x64\Draxion\Renderer.obj
 E:\Engine_V1\Draxion\Draxion\src\Draxion\Renderer\RendererCommand.cpp;E:\Engine_V1\Draxion\bin-int\Debug-x64\Draxion\RendererCommand.obj
 E:\Engine_V1\Draxion\Draxion\src\Draxion\Renderer\Shader\Shader.cpp;E:\Engine_V1\Draxion\bin-int\Debug-x64\Draxion\Shader.obj
+E:\Engine_V1\Draxion\Draxion\Vendor\stb\stb_image.cpp;E:\Engine_V1\Draxion\bin-int\Debug-x64\Draxion\stb_image.obj

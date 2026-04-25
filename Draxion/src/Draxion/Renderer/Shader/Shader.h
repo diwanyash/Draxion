@@ -1,5 +1,4 @@
 #pragma once
-#include <string>
 #include "../../Core/Core.h"
 
 namespace Draxion
@@ -7,7 +6,7 @@ namespace Draxion
 	class DRX_API Shader
 	{
 	public:
-		Shader( const std::string& vertexShader, const std::string& fragmentShader );
+		Shader( const char* vertexShader, const char* fragmentShader );
 		~Shader();
 
 		void Bind() const;

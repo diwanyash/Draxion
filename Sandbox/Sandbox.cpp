@@ -7,7 +7,7 @@ class Sandbox : public Draxion::Application
 public:
 	Sandbox()
 	{
-		LOG_CLIENT_TRACE("SandBox Constructed");
+		LOG_CLIENT_TRACE("SandBox Constructed"); 
 		PushLayer(new Draxion::ExampleLayer() );
 	}
 	~Sandbox()

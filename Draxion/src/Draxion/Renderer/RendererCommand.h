@@ -12,6 +12,8 @@ namespace Draxion
 		static void SetClearColor( float r, float g, float b, float a );
 		static void Clear();
 		static void DrawIndexed(const VertexArray& vao, unsigned int count);
+		static void PrimitiveChange();
 	private:
+		static bool isWireframe;
 	};
 }

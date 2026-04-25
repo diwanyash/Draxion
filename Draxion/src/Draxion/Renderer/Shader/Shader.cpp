@@ -1,15 +1,43 @@
 #include "Shader.h"
-#include <glad/glad.h>
 #include "../../Core/Logger.h"
+#include "glad/glad.h"
+#include <sstream>
+#include <fstream>
 
 namespace Draxion
 {
-	static unsigned int Compile( unsigned int type, const std::string& src )
+	static unsigned int Compile( unsigned int type, const char* path )
 	{
 		unsigned int id = glCreateShader(type);
 
+		// Load Shader form file
+		std::string Code;
+		std::ifstream ShaderFile;
+
+		// exception throwing
+		ShaderFile.exceptions( std::ifstream::failbit | std::ifstream::badbit );
+
+		try
+		{
+			ShaderFile.open(path);
+
+			std::stringstream ShaderStream;
+
+			ShaderStream << ShaderFile.rdbuf();
+
+			ShaderFile.close();
+
+			Code = ShaderStream.str();
+		}
+		catch (std::ifstream::failure e)
+		{
+			LOG_ENGINE_ERROR("SHADER FILE NOT READ PROPERLY CODE::" << e.code() << "CAUSE::" << e.what());
+		}
+
+
+
 		// Attach and Compile(RUNTIME) ShaderString and Shader Object
-		const char* source = src.c_str();
+		const char* source = Code.c_str();
 		glShaderSource(id, 1, &source, NULL);
 		glCompileShader(id);
 
@@ -28,13 +56,13 @@ namespace Draxion
 		return id;
 	}
 
-	Shader::Shader( const std::string& vertexShader, const std::string& fragmentShader )
+	Shader::Shader( const char* vertexShaderPath, const char* fragmentShaderPath )
 	{
 		m_RendererID = glCreateProgram();
 
 		// compiling
-		unsigned int vs = Compile( GL_VERTEX_SHADER, vertexShader );
-		unsigned int fs = Compile( GL_FRAGMENT_SHADER, fragmentShader );
+		unsigned int vs = Compile( GL_VERTEX_SHADER, vertexShaderPath);
+		unsigned int fs = Compile( GL_FRAGMENT_SHADER, fragmentShaderPath);
 
 		// Linking Shaders
 		glAttachShader(m_RendererID, vs);

@@ -6,6 +6,7 @@ namespace Draxion
 	{
 		for ( auto* layer : Layers_Vec)
 		{
+			layer->OnDetach();
 			delete layer;
 		}
 	}

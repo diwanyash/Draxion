@@ -93,8 +93,10 @@
       <PreprocessorDefinitions>DRX_BUILD_DLL;WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions);DRX_BUILD_API</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)Vendor\GLFW\include;$(SolutionDir)Vendor\Glad\include;$(SolutionDir)Draxion\src\Draxion</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Vendor\GLFW\include;$(SolutionDir)Vendor\Glad\include;$(SolutionDir)Draxion;$(SolutionDir)Draxion\src\Draxion</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -116,8 +118,10 @@ copy /Y "$(SolutionDir)Vendor\GLFW\lib-vc2022\glfw3.dll" "$(SolutionDir)bin\$(Co
       <PreprocessorDefinitions>DRX_BUILD_DLL;WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions);DRX_BUILD_API</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)Vendor\GLFW\include;$(SolutionDir)Vendor\Glad\include;$(SolutionDir)Draxion\src\Draxion</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Vendor\GLFW\include;$(SolutionDir)Vendor\Glad\include;$(SolutionDir)Draxion;$(SolutionDir)Draxion\src\Draxion</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -137,8 +141,10 @@ copy /Y "$(SolutionDir)Vendor\GLFW\lib-vc2022\glfw3.dll" "$(SolutionDir)bin\$(Co
       <PreprocessorDefinitions>DRX_BUILD_DLL;_DEBUG;_CONSOLE;%(PreprocessorDefinitions);DRX_BUILD_API</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)Vendor\GLFW\include;$(SolutionDir)Vendor\Glad\include;$(SolutionDir)Draxion\src\Draxion</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Vendor\GLFW\include;$(SolutionDir)Vendor\Glad\include;$(SolutionDir)Draxion;$(SolutionDir)Draxion\src\Draxion</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -160,8 +166,10 @@ copy /Y "$(SolutionDir)Vendor\GLFW\lib-vc2022\glfw3.dll" "$(SolutionDir)bin\$(Co
       <PreprocessorDefinitions>DRX_BUILD_DLL;NDEBUG;_CONSOLE;%(PreprocessorDefinitions);DRX_BUILD_API</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)Vendor\GLFW\include;$(SolutionDir)Vendor\Glad\include;$(SolutionDir)Draxion\src\Draxion</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Vendor\GLFW\include;$(SolutionDir)Vendor\Glad\include;$(SolutionDir)Draxion;$(SolutionDir)Draxion\src\Draxion</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -175,7 +183,7 @@ copy /Y "$(SolutionDir)Vendor\GLFW\lib-vc2022\glfw3.dll" "$(SolutionDir)bin\$(Co
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\Vendor\Glad\src\glad.c" />
+    <ClCompile Include="..\Vendor\glad\src\glad.c" />
     <ClCompile Include="src\Draxion\Core\Application.cpp" />
     <ClCompile Include="src\Draxion\Core\Core.h" />
     <ClCompile Include="src\Draxion\Core\LayerStack.cpp" />
@@ -190,6 +198,12 @@ copy /Y "$(SolutionDir)Vendor\GLFW\lib-vc2022\glfw3.dll" "$(SolutionDir)bin\$(Co
     <ClCompile Include="src\Draxion\Renderer\Renderer.cpp" />
     <ClCompile Include="src\Draxion\Renderer\RendererCommand.cpp" />
     <ClCompile Include="src\Draxion\Renderer\Shader\Shader.cpp" />
+    <ClCompile Include="Vendor\stb\stb_image.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DraxionMain.h" />
@@ -212,7 +226,21 @@ copy /Y "$(SolutionDir)Vendor\GLFW\lib-vc2022\glfw3.dll" "$(SolutionDir)bin\$(Co
     <ClInclude Include="src\Draxion\Renderer\Buffer\VertexBuffer.h" />
     <ClInclude Include="src\Draxion\Renderer\RendererCommand.h" />
     <ClInclude Include="src\Draxion\Renderer\Renderer.h" />
+    <ClInclude Include="src\Draxion\Renderer\Shader\LoadShader.h" />
     <ClInclude Include="src\Draxion\Renderer\Shader\Shader.h" />
+    <ClInclude Include="Vendor\stb\stb_image.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="src\Draxion\Asset\OpenGL\Shaders\Basic.fs">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
+    </None>
+    <None Include="src\Draxion\Asset\OpenGL\Shaders\Basic.vs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="src\Draxion\Asset\Images\Keqing.jpg" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

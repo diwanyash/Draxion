@@ -38,7 +38,7 @@ namespace Draxion
 	}
 	void Application::OnUpdate()
 	{
-		//Later // to avoid warnings
+		//Later // to avoid warnings 
 	}
 	void Application::PushLayer( Layer* iLayer )
 	{
