@@ -1,11 +1,11 @@
 #include "WindowsWindow.h"
 #include "glad/glad.h"
 #include "GLFW/glfw3.h"
-#include "../../Events/KeyEvent.h"
-#include "../../Events/MouseEvent.h"
-#include "../../Core/Application.h"
-#include "../../Renderer/Renderer.h"
-#include "Core/Logger.h"
+#include "Draxion/Events/KeyEvent.h"
+#include "Draxion/Events/MouseEvent.h"
+#include "Draxion/Core/Application.h"
+#include "Draxion/Renderer/Renderer.h"
+#include "Draxion/Core/Logger.h"
 #include <cassert>
 
 namespace Draxion

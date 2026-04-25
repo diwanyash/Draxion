@@ -1,11 +1,11 @@
 #include "Application.h"
-#include "../Platform/Windows/Window.h"
 #include "Logger.h"
-#include <Events/EventDispatcher.h>
-#include <Events/KeyEvent.h>
-#include <Events/MouseEvent.h>
-#include <Input/KeyCodes.h>
-#include "../Renderer/RendererCommand.h"
+#include "Draxion/Platform/Windows/Window.h"
+#include "Draxion/Renderer/RendererCommand.h"
+#include "Draxion/Events/EventDispatcher.h"
+#include "Draxion/Events/KeyEvent.h"
+#include "Draxion/Events/MouseEvent.h"
+#include "Draxion/Input/KeyCodes.h"
 
 namespace Draxion
 {

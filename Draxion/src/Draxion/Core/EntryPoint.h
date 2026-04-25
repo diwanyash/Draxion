@@ -1,5 +1,7 @@
 #pragma once
-#include "../Core/Core.h"
+#include "Core.h"
+#include "Logger.h"
+#include "Application.h"
 
 extern Draxion::Application* Draxion::CreateApplication();
 

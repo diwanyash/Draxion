@@ -1,0 +1,16 @@
+E:\Engine_V1\Draxion\Vendor\glad\src\glad.c;E:\Engine_V1\Draxion\bin-int\Release-x64\Draxion\glad.obj
+E:\Engine_V1\Draxion\Draxion\src\Draxion\Core\Application.cpp;E:\Engine_V1\Draxion\bin-int\Release-x64\Draxion\Application.obj
+E:\Engine_V1\Draxion\Draxion\src\Draxion\Core\Core.h;E:\Engine_V1\Draxion\bin-int\Release-x64\Draxion\Core.obj
+E:\Engine_V1\Draxion\Draxion\src\Draxion\Core\LayerStack.cpp;E:\Engine_V1\Draxion\bin-int\Release-x64\Draxion\LayerStack.obj
+E:\Engine_V1\Draxion\Draxion\src\Draxion\Input\Input.cpp;E:\Engine_V1\Draxion\bin-int\Release-x64\Draxion\Input.obj
+E:\Engine_V1\Draxion\Draxion\src\Draxion\Core\Logger.cpp;E:\Engine_V1\Draxion\bin-int\Release-x64\Draxion\Logger.obj
+E:\Engine_V1\Draxion\Draxion\src\Draxion\Platform\Windows\Window.cpp;E:\Engine_V1\Draxion\bin-int\Release-x64\Draxion\Window.obj
+E:\Engine_V1\Draxion\Draxion\src\Draxion\Platform\Windows\WindowsInput.cpp;E:\Engine_V1\Draxion\bin-int\Release-x64\Draxion\WindowsInput.obj
+E:\Engine_V1\Draxion\Draxion\src\Draxion\Platform\Windows\WindowsWindow.cpp;E:\Engine_V1\Draxion\bin-int\Release-x64\Draxion\WindowsWindow.obj
+E:\Engine_V1\Draxion\Draxion\src\Draxion\Renderer\Buffer\IndexBuffer.cpp;E:\Engine_V1\Draxion\bin-int\Release-x64\Draxion\IndexBuffer.obj
+E:\Engine_V1\Draxion\Draxion\src\Draxion\Renderer\Buffer\VertexArray.cpp;E:\Engine_V1\Draxion\bin-int\Release-x64\Draxion\VertexArray.obj
+E:\Engine_V1\Draxion\Draxion\src\Draxion\Renderer\Buffer\VertexBuffer.cpp;E:\Engine_V1\Draxion\bin-int\Release-x64\Draxion\VertexBuffer.obj
+E:\Engine_V1\Draxion\Draxion\src\Draxion\Renderer\Renderer.cpp;E:\Engine_V1\Draxion\bin-int\Release-x64\Draxion\Renderer.obj
+E:\Engine_V1\Draxion\Draxion\src\Draxion\Renderer\RendererCommand.cpp;E:\Engine_V1\Draxion\bin-int\Release-x64\Draxion\RendererCommand.obj
+E:\Engine_V1\Draxion\Draxion\src\Draxion\Renderer\Shader\Shader.cpp;E:\Engine_V1\Draxion\bin-int\Release-x64\Draxion\Shader.obj
+E:\Engine_V1\Draxion\Draxion\Vendor\stb\stb_image.cpp;E:\Engine_V1\Draxion\bin-int\Release-x64\Draxion\stb_image.obj

@@ -1,6 +1,6 @@
 #pragma once
-#include "../../Core/Core.h"
-#include "../Windows/Window.h"
+#include "Draxion/Core/Core.h"
+#include "Draxion/Platform/Windows/Window.h"
 
 struct GLFWwindow;
 

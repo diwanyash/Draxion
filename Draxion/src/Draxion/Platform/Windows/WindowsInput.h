@@ -1,5 +1,5 @@
 #pragma once
-#include "../../Input/Input.h"
+#include "Draxion/Input/Input.h"
 
 namespace Draxion
 {

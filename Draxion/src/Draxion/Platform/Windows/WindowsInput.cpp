@@ -1,7 +1,7 @@
 #include "WindowsInput.h"
 #include <GLFW/glfw3.h>
-#include "../../Core/Application.h"
-#include "../Windows/Window.h"
+#include "Draxion/Core/Application.h"
+#include "Draxion/Platform/Windows/Window.h"
 
 namespace Draxion
 {
