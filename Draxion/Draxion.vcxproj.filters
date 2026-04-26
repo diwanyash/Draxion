@@ -101,7 +101,7 @@
     <ClInclude Include="src\Draxion\Events\EventDispatcher.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Draxion\Events\MouseEvent.h">
+    <ClInclude Include="src\Draxion\Events\MouseEvents.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Draxion\Core\Layer.h">

@@ -4,7 +4,6 @@
 
 namespace Draxion
 {
-	bool RendererCommand::isWireframe = false;
 	void RendererCommand::Init()
 	{
 		glEnable(GL_BLEND);
@@ -38,4 +37,7 @@ namespace Draxion
 			isWireframe = true;
 		}
 	}
+
+	bool RendererCommand::isWireframe = false;
+
 }

@@ -8,7 +8,7 @@
 #include "src/Draxion/Events/Event.h"
 #include "src/Draxion/Events/EventDispatcher.h"
 #include "src/Draxion/Events/KeyEvent.h"
-#include "src/Draxion/Events/MouseEvent.h"
+#include "src/Draxion/Events/MouseEvents.h"
 #include "src/Draxion/Input/Input.h"
 
 //---------Rendering_Helpers---------

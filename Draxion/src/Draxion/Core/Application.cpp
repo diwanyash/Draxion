@@ -4,7 +4,7 @@
 #include "Draxion/Renderer/RendererCommand.h"
 #include "Draxion/Events/EventDispatcher.h"
 #include "Draxion/Events/KeyEvent.h"
-#include "Draxion/Events/MouseEvent.h"
+#include "Draxion/Events/MouseEvents.h"
 #include "Draxion/Input/KeyCodes.h"
 
 namespace Draxion
@@ -12,8 +12,11 @@ namespace Draxion
 	// CTOR
 	Application::Application()
 	{
+		LOG_ENGINE_TRACE("Application Constructing");
 		m_Window.reset(Window::CreateWindow( 800, 600, "Lucky" ));
+		m_Window->SetEventCallback([this](Event& e) { this->OnEvent(e); });
 		s_Instance = this;
+		LOG_ENGINE_TRACE("Application Constructed");
 	}
 	// DTOR
 	Application::~Application() = default;
@@ -59,14 +62,8 @@ namespace Draxion
 			}
 			return true;
 		});
-		//d.Dispatch<MouseEvent>([&](MouseEvent& e)
-		//{
-		//	if ((e.GetKeyCode()) == Draxion::Key::MOUSE_BUTTON_LEFT)
-		//	{
-		//		//LOG_ENGINE_TRACE( "MousePos{" << e.GetXpos() << "," << e.GetYpos() << "}");
-		//	}
-		//	return true;
-		//});
+
+		LOG_ENGINE_TRACE(e.GetName());
 
 		for ( auto it = m_Layer_Stack.end(); it != m_Layer_Stack.begin(); )
 		{

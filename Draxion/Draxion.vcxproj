@@ -129,7 +129,7 @@ copy /Y "$(SolutionDir)Vendor\GLFW\lib-vc2022\glfw3.dll" "$(SolutionDir)bin\$(Co
     <ClInclude Include="src\Draxion\Events\Event.h" />
     <ClInclude Include="src\Draxion\Events\EventDispatcher.h" />
     <ClInclude Include="src\Draxion\Events\KeyEvent.h" />
-    <ClInclude Include="src\Draxion\Events\MouseEvent.h" />
+    <ClInclude Include="src\Draxion\Events\MouseEvents.h" />
     <ClInclude Include="src\Draxion\Input\Input.h" />
     <ClInclude Include="src\Draxion\Input\KeyCodes.h" />
     <ClInclude Include="src\Draxion\Core\Logger.h" />

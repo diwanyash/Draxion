@@ -1,17 +1,20 @@
 #include "WindowsWindow.h"
 #include "glad/glad.h"
 #include "GLFW/glfw3.h"
+#include <cassert>
 #include "Draxion/Events/KeyEvent.h"
-#include "Draxion/Events/MouseEvent.h"
-#include "Draxion/Core/Application.h"
+#include "Draxion/Events/MouseEvents.h"
 #include "Draxion/Renderer/Renderer.h"
 #include "Draxion/Core/Logger.h"
-#include <cassert>
 
 namespace Draxion
 {
 	WindowsWindow::WindowsWindow( int width, int height, const std::string& title )
 	{
+		m_Data.m_Width = width;
+		m_Data.m_Height = height;
+		m_Data.m_Title = title;
+
 		if (!glfwInit())
 		{
 			LOG_ENGINE_ERROR("GLFW Init Failed");
@@ -21,6 +24,7 @@ namespace Draxion
 		assert(m_Window);
 		glfwMakeContextCurrent(m_Window);
 		glfwSwapInterval(1);
+		
 
 		if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
 		{
@@ -28,29 +32,43 @@ namespace Draxion
 		}
 
 		Renderer::Init();
-		auto ver = glGetString(GL_VERSION);
-		LOG_ENGINE_TRACE(ver);
+		//auto ver = glGetString(GL_VERSION);
+		//LOG_ENGINE_TRACE(ver);
 		glViewport(0, 0, width, height);
 
-		glfwSetFramebufferSizeCallback(m_Window, []( GLFWwindow* window, int width, int height) 
+
+		glfwSetWindowUserPointer(m_Window,&m_Data);
+
+		//glfwSetFramebufferSizeCallback(m_Window, []( GLFWwindow* window, int width, int height) 
+		//{
+		//});
+
+		glfwSetWindowSizeCallback(m_Window, [](GLFWwindow* window, int width, int height) 
 		{
+			WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
+			data.m_Width = width;
+			data.m_Height = height;
+
 			glViewport(0, 0, width, height);
+			LOG_ENGINE_TRACE( "W = " << data.m_Width << " H = " << data.m_Height);
 		});
 
 		glfwSetKeyCallback(m_Window, [](GLFWwindow* window, int key, int scancode, int action, int mods)
 		{
-			switch (action)
+			WindowData& Data = *(WindowData*)glfwGetWindowUserPointer(window);
+     		switch (action)
 			{
 			case GLFW_PRESS:
 			{
+				//Draxion::Application::Get().OnEvent(event);
 				Draxion::KeyPressedEvent event(key);
-				Draxion::Application::Get().OnEvent(event);
+				Data.EventFn(event);
 				break;
 			}
 			case GLFW_RELEASE:
 			{
 				Draxion::KeyReleasedEvent event(key);
-				Draxion::Application::Get().OnEvent(event);
+				Data.EventFn(event);
 				break;
 			}
 			default:
@@ -59,22 +77,42 @@ namespace Draxion
 		});
 		glfwSetMouseButtonCallback(m_Window, [](GLFWwindow* window, int button, int action, int mods)
 		{
-			double posx = 0.0, posy = 0.0;
-			glfwGetCursorPos(window, &posx, &posy);
-			Draxion::MouseEvent event(button, (int)posx, (int)posy);
+			WindowData& Data = *(WindowData*)glfwGetWindowUserPointer(window);
 
+			//glfwGetCursorPos(window, &posx, &posy);
 			switch(action)
 			{
-			case GLFW_PRESS:
-				Draxion::Application::Get().OnEvent(event);
-				break;
-			case GLFW_RELEASE:
-				Draxion::Application::Get().OnEvent(event);
-				break;
-			default:
-				break;
+				case GLFW_PRESS:
+				{
+					Draxion::MouseButtonPressed event(button);
+					Data.EventFn(event);
+					break;
+				}
+				case GLFW_RELEASE:
+				{
+					Draxion::MouseButtonReleased event(button);
+					Data.EventFn(event);
+					break;
+				}
 			}
 		});
+		glfwSetScrollCallback(m_Window, [](GLFWwindow* window, double xOffset, double yOffset)
+		{
+			WindowData& Data = *(WindowData*)glfwGetWindowUserPointer(window);
+			Draxion::MouseScrolled event(xOffset, yOffset);
+			Data.EventFn(event);
+		});
+		glfwSetCursorPosCallback(m_Window, [](GLFWwindow* window, double xPos, double yPos)
+		{
+			WindowData& Data = *(WindowData*)glfwGetWindowUserPointer(window);
+			Draxion::MouseMovedEvent event(xPos, yPos);
+			Data.EventFn(event);
+		});
+		glfwSetErrorCallback([](int error, const char* desc)
+		{
+			LOG_ENGINE_ERROR(error << "::" << desc);
+		});
+		LOG_ENGINE_TRACE("WindowsWindow Constructed");
 	}
 	WindowsWindow::~WindowsWindow()
 	{
@@ -99,6 +137,11 @@ namespace Draxion
 	{
 		LOG_ENGINE_TRACE("Shutting Down...");
 		glfwSetWindowShouldClose(m_Window, flag);
+	}
+
+	inline void WindowsWindow::SetEventCallback(const std::function<void(Event&)>& callback)
+	{
+		m_Data.EventFn = callback;
 	}
 
 }

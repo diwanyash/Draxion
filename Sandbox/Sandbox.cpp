@@ -1,6 +1,6 @@
-#include "../Draxion/src/Draxion/Core/EntryPoint.h"
 #include "DraxionMain.h"
 #include "Layers/ExampleLayer.h"
+#include "../Draxion/src/Draxion/Core/EntryPoint.h"
 
 class Sandbox : public Draxion::Application
 {
