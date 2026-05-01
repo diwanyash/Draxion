@@ -55,7 +55,7 @@ namespace Draxion
 		glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
 		int width, height, nrChannels;
-		const char* TexPath = "E:/Engine_V1/Draxion/Draxion/src/Draxion/Asset/Images/Keqing.jpg";
+		const char* TexPath = "E:/Engine_V1/Draxion/Draxion/src/Draxion/Asset/Images/Neduko.jpg";
 		stbi_set_flip_vertically_on_load(true); // Flip on Loading
 		unsigned char* TexData = stbi_load(TexPath, &width, &height, &nrChannels, 0);
 		if (TexData == NULL)

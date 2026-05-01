@@ -58,7 +58,7 @@
       <PreprocessorDefinitions>DRX_BUILD_DLL;_DEBUG;_CONSOLE;%(PreprocessorDefinitions);DRX_BUILD_API</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)Vendor\GLFW\include;$(SolutionDir)Vendor\Glad\include;$(SolutionDir)Draxion\src\Draxion\Core;$(SolutionDir)Draxion\src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Vendor\GLFW\include;$(SolutionDir)Vendor\Glad\include;$(SolutionDir)Draxion\src\Draxion\Core;$(SolutionDir)Draxion\src;$(SolutionDir)Draxion\Vendor</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
@@ -83,8 +83,8 @@ copy /Y "$(SolutionDir)Vendor\GLFW\lib-vc2022\glfw3.dll" "$(SolutionDir)bin\$(Co
       <PreprocessorDefinitions>DRX_BUILD_DLL;NDEBUG;_CONSOLE;%(PreprocessorDefinitions);DRX_BUILD_API</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)Vendor\GLFW\include;$(SolutionDir)Vendor\Glad\include;$(SolutionDir)Draxion\src\Draxion\Core;$(SolutionDir)Draxion\src</AdditionalIncludeDirectories>
-      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <AdditionalIncludeDirectories>$(SolutionDir)Vendor\GLFW\include;$(SolutionDir)Vendor\Glad\include;$(SolutionDir)Draxion\src\Draxion\Core;$(SolutionDir)Draxion\src;$(SolutionDir)Draxion\Vendor</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
     </ClCompile>
@@ -104,17 +104,26 @@ copy /Y "$(SolutionDir)Vendor\GLFW\lib-vc2022\glfw3.dll" "$(SolutionDir)bin\$(Co
     <ClCompile Include="src\Draxion\Core\Application.cpp" />
     <ClCompile Include="src\Draxion\Core\Core.h" />
     <ClCompile Include="src\Draxion\Core\LayerStack.cpp" />
+    <ClCompile Include="src\Draxion\Core\Layer\ImGuiLayer.cpp" />
+    <ClCompile Include="src\Draxion\Core\Util\RandomGen.cpp" />
     <ClCompile Include="src\Draxion\Input\Input.cpp" />
     <ClCompile Include="src\Draxion\Core\Logger.cpp" />
-    <ClCompile Include="src\Draxion\Platform\Windows\Window.cpp" />
-    <ClCompile Include="src\Draxion\Platform\Windows\WindowsInput.cpp" />
-    <ClCompile Include="src\Draxion\Platform\Windows\WindowsWindow.cpp" />
+    <ClCompile Include="src\Draxion\Core\Window.cpp" />
+    <ClCompile Include="src\Draxion\Platform\Windows\OpenGL\WindowsInput.cpp" />
+    <ClCompile Include="src\Draxion\Platform\Windows\OpenGL\WindowsWindow.cpp" />
     <ClCompile Include="src\Draxion\Renderer\Buffer\IndexBuffer.cpp" />
     <ClCompile Include="src\Draxion\Renderer\Buffer\VertexArray.cpp" />
     <ClCompile Include="src\Draxion\Renderer\Buffer\VertexBuffer.cpp" />
     <ClCompile Include="src\Draxion\Renderer\Renderer.cpp" />
     <ClCompile Include="src\Draxion\Renderer\RendererCommand.cpp" />
     <ClCompile Include="src\Draxion\Renderer\Shader\Shader.cpp" />
+    <ClCompile Include="Vendor\ImGui\imgui.cpp" />
+    <ClCompile Include="Vendor\ImGui\imgui_demo.cpp" />
+    <ClCompile Include="Vendor\ImGui\imgui_draw.cpp" />
+    <ClCompile Include="Vendor\ImGui\imgui_impl_glfw.cpp" />
+    <ClCompile Include="Vendor\ImGui\imgui_impl_opengl3.cpp" />
+    <ClCompile Include="Vendor\ImGui\imgui_tables.cpp" />
+    <ClCompile Include="Vendor\ImGui\imgui_widgets.cpp" />
     <ClCompile Include="Vendor\stb\stb_image.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
@@ -126,6 +135,9 @@ copy /Y "$(SolutionDir)Vendor\GLFW\lib-vc2022\glfw3.dll" "$(SolutionDir)bin\$(Co
     <ClInclude Include="src\Draxion\Core\EntryPoint.h" />
     <ClInclude Include="src\Draxion\Core\Layer.h" />
     <ClInclude Include="src\Draxion\Core\LayerStack.h" />
+    <ClInclude Include="src\Draxion\Core\Layer\ImGuiLayer.h" />
+    <ClInclude Include="src\Draxion\Core\Util\RandomGen.h" />
+    <ClInclude Include="src\Draxion\Events\ApplicationEvent.h" />
     <ClInclude Include="src\Draxion\Events\Event.h" />
     <ClInclude Include="src\Draxion\Events\EventDispatcher.h" />
     <ClInclude Include="src\Draxion\Events\KeyEvent.h" />
@@ -133,9 +145,9 @@ copy /Y "$(SolutionDir)Vendor\GLFW\lib-vc2022\glfw3.dll" "$(SolutionDir)bin\$(Co
     <ClInclude Include="src\Draxion\Input\Input.h" />
     <ClInclude Include="src\Draxion\Input\KeyCodes.h" />
     <ClInclude Include="src\Draxion\Core\Logger.h" />
-    <ClInclude Include="src\Draxion\Platform\Windows\Window.h" />
-    <ClInclude Include="src\Draxion\Platform\Windows\WindowsInput.h" />
-    <ClInclude Include="src\Draxion\Platform\Windows\WindowsWindow.h" />
+    <ClInclude Include="src\Draxion\Core\Window.h" />
+    <ClInclude Include="src\Draxion\Platform\Windows\OpenGL\WindowsInput.h" />
+    <ClInclude Include="src\Draxion\Platform\Windows\OpenGL\WindowsWindow.h" />
     <ClInclude Include="src\Draxion\Renderer\Buffer\IndexBuffer.h" />
     <ClInclude Include="src\Draxion\Renderer\Buffer\VertexArray.h" />
     <ClInclude Include="src\Draxion\Renderer\Buffer\VertexBuffer.h" />
@@ -143,6 +155,15 @@ copy /Y "$(SolutionDir)Vendor\GLFW\lib-vc2022\glfw3.dll" "$(SolutionDir)bin\$(Co
     <ClInclude Include="src\Draxion\Renderer\Renderer.h" />
     <ClInclude Include="src\Draxion\Renderer\Shader\LoadShader.h" />
     <ClInclude Include="src\Draxion\Renderer\Shader\Shader.h" />
+    <ClInclude Include="Vendor\ImGui\imconfig.h" />
+    <ClInclude Include="Vendor\ImGui\imgui.h" />
+    <ClInclude Include="Vendor\ImGui\imgui_impl_glfw.h" />
+    <ClInclude Include="Vendor\ImGui\imgui_impl_opengl3.h" />
+    <ClInclude Include="Vendor\ImGui\imgui_impl_opengl3_loader.h" />
+    <ClInclude Include="Vendor\ImGui\imgui_internal.h" />
+    <ClInclude Include="Vendor\ImGui\imstb_rectpack.h" />
+    <ClInclude Include="Vendor\ImGui\imstb_textedit.h" />
+    <ClInclude Include="Vendor\ImGui\imstb_truetype.h" />
     <ClInclude Include="Vendor\stb\stb_image.h" />
   </ItemGroup>
   <ItemGroup>
@@ -151,9 +172,13 @@ copy /Y "$(SolutionDir)Vendor\GLFW\lib-vc2022\glfw3.dll" "$(SolutionDir)bin\$(Co
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
     </None>
     <None Include="src\Draxion\Asset\OpenGL\Shaders\Basic.vs" />
+    <None Include="src\Draxion\Asset\OpenGL\Shaders\basicinverted.fs" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="src\Draxion\Asset\Images\Keqing.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Vendor\ImGui\LICENSE.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

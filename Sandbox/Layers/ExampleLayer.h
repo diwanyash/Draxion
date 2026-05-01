@@ -14,6 +14,7 @@ namespace Draxion
 		void OnAttach() override;
 		void OnDetach() override;
 		void OnUpdate() override;
+		void OnImGuiRender() override;
 		void OnEvent(Event& e) override;
 	private:
 		const VertexArray*  m_VAO = nullptr;

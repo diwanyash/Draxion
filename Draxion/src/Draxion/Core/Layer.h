@@ -16,9 +16,22 @@ namespace Draxion
 		virtual void OnAttach() {};
 		virtual void OnDetach() {};
 		virtual void OnUpdate() {};
-		virtual void OnEvent( Event& e ) {};
-		std::string GetName() { return Layer_Name; };
+		virtual void OnImGuiRender() {};
+		virtual void OnEvent( Event& e ) {}
+		void HideLayer()
+		{
+			IsLayerHidden = true;
+		}
+		void UnHideLayer()
+		{
+			// CAN ADD ON UPDATE FUNCTION
+			IsLayerHidden = false;
+		}
+		virtual bool IsHidden() { return IsLayerHidden; };
+		inline const std::string& GetName() { return Layer_Name; };
 	protected:
 		std::string Layer_Name;
+	private:
+		bool IsLayerHidden = false;
 	};
 }

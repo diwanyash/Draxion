@@ -1,5 +1,8 @@
 #include "ExampleLayer.h"
 
+#include "glm/vec2.hpp"
+#include "imgui/imgui.h"
+
 namespace Draxion
 {
 	void ExampleLayer::OnAttach()
@@ -47,24 +50,38 @@ namespace Draxion
 
 	void ExampleLayer::OnUpdate()
 	{
-		m_Shader->Bind();
-		RendererCommand::DrawIndexed( *m_VAO, 6 );
+		if(!IsHidden())
+		{
+			if( Draxion::Input::IsKeyPressed(DRX_KEY_0) )
+			m_Shader->Unbind();
+			else
+			m_Shader->Bind();
+
+			RendererCommand::DrawIndexed(*m_VAO, 6);
+		}
+	}
+
+	void ExampleLayer::OnImGuiRender()
+	{
+		//ImGui::Begin("TestImGuiLayerInExample");
+		//ImGui::Text("Mic Test");
+		//ImGui::End();
 	}
 
 	void ExampleLayer::OnEvent(Event& e)
 	{
-		//LOG_ENGINE_TRACE( e.GetName() );
-		EventDispatcher d(e);
-
-		d.Dispatch<KeyPressedEvent>([](KeyPressedEvent& e)
+		if (!IsHidden())
 		{
-			if ((e.GetKeyCode()) == Draxion::Key::VK_CONTROL)
+			EventDispatcher d(e);
+
+			d.Dispatch<KeyPressedEvent>([](KeyPressedEvent& e)
 			{
-				RendererCommand::PrimitiveChange();
-				LOG_CLIENT_TRACE("Drawing Polygon Changed");
-				return true;
-			}
-			return false;
-		});
+				if ((e.GetKeyCode()) == DRX_KEY_LEFT_CONTROL)
+				{
+					return false;
+				}
+				return false;
+			});
+		}
 	}
 }

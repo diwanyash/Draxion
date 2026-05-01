@@ -1,0 +1,46 @@
+#pragma once
+#include "Draxion/Core/Core.h"
+#include "Window.h"
+
+struct GLFWwindow;
+
+namespace Draxion
+{
+	class DRX_API WindowsWindow : public Window
+	{
+	public:
+		WindowsWindow( int width, int height,const std::string& title );
+		virtual ~WindowsWindow();
+
+		void OnUpdate() override;
+		bool ShouldClose() override;
+		void SetShouldClose( bool flag ) override;
+		inline void SetEventCallback( const std::function<void(Event&)>& callback) override;
+		void* GetNativeWindow() const override;
+		struct WindowData
+		{
+			unsigned int m_Width;
+			unsigned int m_Height;
+			std::string  m_Title;
+			std::function<void(Event&)> EventFn;
+		};
+
+
+		float GetWidth() const override
+		{
+			return (float)m_Data.m_Width;
+		}
+
+		float GetHeight() const override
+		{
+			return (float)m_Data.m_Height;
+		}
+	private:
+		//unsigned int m_Width;
+		//unsigned int m_Height;
+		//std::string m_Title;
+		//std::function<void(Event&)> EventFn;
+		WindowData m_Data;
+		GLFWwindow* m_Window;
+	};
+}

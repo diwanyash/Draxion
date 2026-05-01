@@ -31,10 +31,10 @@ namespace Draxion
 		int button;
 	};
 
-	class DRX_API MouseScrolled : public Event
+	class DRX_API MouseScrolledEvent : public Event
 	{
 	public:
-		MouseScrolled(int xOffset, int yOffset)
+		MouseScrolledEvent(int xOffset, int yOffset)
 			:
 			xOffset(xOffset),
 			yOffset(yOffset)

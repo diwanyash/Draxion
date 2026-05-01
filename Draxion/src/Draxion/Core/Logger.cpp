@@ -2,7 +2,6 @@
 #include <iomanip>
 #include <chrono>
 
-
 namespace Draxion
 {
 	void Logger::Init()

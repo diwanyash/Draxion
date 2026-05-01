@@ -1,11 +1,16 @@
 #include "Application.h"
 #include "Logger.h"
-#include "Draxion/Platform/Windows/Window.h"
+#include "Window.h"
+////////////////////////////////
+#include "Draxion/Input/Input.h"
+#include "Draxion/Input/KeyCodes.h"
+////////////////////////////////
 #include "Draxion/Renderer/RendererCommand.h"
 #include "Draxion/Events/EventDispatcher.h"
 #include "Draxion/Events/KeyEvent.h"
 #include "Draxion/Events/MouseEvents.h"
-#include "Draxion/Input/KeyCodes.h"
+
+#include "Util/RandomGen.h"
 
 namespace Draxion
 {
@@ -16,6 +21,10 @@ namespace Draxion
 		m_Window.reset(Window::CreateWindow( 800, 600, "Lucky" ));
 		m_Window->SetEventCallback([this](Event& e) { this->OnEvent(e); });
 		s_Instance = this;
+
+		m_ImGuiLayer = new ImGuiLayer();
+		PushOverLay(m_ImGuiLayer);
+
 		LOG_ENGINE_TRACE("Application Constructed");
 	}
 	// DTOR
@@ -28,9 +37,13 @@ namespace Draxion
 			RendererCommand::SetClearColor(0.2f, 0.3f, 0.8f, 1.0f);
 			RendererCommand::Clear();
 
-
 			for (Layer* lay : m_Layer_Stack)
 				lay->OnUpdate();
+
+			m_ImGuiLayer->Begin();
+			for (Layer* lay : m_Layer_Stack)
+				lay->OnImGuiRender();
+			m_ImGuiLayer->End();
 
 			m_Window->OnUpdate();
 		}
@@ -51,19 +64,33 @@ namespace Draxion
 	{
 		m_Layer_Stack.PushOverLay( iOverLay );
 	}
+	void Application::PopLayer( Layer* iLayer )
+	{
+		m_Layer_Stack.PopLayer( iLayer );
+	}
+	void Application::PopOverLay( Layer* iOverLay )
+	{
+		m_Layer_Stack.PopOverLay( iOverLay );
+	}
 	void Application::OnEvent(Event& e)
 	{
 		EventDispatcher d(e);
 		d.Dispatch<KeyPressedEvent>([&](KeyPressedEvent& e)
 		{
-			if ((e.GetKeyCode()) == Draxion::Key::VK_ESCAPE)
+			if ((e.GetKeyCode()) == DRX_KEY_ESCAPE)
 			{
 				GetWindow().SetShouldClose(true);
 			}
 			return true;
 		});
+		
+		d.Dispatch<MouseMovedEvent>([](MouseMovedEvent& e)
+		{
+			e.Handled = false;
+			return false;
+		});
 
-		LOG_ENGINE_TRACE(e.GetName());
+		//LOG_ENGINE_TRACE(e.GetName());
 
 		for ( auto it = m_Layer_Stack.end(); it != m_Layer_Stack.begin(); )
 		{

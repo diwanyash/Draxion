@@ -8,8 +8,12 @@ public:
 	Sandbox()
 	{
 		LOG_CLIENT_TRACE("SandBox Constructed"); 
-		PushLayer(new Draxion::ExampleLayer() );
+		auto examplelayer = new Draxion::ExampleLayer();
+		PushLayer( examplelayer );
+		//PopOverLay(imguilayer);
+		//PopLayer( examplelayer );
 	}
+
 	~Sandbox()
 	{
 		LOG_CLIENT_TRACE("SandBox Destroyed");

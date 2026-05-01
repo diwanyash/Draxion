@@ -33,4 +33,38 @@ namespace Draxion
 	private:
 		int m_KeyCode;
 	};
+
+	class DRX_API KeyRepeatEvent : public Event
+	{
+	public:
+		KeyRepeatEvent(int KeyCode, int Count)
+			:
+			m_KeyCode(KeyCode),
+			m_Count(Count)
+		{
+		}
+
+		int GetKeyCode() const { return m_KeyCode; }
+
+		const char* GetName() const override { return "KeyRepeated"; }
+	private:
+		int m_KeyCode;
+		int m_Count;
+	};
+
+	class DRX_API KeyTypedEvent : public Event
+	{
+	public:
+		KeyTypedEvent(int KeyCode)
+			:
+			m_KeyCode(KeyCode)
+		{
+		}
+
+		int GetKeyCode() const { return m_KeyCode; }
+
+		const char* GetName() const override { return "KeyTyped"; }
+	private:
+		int m_KeyCode;
+	};
 }
