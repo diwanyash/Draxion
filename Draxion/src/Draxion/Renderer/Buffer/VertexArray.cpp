@@ -42,7 +42,7 @@ namespace Draxion
 		glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 8, (void*)(6 * sizeof(float)));
 		glEnableVertexAttribArray(2);
 
-		///////TO_BE DELETED//////////////////////////////////////////////////////////////////////
+		///////TO_BE_DELETED//////////////////////////////////////////////////////////////////////
 
 		unsigned int texture;
 		glGenTextures(1, &texture);

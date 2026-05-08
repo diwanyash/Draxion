@@ -1,5 +1,5 @@
 #include "Input.h"
-#include "Draxion/Platform/Windows/OpenGL/WindowsInput.h"
+#include "Draxion/Platform/Windows/WindowsInput.h"
 
 namespace Draxion
 {

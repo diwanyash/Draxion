@@ -79,7 +79,7 @@ void Draxion::ImGuiLayer::End()
     ImGui::Render();
     ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 
-    if ( io.ConfigFlags & ImGuiConfigFlags_DockingEnable )
+    if ( io.ConfigFlags & ImGuiConfigFlags_ViewportsEnable )
     {
         GLFWwindow* backup_currunt_context = glfwGetCurrentContext();
         ImGui::UpdatePlatformWindows(); 

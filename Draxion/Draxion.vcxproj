@@ -19,13 +19,13 @@
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
@@ -70,8 +70,8 @@
       <AdditionalLibraryDirectories>;$(SolutionDir)Vendor\GLFW\lib-vc2022</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
-      <Command>copy /Y "$(TargetPath)" "$(SolutionDir)bin\$(Configuration)-$(Platform)\Sandbox\"
-copy /Y "$(SolutionDir)Vendor\GLFW\lib-vc2022\glfw3.dll" "$(SolutionDir)bin\$(Configuration)-$(Platform)\Sandbox\"</Command>
+      <Command>
+      </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -95,8 +95,8 @@ copy /Y "$(SolutionDir)Vendor\GLFW\lib-vc2022\glfw3.dll" "$(SolutionDir)bin\$(Co
       <AdditionalLibraryDirectories>$(SolutionDir)Vendor\GLFW\lib-vc2022;$(SolutionDir)Vendor\GLFW\lib-vc2022</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
-      <Command>copy /Y "$(TargetPath)" "$(SolutionDir)bin\$(Configuration)-$(Platform)\Sandbox\"
-copy /Y "$(SolutionDir)Vendor\GLFW\lib-vc2022\glfw3.dll" "$(SolutionDir)bin\$(Configuration)-$(Platform)\Sandbox\"</Command>
+      <Command>
+      </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -109,8 +109,9 @@ copy /Y "$(SolutionDir)Vendor\GLFW\lib-vc2022\glfw3.dll" "$(SolutionDir)bin\$(Co
     <ClCompile Include="src\Draxion\Input\Input.cpp" />
     <ClCompile Include="src\Draxion\Core\Logger.cpp" />
     <ClCompile Include="src\Draxion\Core\Window.cpp" />
-    <ClCompile Include="src\Draxion\Platform\Windows\OpenGL\WindowsInput.cpp" />
-    <ClCompile Include="src\Draxion\Platform\Windows\OpenGL\WindowsWindow.cpp" />
+    <ClCompile Include="src\Draxion\Platform\Windows\OpenGL\OpenGLContext.cpp" />
+    <ClCompile Include="src\Draxion\Platform\Windows\WindowsInput.cpp" />
+    <ClCompile Include="src\Draxion\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\Draxion\Renderer\Buffer\IndexBuffer.cpp" />
     <ClCompile Include="src\Draxion\Renderer\Buffer\VertexArray.cpp" />
     <ClCompile Include="src\Draxion\Renderer\Buffer\VertexBuffer.cpp" />
@@ -146,11 +147,13 @@ copy /Y "$(SolutionDir)Vendor\GLFW\lib-vc2022\glfw3.dll" "$(SolutionDir)bin\$(Co
     <ClInclude Include="src\Draxion\Input\KeyCodes.h" />
     <ClInclude Include="src\Draxion\Core\Logger.h" />
     <ClInclude Include="src\Draxion\Core\Window.h" />
-    <ClInclude Include="src\Draxion\Platform\Windows\OpenGL\WindowsInput.h" />
-    <ClInclude Include="src\Draxion\Platform\Windows\OpenGL\WindowsWindow.h" />
+    <ClInclude Include="src\Draxion\Platform\Windows\OpenGL\OpenGLContext.h" />
+    <ClInclude Include="src\Draxion\Platform\Windows\WindowsInput.h" />
+    <ClInclude Include="src\Draxion\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\Draxion\Renderer\Buffer\IndexBuffer.h" />
     <ClInclude Include="src\Draxion\Renderer\Buffer\VertexArray.h" />
     <ClInclude Include="src\Draxion\Renderer\Buffer\VertexBuffer.h" />
+    <ClInclude Include="src\Draxion\Renderer\GraphicsContext.h" />
     <ClInclude Include="src\Draxion\Renderer\RendererCommand.h" />
     <ClInclude Include="src\Draxion\Renderer\Renderer.h" />
     <ClInclude Include="src\Draxion\Renderer\Shader\LoadShader.h" />
@@ -172,7 +175,7 @@ copy /Y "$(SolutionDir)Vendor\GLFW\lib-vc2022\glfw3.dll" "$(SolutionDir)bin\$(Co
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
     </None>
     <None Include="src\Draxion\Asset\OpenGL\Shaders\Basic.vs" />
-    <None Include="src\Draxion\Asset\OpenGL\Shaders\basicinverted.fs" />
+    <None Include="src\Draxion\Asset\OpenGL\Shaders\basicinverted.frag" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="src\Draxion\Asset\Images\Keqing.jpg" />

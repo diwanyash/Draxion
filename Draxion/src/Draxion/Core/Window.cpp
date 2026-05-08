@@ -1,5 +1,5 @@
 #include "Window.h"
-#include "Draxion/Platform/Windows/OpenGL/WindowsWindow.h"
+#include "Draxion/Platform/Windows/WindowsWindow.h"
 #include "Draxion/Core/Logger.h"
 
 namespace Draxion

@@ -15,14 +15,29 @@
 #include <ImGui/imgui_impl_glfw.h>
 //////////////////////////////////
 
+#include "Draxion/Platform/Windows/OpenGL/OpenGLContext.h"
+
 
 namespace Draxion
 {
 	WindowsWindow::WindowsWindow( int width, int height, const std::string& title )
 	{
+		WindowsWindow::Init(width, height, title);
+	}
+	WindowsWindow::~WindowsWindow()
+	{
+		WindowsWindow::Shutdown();
+	}
+	void* WindowsWindow::GetNativeWindow() const
+	{
+		return m_Window;
+	}
+	void WindowsWindow::Init( int width, int height, const std::string& title )
+	{
 		m_Data.m_Width = width;
 		m_Data.m_Height = height;
 		m_Data.m_Title = title;
+
 
 		if (!glfwInit())
 		{
@@ -31,14 +46,13 @@ namespace Draxion
 
 		m_Window = glfwCreateWindow(width, height, title.c_str(), NULL, NULL);
 		assert(m_Window);
-		glfwMakeContextCurrent(m_Window);
-		glfwSwapInterval(1);
 		
+		m_Context = new OpenGLContext(m_Window);
+		m_Context->Init();
+		
+	
 
-		if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
-		{
-			LOG_ENGINE_FATAL("OPENGL failed At GLADLoadGLLoader");
-		}
+
 
 		Renderer::Init();
 		//auto ver = glGetString(GL_VERSION);
@@ -46,13 +60,13 @@ namespace Draxion
 		glViewport(0, 0, width, height);
 
 
-		glfwSetWindowUserPointer(m_Window,&m_Data);
+		glfwSetWindowUserPointer(m_Window, &m_Data);
 
 		//glfwSetFramebufferSizeCallback(m_Window, []( GLFWwindow* window, int width, int height) 
 		//{
 		//});
 
-		glfwSetWindowSizeCallback(m_Window, [](GLFWwindow* window, int width, int height) 
+		glfwSetWindowSizeCallback(m_Window, [](GLFWwindow* window, int width, int height)
 		{
 			WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
 			data.m_Width = width;
@@ -62,13 +76,13 @@ namespace Draxion
 			data.EventFn(event);
 
 			glViewport(0, 0, width, height);
-			LOG_ENGINE_TRACE( "W = " << data.m_Width << " H = " << data.m_Height);
+			LOG_ENGINE_TRACE("W = " << data.m_Width << " H = " << data.m_Height);
 		});
 
 		glfwSetKeyCallback(m_Window, [](GLFWwindow* window, int key, int scancode, int action, int mods)
 		{
 			WindowData& Data = *(WindowData*)glfwGetWindowUserPointer(window);
-     		switch (action)
+			switch (action)
 			{
 			case GLFW_PRESS:
 			{
@@ -85,7 +99,7 @@ namespace Draxion
 			}
 			case GLFW_REPEAT:
 			{
-				Draxion::KeyRepeatEvent event(key,1);
+				Draxion::KeyRepeatEvent event(key, 1);
 				Data.EventFn(event);
 				break;
 			}
@@ -106,20 +120,20 @@ namespace Draxion
 			WindowData& Data = *(WindowData*)glfwGetWindowUserPointer(window);
 
 			//glfwGetCursorPos(window, &posx, &posy);
-			switch(action)
+			switch (action)
 			{
-				case GLFW_PRESS:
-				{
-					Draxion::MouseButtonPressed event(button);
-					Data.EventFn(event);
-					break;
-				}
-				case GLFW_RELEASE:
-				{
-					Draxion::MouseButtonReleased event(button);
-					Data.EventFn(event);
-					break;
-				}
+			case GLFW_PRESS:
+			{
+				Draxion::MouseButtonPressed event(button);
+				Data.EventFn(event);
+				break;
+			}
+			case GLFW_RELEASE:
+			{
+				Draxion::MouseButtonReleased event(button);
+				Data.EventFn(event);
+				break;
+			}
 			}
 		});
 		glfwSetScrollCallback(m_Window, [](GLFWwindow* window, double xOffset, double yOffset)
@@ -140,19 +154,18 @@ namespace Draxion
 		});
 		LOG_ENGINE_TRACE("WindowsWindow Constructed");
 	}
-	WindowsWindow::~WindowsWindow()
+	void WindowsWindow::Shutdown()
 	{
+		delete m_Context;
+		m_Context = nullptr;
+
 		glfwDestroyWindow(m_Window);
 		glfwTerminate();
-	}
-	void* WindowsWindow::GetNativeWindow() const
-	{
-		return m_Window;
 	}
 	void WindowsWindow::OnUpdate()
 	{
 		glfwPollEvents();
-		glfwSwapBuffers(m_Window);
+		m_Context->SwapBuffers();
 	}
 	bool WindowsWindow::ShouldClose()
 	{

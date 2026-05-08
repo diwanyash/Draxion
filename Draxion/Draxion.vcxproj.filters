@@ -21,16 +21,10 @@
     <ClCompile Include="src\Draxion\Core\Application.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Draxion\Platform\Windows\OpenGL\WindowsWindow.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\Draxion\Input\Input.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Draxion\Core\Window.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Draxion\Platform\Windows\OpenGL\WindowsInput.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Draxion\Core\LayerStack.cpp">
@@ -90,6 +84,15 @@
     <ClCompile Include="src\Draxion\Core\Util\RandomGen.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Draxion\Platform\Windows\WindowsInput.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Draxion\Platform\Windows\WindowsWindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Draxion\Platform\Windows\OpenGL\OpenGLContext.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Draxion\Core\Logger.h">
@@ -104,9 +107,6 @@
     <ClInclude Include="src\Draxion\Core\EntryPoint.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Draxion\Platform\Windows\OpenGL\WindowsWindow.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\Draxion\Input\Input.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -114,9 +114,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Draxion\Core\Window.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Draxion\Platform\Windows\OpenGL\WindowsInput.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Draxion\Events\Event.h">
@@ -197,11 +194,23 @@
     <ClInclude Include="src\Draxion\Core\Util\RandomGen.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\Draxion\Renderer\GraphicsContext.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Draxion\Platform\Windows\WindowsWindow.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Draxion\Platform\Windows\WindowsInput.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Draxion\Platform\Windows\OpenGL\OpenGLContext.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="src\Draxion\Asset\OpenGL\Shaders\Basic.vs" />
     <None Include="src\Draxion\Asset\OpenGL\Shaders\Basic.fs" />
-    <None Include="src\Draxion\Asset\OpenGL\Shaders\basicinverted.fs" />
+    <None Include="src\Draxion\Asset\OpenGL\Shaders\basicinverted.frag" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="src\Draxion\Asset\Images\Keqing.jpg">

@@ -1,5 +1,6 @@
 #pragma once
 #include "Draxion/Core/Core.h"
+#include "Draxion/Renderer/GraphicsContext.h"
 #include "Window.h"
 
 struct GLFWwindow;
@@ -36,11 +37,15 @@ namespace Draxion
 			return (float)m_Data.m_Height;
 		}
 	private:
+		void Init( int width, int height, const std::string& title ) override;
+		void Shutdown() override;
+	private:
+		GLFWwindow* m_Window;
+		GraphicsContext* m_Context;
 		//unsigned int m_Width;
 		//unsigned int m_Height;
 		//std::string m_Title;
 		//std::function<void(Event&)> EventFn;
 		WindowData m_Data;
-		GLFWwindow* m_Window;
 	};
 }
