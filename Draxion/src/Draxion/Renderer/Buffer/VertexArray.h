@@ -1,5 +1,5 @@
 #pragma once
-#include "VertexBuffer.h"
+#include "Buffer.h"
 #include "../../Core/Core.h"
 
 namespace Draxion

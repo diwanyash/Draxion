@@ -19,8 +19,7 @@
 
 //---------Rendering_Helpers---------
 #include "src/Draxion/Renderer/Buffer/VertexArray.h"
-#include "src/Draxion/Renderer/Buffer/VertexBuffer.h"
-#include "src/Draxion/Renderer/Buffer/IndexBuffer.h"
+#include "src/Draxion/Renderer/Buffer/Buffer.h"
 #include "src/Draxion/Renderer/Shader/Shader.h"
 #include "src/Draxion/Renderer/RendererCommand.h"
 //-----------------------------------

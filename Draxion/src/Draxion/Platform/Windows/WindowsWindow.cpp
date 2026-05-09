@@ -1,3 +1,4 @@
+#define GLFW_INCLUDE_NONE
 #include "WindowsWindow.h"
 #include "glad/glad.h"
 #include "GLFW/glfw3.h"
@@ -54,7 +55,12 @@ namespace Draxion
 
 
 
-		Renderer::Init();
+		//Renderer::Init();
+		
+		glEnable(GL_BLEND);
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+		glEnable(GL_DEPTH_TEST);
+
 		//auto ver = glGetString(GL_VERSION);
 		//LOG_ENGINE_TRACE(ver);
 		glViewport(0, 0, width, height);

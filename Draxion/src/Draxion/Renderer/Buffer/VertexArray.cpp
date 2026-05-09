@@ -1,6 +1,5 @@
 #include "VertexArray.h"
 #include "glad/glad.h"
-#include "VertexBuffer.h"
 
 // TO_BE DELETED
 #include "../../../../Vendor/STB/stb_image.h"	
@@ -8,6 +7,32 @@
 ///////////////
 namespace Draxion
 {
+	///////////////////
+	static GLenum ShaderDataTypeToGLDataType(ShaderDataType type)
+	{
+		switch (type)
+		{
+		case ShaderDataType::Float:		return GL_FLOAT;
+		case ShaderDataType::Float2:	return GL_FLOAT;
+		case ShaderDataType::Float3:	return GL_FLOAT;
+		case ShaderDataType::Float4:	return GL_FLOAT;
+		case ShaderDataType::Int:		return GL_INT;
+		case ShaderDataType::Int2:		return GL_INT;
+		case ShaderDataType::Int3:		return GL_INT;
+		case ShaderDataType::Int4:		return GL_INT;
+		case ShaderDataType::Mat2:		return GL_FLOAT;
+		case ShaderDataType::Mat3:		return GL_FLOAT;
+		case ShaderDataType::Mat4:		return GL_FLOAT;
+		case ShaderDataType::Bool:		return GL_BOOL;
+		}
+
+		LOG_CLIENT_ERROR("Unknown ShaderDataType to GLDataType Conversion");
+		return 0;
+	}
+
+	//////////////////
+
+
 	VertexArray::VertexArray()
 	{
 		glCreateVertexArrays( 1, &m_RendererID );
@@ -30,17 +55,28 @@ namespace Draxion
 		Bind();
 		vb.Bind();
 
-		// POS
-		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 8, (void*)0);
-		glEnableVertexAttribArray(0);
 
-		// COLOR
-		glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 8, (void*)(3 * sizeof(float)));
-		glEnableVertexAttribArray(1);
+		auto index = 0;
+		for (const auto& element : vb.GetLayout())
+		{
+			glEnableVertexAttribArray(index);
+			glVertexAttribPointer(index, element.GetComponentCount(),
+				ShaderDataTypeToGLDataType(element.m_type),
+				element.normalize ? GL_TRUE : GL_FALSE, vb.GetLayout().GetStride(), (void*)element.offset);
+			index++;
+		}
 
-		// TEXTURE
-		glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 8, (void*)(6 * sizeof(float)));
-		glEnableVertexAttribArray(2);
+		//// POS
+		//glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 8, (void*)0);
+		//glEnableVertexAttribArray(0);
+		//
+		//// COLOR
+		//glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 8, (void*)(3 * sizeof(float)));
+		//glEnableVertexAttribArray(1);
+		//
+		//// TEXTURE
+		//glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 8, (void*)(6 * sizeof(float)));
+		//glEnableVertexAttribArray(2);
 
 		///////TO_BE_DELETED//////////////////////////////////////////////////////////////////////
 

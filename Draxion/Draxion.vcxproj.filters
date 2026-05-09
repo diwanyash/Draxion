@@ -39,10 +39,7 @@
     <ClCompile Include="src\Draxion\Renderer\Buffer\VertexArray.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Draxion\Renderer\Buffer\VertexBuffer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Draxion\Renderer\Buffer\IndexBuffer.cpp">
+    <ClCompile Include="src\Draxion\Renderer\Buffer\Buffer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Draxion\Renderer\Shader\Shader.cpp">
@@ -52,9 +49,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\Vendor\glad\src\glad.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Draxion\Core\Core.h">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Draxion\Core\Layer\ImGuiLayer.cpp">
@@ -91,6 +85,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Draxion\Platform\Windows\OpenGL\OpenGLContext.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Draxion\Platform\Windows\OpenGL\OpenGLBuffer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -140,10 +137,7 @@
     <ClInclude Include="src\Draxion\Renderer\Renderer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Draxion\Renderer\Buffer\VertexBuffer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Draxion\Renderer\Buffer\IndexBuffer.h">
+    <ClInclude Include="src\Draxion\Renderer\Buffer\Buffer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Draxion\Renderer\Buffer\VertexArray.h">
@@ -205,6 +199,12 @@
     </ClInclude>
     <ClInclude Include="src\Draxion\Platform\Windows\OpenGL\OpenGLContext.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Draxion\Platform\Windows\OpenGL\OpenGLBuffer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Draxion\Core\Core.h">
+      <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

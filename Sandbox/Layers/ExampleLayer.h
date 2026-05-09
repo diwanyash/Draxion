@@ -17,9 +17,9 @@ namespace Draxion
 		void OnImGuiRender() override;
 		void OnEvent(Event& e) override;
 	private:
-		const VertexArray*  m_VAO = nullptr;
-		const VertexBuffer* m_VBO = nullptr;
-		const IndexBuffer*  m_EBO = nullptr;
+		std::unique_ptr<VertexArray> m_VAO;
+		std::unique_ptr<VertexBuffer> m_VBO;
+		std::unique_ptr<IndexBuffer> m_EBO;
 		const Shader*  m_Shader = nullptr;
 	};
 }

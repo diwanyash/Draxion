@@ -3,8 +3,5 @@
 
 namespace Draxion
 {
-	void Renderer::Init()
-	{
-		RendererCommand::Init();
-	}
+	RendererAPI Renderer::m_rendererAPI = RendererAPI::OpenGL;
 }
