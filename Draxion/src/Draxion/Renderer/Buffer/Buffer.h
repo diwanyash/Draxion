@@ -151,6 +151,8 @@ namespace Draxion
 		virtual ~IndexBuffer() {};
 
 		static IndexBuffer* Create(unsigned int* indices, unsigned int count );
+		
+		virtual unsigned int GetCount() const = 0;
 	
 		virtual void Bind() const = 0;
 		virtual void Unbind() const = 0;

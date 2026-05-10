@@ -13,7 +13,7 @@ namespace Draxion
 		void Bind() const override;
 		void Unbind() const override;
 
-		inline const BufferLayout& const GetLayout() const override { return m_Layout; }
+		inline const BufferLayout& GetLayout() const override { return m_Layout; }
 		inline void SetLayout(const BufferLayout& layout) override
 		{ 
 			m_Layout = layout; 
@@ -31,7 +31,7 @@ namespace Draxion
 
 		~OpenGLIndexBuffer();
 
-		unsigned int GetCount() const { return m_Count; }
+		unsigned int GetCount() const override { return m_Count; }
 
 		void Bind() const override;
 		void Unbind() const override;

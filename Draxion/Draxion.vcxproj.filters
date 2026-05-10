@@ -90,6 +90,15 @@
     <ClCompile Include="src\Draxion\Platform\Windows\OpenGL\OpenGLBuffer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Draxion\Platform\Windows\OpenGL\OpenGLVertexArray.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Draxion\Renderer\RenderAPI.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Draxion\Platform\Windows\OpenGL\OpenGLRenderAPI.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Draxion\Core\Logger.h">
@@ -206,10 +215,19 @@
     <ClInclude Include="src\Draxion\Core\Core.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\Draxion\Platform\Windows\OpenGL\OpenGLVertexArray.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Draxion\Renderer\RenderAPI.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Draxion\Platform\Windows\OpenGL\OpenGLRenderAPI.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="src\Draxion\Asset\OpenGL\Shaders\Basic.vs" />
-    <None Include="src\Draxion\Asset\OpenGL\Shaders\Basic.fs" />
+    <None Include="src\Draxion\Asset\OpenGL\Shaders\Basic.vert" />
+    <None Include="src\Draxion\Asset\OpenGL\Shaders\Basic.frag" />
     <None Include="src\Draxion\Asset\OpenGL\Shaders\basicinverted.frag" />
   </ItemGroup>
   <ItemGroup>

@@ -5,7 +5,6 @@
 #include "Draxion/Input/Input.h"
 #include "Draxion/Input/KeyCodes.h"
 ////////////////////////////////
-#include "Draxion/Renderer/RendererCommand.h"
 #include "Draxion/Events/EventDispatcher.h"
 #include "Draxion/Events/KeyEvent.h"
 #include "Draxion/Events/MouseEvents.h"
@@ -34,9 +33,6 @@ namespace Draxion
 	{
 		while (!m_Window->ShouldClose())
 		{
-			RendererCommand::SetClearColor(0.2f, 0.3f, 0.8f, 1.0f);
-			RendererCommand::Clear();
-
 			for (Layer* lay : m_Layer_Stack)
 				lay->OnUpdate();
 

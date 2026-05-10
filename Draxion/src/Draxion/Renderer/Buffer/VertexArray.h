@@ -7,14 +7,18 @@ namespace Draxion
 	class DRX_API VertexArray
 	{
 	public:
-		VertexArray();
-		~VertexArray();
+		virtual ~VertexArray() {};
 
-		void Bind() const;
-		void Unbind() const;
+		virtual void Bind() const = 0;
+		virtual void Unbind() const = 0;
+		 
+		virtual void AddVertexBuffers(const std::shared_ptr<VertexBuffer>& vertexBuffer )  = 0;
+		virtual void SetIndexBuffer(const std::shared_ptr<IndexBuffer>& indexBuffer )  = 0;
 
-		void AddBuffer(const VertexBuffer& vb ) const ;
-	private:
-		unsigned int m_RendererID;
+
+		virtual const std::vector<std::shared_ptr<VertexBuffer>>& GetVertexBuffers() = 0;
+		virtual const std::shared_ptr<IndexBuffer>& GetIndexBuffer() = 0;
+	public:
+		static VertexArray* Create();
 	};
 }

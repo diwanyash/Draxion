@@ -1,15 +1,5 @@
 #include "ExampleLayer.h"
-
-#include "glm/vec2.hpp"
 #include "imgui/imgui.h"
-
-
-////////TO-BE_DELETED//////////////
-
-//#include "../../Vendor/glad/include/glad/glad.h"
-//#include "../../Vendor/glad/include/KHR/khrplatform.h"
-
-///////////////////////////////////
 
 namespace Draxion
 {
@@ -33,28 +23,34 @@ namespace Draxion
 		
 		//glPolygonMode( GL_FRONT_AND_BACK, GL_LINE );
 		
-		m_VAO.reset(new VertexArray());
+		m_VAO.reset(VertexArray::Create());
+		std::shared_ptr<VertexBuffer> m_VBO;
 		m_VBO.reset(VertexBuffer::Create(vertices, sizeof(vertices) ));
-		m_EBO.reset(IndexBuffer::Create(indices, 6 ));
+		std::shared_ptr<IndexBuffer> m_EBO;
+		m_EBO.reset(IndexBuffer::Create(indices, sizeof(indices)));
+
 
 		m_VAO->Bind();
-		m_EBO->Bind();
+		//m_EBO->Bind();
 
+	
+		BufferLayout layout =
 		{
-			BufferLayout layout =
-			{
-				{ ShaderDataType::Float3, "aPos" },
-				{ ShaderDataType::Float3, "aColor" },
-				{ ShaderDataType::Float2, "aTexCoord" },
-			};
-			m_VBO->SetLayout( layout );
-		}
+			{ ShaderDataType::Float3, "aPos" },
+			{ ShaderDataType::Float3, "aColor" },
+			{ ShaderDataType::Float2, "aTexCoord" },
+		};
+		m_VBO->SetLayout(layout);
 
 
-		m_VAO->AddBuffer(*m_VBO);
+		m_VAO->AddVertexBuffers(m_VBO);
+		m_VAO->SetIndexBuffer(m_EBO);
 
-		m_Shader = new Shader("E:/Engine_V1/Draxion/Draxion/src/Draxion/Asset/OpenGL/Shaders/Basic.vs"
-							 ,"E:/Engine_V1/Draxion/Draxion/src/Draxion/Asset/OpenGL/Shaders/Basic.fs");
+		m_Shader = new Shader("E:/Engine_V1/Draxion/Draxion/src/Draxion/Asset/OpenGL/Shaders/Basic.vert"
+							 ,"E:/Engine_V1/Draxion/Draxion/src/Draxion/Asset/OpenGL/Shaders/Basic.frag");
+
+		m_ShaderInv = new Shader("E:/Engine_V1/Draxion/Draxion/src/Draxion/Asset/OpenGL/Shaders/Basic.vert"
+							 ,"E:/Engine_V1/Draxion/Draxion/src/Draxion/Asset/OpenGL/Shaders/Basicinverted.frag");
 	
 
 	}
@@ -66,14 +62,18 @@ namespace Draxion
 
 	void ExampleLayer::OnUpdate()
 	{
+		RenderCommand::SetClearColor({ 0.2f, 0.3f, 0.8f, 1.0f });
+		RenderCommand::Clear();
 		if(!IsHidden())
 		{
 			if( Draxion::Input::IsKeyPressed(DRX_KEY_0) )
-			m_Shader->Unbind();
+			m_ShaderInv->Bind();
 			else
 			m_Shader->Bind();
 
-			RendererCommand::DrawIndexed(*m_VAO, 6);
+			Renderer::BeginScene();
+			RenderCommand::DrawIndexed(m_VAO);
+			Renderer::EndScene();
 		}
 	}
 

@@ -22,6 +22,7 @@
 #include "src/Draxion/Renderer/Buffer/Buffer.h"
 #include "src/Draxion/Renderer/Shader/Shader.h"
 #include "src/Draxion/Renderer/RendererCommand.h"
+#include "src/Draxion/Renderer/Renderer.h"
 //-----------------------------------
 
 //-----ENTRY POINT--------------

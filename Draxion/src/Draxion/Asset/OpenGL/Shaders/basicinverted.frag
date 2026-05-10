@@ -6,7 +6,10 @@ in vec2 TexCoord;
 
 uniform sampler2D ourTexture;
 
+vec4 temp;
+
 void main()
 {
-	FragOut = texture(ourTexture, TexCoord);
+	temp = texture(ourTexture, TexCoord);
+	FragOut = vec4(1 - temp.xyz, 1.0);
 };

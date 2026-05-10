@@ -3,5 +3,15 @@
 
 namespace Draxion
 {
-	RendererAPI Renderer::m_rendererAPI = RendererAPI::OpenGL;
+	void Renderer::BeginScene()
+	{
+	}
+	void Renderer::Submit(const std::shared_ptr<VertexArray>& vertexarray)
+	{
+		vertexarray->Bind();
+		RenderCommand::DrawIndexed(vertexarray);
+	}
+	void Renderer::EndScene()
+	{
+	}
 }

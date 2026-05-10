@@ -111,10 +111,13 @@
     <ClCompile Include="src\Draxion\Core\Window.cpp" />
     <ClCompile Include="src\Draxion\Platform\Windows\OpenGL\OpenGLBuffer.cpp" />
     <ClCompile Include="src\Draxion\Platform\Windows\OpenGL\OpenGLContext.cpp" />
+    <ClCompile Include="src\Draxion\Platform\Windows\OpenGL\OpenGLRenderAPI.cpp" />
+    <ClCompile Include="src\Draxion\Platform\Windows\OpenGL\OpenGLVertexArray.cpp" />
     <ClCompile Include="src\Draxion\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\Draxion\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\Draxion\Renderer\Buffer\VertexArray.cpp" />
     <ClCompile Include="src\Draxion\Renderer\Buffer\Buffer.cpp" />
+    <ClCompile Include="src\Draxion\Renderer\RenderAPI.cpp" />
     <ClCompile Include="src\Draxion\Renderer\Renderer.cpp" />
     <ClCompile Include="src\Draxion\Renderer\RendererCommand.cpp" />
     <ClCompile Include="src\Draxion\Renderer\Shader\Shader.cpp" />
@@ -147,6 +150,8 @@
     <ClInclude Include="src\Draxion\Input\KeyCodes.h" />
     <ClInclude Include="src\Draxion\Core\Logger.h" />
     <ClInclude Include="src\Draxion\Core\Window.h" />
+    <ClInclude Include="src\Draxion\Platform\Windows\OpenGL\OpenGLRenderAPI.h" />
+    <ClInclude Include="src\Draxion\Platform\Windows\OpenGL\OpenGLVertexArray.h" />
     <ClInclude Include="src\Draxion\Platform\Windows\OpenGL\OpenGLBuffer.h" />
     <ClInclude Include="src\Draxion\Platform\Windows\OpenGL\OpenGLContext.h" />
     <ClInclude Include="src\Draxion\Platform\Windows\WindowsInput.h" />
@@ -154,6 +159,7 @@
     <ClInclude Include="src\Draxion\Renderer\Buffer\VertexArray.h" />
     <ClInclude Include="src\Draxion\Renderer\Buffer\Buffer.h" />
     <ClInclude Include="src\Draxion\Renderer\GraphicsContext.h" />
+    <ClInclude Include="src\Draxion\Renderer\RenderAPI.h" />
     <ClInclude Include="src\Draxion\Renderer\RendererCommand.h" />
     <ClInclude Include="src\Draxion\Renderer\Renderer.h" />
     <ClInclude Include="src\Draxion\Renderer\Shader\LoadShader.h" />
@@ -170,11 +176,11 @@
     <ClInclude Include="Vendor\stb\stb_image.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="src\Draxion\Asset\OpenGL\Shaders\Basic.fs">
+    <None Include="src\Draxion\Asset\OpenGL\Shaders\Basic.frag">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
     </None>
-    <None Include="src\Draxion\Asset\OpenGL\Shaders\Basic.vs" />
+    <None Include="src\Draxion\Asset\OpenGL\Shaders\Basic.vert" />
     <None Include="src\Draxion\Asset\OpenGL\Shaders\basicinverted.frag" />
   </ItemGroup>
   <ItemGroup>

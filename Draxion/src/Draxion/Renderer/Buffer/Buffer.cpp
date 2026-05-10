@@ -10,12 +10,12 @@ namespace Draxion
 	{
 		switch ( Renderer::GetAPI() )
 		{
-			case RendererAPI::None :
+			case RenderAPI::API::None :
 			{
 				LOG_ENGINE_WARN( "None RenderAPI was set!" );
 				return nullptr;
 			}
-			case RendererAPI::OpenGL :
+			case RenderAPI::API::OpenGL :
 			{
 				return new OpenGLVertexBuffer( vertices, size_B );
 			}
@@ -29,12 +29,12 @@ namespace Draxion
 	{
 		switch (Renderer::GetAPI())
 		{
-		case RendererAPI::None :
+		case RenderAPI::API::None :
 		{
 			LOG_ENGINE_WARN("None RenderAPI was set!");
 			return nullptr;
 		}
-		case RendererAPI::OpenGL :
+		case RenderAPI::API::OpenGL :
 		{
 			return new OpenGLIndexBuffer(indices, count);
 		}
