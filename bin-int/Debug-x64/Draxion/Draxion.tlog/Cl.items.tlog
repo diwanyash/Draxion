@@ -14,6 +14,7 @@ E:\Engine_V1\Draxion\Draxion\src\Draxion\Platform\Windows\WindowsInput.cpp;E:\En
 E:\Engine_V1\Draxion\Draxion\src\Draxion\Platform\Windows\WindowsWindow.cpp;E:\Engine_V1\Draxion\bin-int\Debug-x64\Draxion\WindowsWindow.obj
 E:\Engine_V1\Draxion\Draxion\src\Draxion\Renderer\Buffer\VertexArray.cpp;E:\Engine_V1\Draxion\bin-int\Debug-x64\Draxion\VertexArray.obj
 E:\Engine_V1\Draxion\Draxion\src\Draxion\Renderer\Buffer\Buffer.cpp;E:\Engine_V1\Draxion\bin-int\Debug-x64\Draxion\Buffer.obj
+E:\Engine_V1\Draxion\Draxion\src\Draxion\Renderer\OrthoGraphicCamera.cpp;E:\Engine_V1\Draxion\bin-int\Debug-x64\Draxion\OrthoGraphicCamera.obj
 E:\Engine_V1\Draxion\Draxion\src\Draxion\Renderer\RenderAPI.cpp;E:\Engine_V1\Draxion\bin-int\Debug-x64\Draxion\RenderAPI.obj
 E:\Engine_V1\Draxion\Draxion\src\Draxion\Renderer\Renderer.cpp;E:\Engine_V1\Draxion\bin-int\Debug-x64\Draxion\Renderer.obj
 E:\Engine_V1\Draxion\Draxion\src\Draxion\Renderer\RendererCommand.cpp;E:\Engine_V1\Draxion\bin-int\Debug-x64\Draxion\RendererCommand.obj

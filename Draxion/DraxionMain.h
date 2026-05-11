@@ -25,6 +25,12 @@
 #include "src/Draxion/Renderer/Renderer.h"
 //-----------------------------------
 
+
+//---------Camera---------
+#include "src/Draxion/Renderer/OrthoGraphicCamera.h"
+//------------------------
+
+
 //-----ENTRY POINT--------------
 //#include "src/Draxion/Core/EntryPoint.h" // OTHER FILES ON CLIENT SIDE WILL INCLUDE THIS AND IT'S PROBLEMATIC
 //------------------------------

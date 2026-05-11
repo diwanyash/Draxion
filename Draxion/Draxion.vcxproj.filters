@@ -99,6 +99,9 @@
     <ClCompile Include="src\Draxion\Platform\Windows\OpenGL\OpenGLRenderAPI.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Draxion\Renderer\OrthoGraphicCamera.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Draxion\Core\Logger.h">
@@ -224,6 +227,9 @@
     <ClInclude Include="src\Draxion\Platform\Windows\OpenGL\OpenGLRenderAPI.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\Draxion\Renderer\OrthoGraphicCamera.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="src\Draxion\Asset\OpenGL\Shaders\Basic.vert" />
@@ -232,6 +238,9 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="src\Draxion\Asset\Images\Keqing.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="src\Draxion\Asset\Images\Neduko.jpg">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

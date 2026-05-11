@@ -18,7 +18,9 @@ namespace Draxion
 		void OnEvent(Event& e) override;
 	private:
 		std::shared_ptr<VertexArray> m_VAO;
-		const Shader*  m_Shader = nullptr;
-		const Shader*  m_ShaderInv = nullptr;
+		OrthoGraphicCamera m_Camera = { -1.2f, 1.2f, -0.9f, 0.9f };
+		glm::vec3 Cam_Pos = m_Camera.GetPosition();
+		std::shared_ptr<Shader>  m_Shader = nullptr;
+		std::shared_ptr<Shader>  m_ShaderInv = nullptr;
 	};
 }

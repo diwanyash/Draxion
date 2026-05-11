@@ -1,5 +1,7 @@
 #pragma once
 #include "../../Core/Core.h"
+#include <glm/glm.hpp>
+#include <string>
 
 namespace Draxion
 {
@@ -11,6 +13,7 @@ namespace Draxion
 
 		void Bind() const;
 		void Unbind() const;
+		void UploadUniformMat4(const std::string& name,const glm::mat4& matrix );
 	private:
 		unsigned int m_RendererID;
 	};

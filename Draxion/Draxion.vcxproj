@@ -117,6 +117,7 @@
     <ClCompile Include="src\Draxion\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\Draxion\Renderer\Buffer\VertexArray.cpp" />
     <ClCompile Include="src\Draxion\Renderer\Buffer\Buffer.cpp" />
+    <ClCompile Include="src\Draxion\Renderer\OrthoGraphicCamera.cpp" />
     <ClCompile Include="src\Draxion\Renderer\RenderAPI.cpp" />
     <ClCompile Include="src\Draxion\Renderer\Renderer.cpp" />
     <ClCompile Include="src\Draxion\Renderer\RendererCommand.cpp" />
@@ -159,6 +160,7 @@
     <ClInclude Include="src\Draxion\Renderer\Buffer\VertexArray.h" />
     <ClInclude Include="src\Draxion\Renderer\Buffer\Buffer.h" />
     <ClInclude Include="src\Draxion\Renderer\GraphicsContext.h" />
+    <ClInclude Include="src\Draxion\Renderer\OrthoGraphicCamera.h" />
     <ClInclude Include="src\Draxion\Renderer\RenderAPI.h" />
     <ClInclude Include="src\Draxion\Renderer\RendererCommand.h" />
     <ClInclude Include="src\Draxion\Renderer\Renderer.h" />
@@ -185,6 +187,7 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="src\Draxion\Asset\Images\Keqing.jpg" />
+    <Image Include="src\Draxion\Asset\Images\Neduko.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="Vendor\ImGui\LICENSE.txt" />
