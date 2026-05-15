@@ -57,40 +57,40 @@ namespace Draxion
 			glEnableVertexAttribArray(index);
 			glVertexAttribPointer(index, element.GetComponentCount(),
 				ShaderDataTypeToGLDataType(element.m_type),
-				element.normalize ? GL_TRUE : GL_FALSE, vertexBuffer->GetLayout().GetStride(), (void*)(element.offset));
+				element.normalize ? GL_TRUE : GL_FALSE, vertexBuffer->GetLayout().GetStride(), (void*)(uintptr_t)element.offset);
 			index++;
 		}
 
 		m_VertexBuffers.push_back(vertexBuffer);
 
 
-		////////////////TO_BE_DELETED////////////////////////
-		unsigned int texture;
-		glGenTextures(1, &texture);
-		glBindTexture(GL_TEXTURE_2D, texture);
-
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-		//glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR );
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-
-		int width, height, nrChannels;
-		const char* TexPath = "E:/Engine_V1/Draxion/Draxion/src/Draxion/Asset/Images/Neduko.jpg";
-		stbi_set_flip_vertically_on_load(true); // Flip on Loading
-		unsigned char* TexData = stbi_load(TexPath, &width, &height, &nrChannels, 0);
-		if (TexData == NULL)
-		{
-			LOG_ENGINE_ERROR("Texture Failed to Load::Path:- " << TexPath);
-		}
-
-
-		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, TexData);
-
-		glGenerateMipmap(GL_TEXTURE_2D);
-
-		stbi_image_free(TexData);
-		/////////////////////////////////////////////////////
+		//////////////////TO_BE_DELETED////////////////////////
+		//unsigned int texture;
+		//glGenTextures(1, &texture);
+		//glBindTexture(GL_TEXTURE_2D, texture);
+		//
+		//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+		//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+		////glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR );
+		//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+		//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+		//
+		//int width, height, nrChannels;
+		//const char* TexPath = "E:/Engine_V1/Draxion/Draxion/src/Draxion/Asset/Images/Neduko.jpg";
+		//stbi_set_flip_vertically_on_load(true); // Flip on Loading
+		//unsigned char* TexData = stbi_load(TexPath, &width, &height, &nrChannels, 0);
+		//if (TexData == NULL)
+		//{
+		//	LOG_ENGINE_ERROR("Texture Failed to Load::Path:- " << TexPath);
+		//}
+		//
+		//
+		//glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, TexData);
+		//
+		//glGenerateMipmap(GL_TEXTURE_2D);
+		//
+		//stbi_image_free(TexData);
+		///////////////////////////////////////////////////////
 	}
 	void OpenGLVertexArray::SetIndexBuffer(const Ref<IndexBuffer>& indexBuffer)
 	{

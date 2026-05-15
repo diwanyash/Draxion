@@ -1,12 +1,12 @@
-#include "VertexArray.h"
+#include "Texture.h"
+#include <memory>
 
 #include "Draxion/Renderer/Renderer.h"
-#include "Draxion/Platform/Windows/OpenGL/OpenGLVertexArray.h"
+#include "Draxion/Platform/Windows/OpenGL/OpenGLTexture.h"
 
-#include "../../Core/Logger.h"
 namespace Draxion
 {
-	VertexArray* VertexArray::Create()
+	Ref<Texture2D> Texture2D::Create( const std::string& path)
 	{
 		switch (Renderer::GetAPI())
 		{
@@ -17,7 +17,7 @@ namespace Draxion
 			}
 			case RenderAPI::API::OpenGL:
 			{
-				return new OpenGLVertexArray();
+				return std::make_shared<OpenGLTexture2D>(path);
 			}
 		}
 

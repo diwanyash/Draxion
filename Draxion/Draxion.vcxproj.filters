@@ -105,6 +105,12 @@
     <ClCompile Include="src\Draxion\Platform\Windows\OpenGL\OpenGLShader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Draxion\Renderer\Texture.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Draxion\Platform\Windows\OpenGL\OpenGLTexture.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Draxion\Core\Logger.h">
@@ -237,6 +243,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Draxion\Platform\Windows\OpenGL\OpenGLShader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Draxion\Renderer\Texture.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Draxion\Platform\Windows\OpenGL\OpenGLTexture.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

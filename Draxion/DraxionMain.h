@@ -15,6 +15,7 @@
 
 //----------------------------------------
 #include "src/Draxion/Platform/Windows/OpenGL/OpenGLShader.h"
+#include "src/Draxion/Renderer/Texture.h"
 //----------------------------------------
 
 //-------------Layers---------------------

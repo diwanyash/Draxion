@@ -1,6 +1,7 @@
 #include "ExampleLayer.h"
 #include "imgui/imgui.h"
 #include <glm/ext/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
 
 namespace Draxion
 {
@@ -55,6 +56,7 @@ namespace Draxion
 		m_ShaderInv.reset(Shader::Create("E:/Engine_V1/Draxion/Draxion/src/Draxion/Asset/OpenGL/Shaders/Basic.vert"
 							 ,"E:/Engine_V1/Draxion/Draxion/src/Draxion/Asset/OpenGL/Shaders/Basicinverted.frag"));
 	
+		m_Neduko_SanGoku = Texture2D::Create("../Draxion/src/Draxion/Asset/Images/Neduko.jpg");
 
 	}
 	void ExampleLayer::OnDetach()
@@ -109,8 +111,11 @@ namespace Draxion
 			glm::mat4 transform;
 			glm::mat4 scale = glm::scale(glm::mat4(1.0f), glm::vec3(0.1f));
 
+
+
 			Renderer::BeginScene( m_Camera );
 			//RenderCommand::DrawIndexed(m_VAO);
+
 
 			if (Draxion::Input::IsKeyPressed(DRX_KEY_0))
 			{
