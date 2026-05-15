@@ -13,14 +13,14 @@ namespace Draxion
 		void Bind() const override;
 		void Unbind() const override;
 
-		void AddVertexBuffers(const std::shared_ptr<VertexBuffer>& vertexBuffer) override;
-		void SetIndexBuffer(const std::shared_ptr<IndexBuffer>& indexBuffer) override;
+		void AddVertexBuffers(const Ref<VertexBuffer>& vertexBuffer) override;
+		void SetIndexBuffer(const Ref<IndexBuffer>& indexBuffer) override;
 
-		inline const std::vector<std::shared_ptr<VertexBuffer>>& GetVertexBuffers() override { return m_VertexBuffers; }
-		inline const std::shared_ptr<IndexBuffer>& GetIndexBuffer() override { return m_IndexBuffer; }
+		inline const std::vector<Ref<VertexBuffer>>& GetVertexBuffers() override { return m_VertexBuffers; }
+		inline const Ref<IndexBuffer>& GetIndexBuffer() override { return m_IndexBuffer; }
 	private:
 		unsigned int m_RendererID;
-		std::vector<std::shared_ptr<VertexBuffer>> m_VertexBuffers;
-		std::shared_ptr<IndexBuffer> m_IndexBuffer;
+		std::vector<Ref<VertexBuffer>> m_VertexBuffers;
+		Ref<IndexBuffer> m_IndexBuffer;
 	};
 }

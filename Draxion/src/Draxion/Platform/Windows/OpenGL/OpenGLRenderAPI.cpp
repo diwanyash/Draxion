@@ -14,7 +14,7 @@ namespace Draxion
 		glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
 	}
 
-	void OpenGLRenderAPI::DrawIndexed(const std::shared_ptr<VertexArray>& vertexarray)
+	void OpenGLRenderAPI::DrawIndexed(const Ref<VertexArray>& vertexarray)
 	{
 		glDrawElements( GL_TRIANGLES, vertexarray->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, nullptr );
 	}

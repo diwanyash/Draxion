@@ -4,10 +4,15 @@
 ////////////////////////////////
 #include "Draxion/Input/Input.h"
 #include "Draxion/Input/KeyCodes.h"
+#include "Draxion/Core/Util/TimeStamp.h"
 ////////////////////////////////
 #include "Draxion/Events/EventDispatcher.h"
 #include "Draxion/Events/KeyEvent.h"
 #include "Draxion/Events/MouseEvents.h"
+
+/////////////////////////////
+#include <GLFW/glfw3.h>
+/////////////////////////////
 
 #include "Util/RandomGen.h"
 
@@ -31,10 +36,15 @@ namespace Draxion
 
 	void Application::Run()
 	{
+
 		while (!m_Window->ShouldClose())
 		{
+			float time = (float)glfwGetTime();
+			TimeStamp dt = time - m_last_time;
+			m_last_time = time;
+
 			for (Layer* lay : m_Layer_Stack)
-				lay->OnUpdate();
+				lay->OnUpdate(dt);
 
 			m_ImGuiLayer->Begin();
 			for (Layer* lay : m_Layer_Stack)

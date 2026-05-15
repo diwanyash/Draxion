@@ -2,6 +2,9 @@
 #include "RendererCommand.h"
 #include "OrthoGraphicCamera.h"
 
+///////////////////////////
+#include "Draxion/Platform/Windows/OpenGL/OpenGLShader.h"
+
 namespace Draxion
 {
 	Renderer::SceneData* Renderer::m_SceneData = new Renderer::SceneData;
@@ -10,12 +13,13 @@ namespace Draxion
 	{
 		m_SceneData->ViewProjectMatrix = camera.GetViewProjectMatrix();
 	}
-	void Renderer::Submit(const std::shared_ptr<Shader>& pShader, const std::shared_ptr<VertexArray>& vertexarray)
+	void Renderer::Submit(const Ref<Shader>& pShader, const Ref<VertexArray>& vertexarray, const glm::mat4& transform)
 	{
 		vertexarray->Bind();
 		pShader->Bind();
 
-		pShader->UploadUniformMat4( "u_ViewProjection", m_SceneData->ViewProjectMatrix );
+		std::dynamic_pointer_cast<OpenGLShader>(pShader)->UploadUniformMat4( "u_ViewProjection", m_SceneData->ViewProjectMatrix );
+		std::dynamic_pointer_cast<OpenGLShader>(pShader)->UploadUniformMat4( "u_Transform", transform );
 		RenderCommand::DrawIndexed(vertexarray);
 	}
 	void Renderer::EndScene()

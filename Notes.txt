@@ -1,0 +1,1 @@
+ignored glfw linking by :- Linker → Input → Ignore Specific Default Libraries | msvcrt.lib

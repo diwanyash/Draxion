@@ -1,5 +1,6 @@
 #include "ExampleLayer.h"
 #include "imgui/imgui.h"
+#include <glm/ext/matrix_transform.hpp>
 
 namespace Draxion
 {
@@ -26,9 +27,9 @@ namespace Draxion
 		//glPolygonMode( GL_FRONT_AND_BACK, GL_LINE );
 		
 		m_VAO.reset(VertexArray::Create());
-		std::shared_ptr<VertexBuffer> m_VBO;
+		Ref<VertexBuffer> m_VBO;
 		m_VBO.reset(VertexBuffer::Create(vertices, sizeof(vertices) ));
-		std::shared_ptr<IndexBuffer> m_EBO;
+		Ref<IndexBuffer> m_EBO;
 		m_EBO.reset(IndexBuffer::Create(indices, sizeof(indices)));
 
 
@@ -48,11 +49,11 @@ namespace Draxion
 		m_VAO->AddVertexBuffers(m_VBO);
 		m_VAO->SetIndexBuffer(m_EBO);
 
-		m_Shader = std::make_shared<Shader>("E:/Engine_V1/Draxion/Draxion/src/Draxion/Asset/OpenGL/Shaders/Basic.vert"
-							 ,"E:/Engine_V1/Draxion/Draxion/src/Draxion/Asset/OpenGL/Shaders/Basic.frag");
+		m_Shader.reset(Shader::Create("E:/Engine_V1/Draxion/Draxion/src/Draxion/Asset/OpenGL/Shaders/Basic.vert"
+							 ,"E:/Engine_V1/Draxion/Draxion/src/Draxion/Asset/OpenGL/Shaders/Basic.frag"));
 
-		m_ShaderInv = std::make_shared<Shader>("E:/Engine_V1/Draxion/Draxion/src/Draxion/Asset/OpenGL/Shaders/Basic.vert"
-							 ,"E:/Engine_V1/Draxion/Draxion/src/Draxion/Asset/OpenGL/Shaders/Basicinverted.frag");
+		m_ShaderInv.reset(Shader::Create("E:/Engine_V1/Draxion/Draxion/src/Draxion/Asset/OpenGL/Shaders/Basic.vert"
+							 ,"E:/Engine_V1/Draxion/Draxion/src/Draxion/Asset/OpenGL/Shaders/Basicinverted.frag"));
 	
 
 	}
@@ -61,7 +62,7 @@ namespace Draxion
 		LOG_ENGINE_TRACE("Example Layer Detached");
 	}
 
-	void ExampleLayer::OnUpdate()
+	void ExampleLayer::OnUpdate(float dt)
 	{
 		RenderCommand::SetClearColor({ 0.2f, 0.3f, 0.8f, 1.0f });
 		RenderCommand::Clear();
@@ -70,46 +71,70 @@ namespace Draxion
 
 			if ( Draxion::Input::IsKeyPressed( DRX_KEY_W ) )
 			{
-				m_Camera.SetPosition(Cam_Pos += glm::vec3{0.0f,0.01f,0.0f});
+				Cam_Pos.y += Cam_Move_Speed * dt;
 			}
 			if (Draxion::Input::IsKeyPressed(DRX_KEY_S))
 			{
-				m_Camera.SetPosition(Cam_Pos += glm::vec3{ 0.0f,-0.01f,0.0f });
-			}
-			if( Draxion::Input::IsKeyPressed(DRX_KEY_A) )
-			{
-				m_Camera.SetPosition(Cam_Pos += glm::vec3{-0.01f,0.0f,0.0f});
+				Cam_Pos.y -= Cam_Move_Speed * dt;
 			}
 			if( Draxion::Input::IsKeyPressed(DRX_KEY_D) )
 			{
-				m_Camera.SetPosition(Cam_Pos += glm::vec3{0.01f,0.0f,0.0f});
+				Cam_Pos.x += Cam_Move_Speed * dt;
+			}
+			if (Draxion::Input::IsKeyPressed(DRX_KEY_A))
+			{
+				Cam_Pos.x -= Cam_Move_Speed * dt;
 			}
 			if( Draxion::Input::IsKeyPressed(DRX_KEY_Q) )
 			{
-				m_Camera.SetRotation( m_Camera.GetRotation() + 1.0f );
+				Cam_Rot -= Cam_Rotation_Speed * dt;
 			}
 			if( Draxion::Input::IsKeyPressed(DRX_KEY_E) )
 			{
-				m_Camera.SetRotation( m_Camera.GetRotation() - 1.0f );
+				Cam_Rot += Cam_Rotation_Speed * dt;
 			}
 			if( Draxion::Input::IsKeyPressed(DRX_KEY_Z) )
 			{
-				m_Camera.SetPosition(Cam_Pos += glm::vec3{ 0.0f,0.0f,1.0f });
+				TexScaler += 0.01f; 
 			}
 			if( Draxion::Input::IsKeyPressed(DRX_KEY_X) )
 			{
-				m_Camera.SetPosition(Cam_Pos += glm::vec3{ 0.0f,0.0f,-1.0f });
+				TexScaler -= 0.01f;
 			}
+
+			m_Camera.SetPosition(Cam_Pos);
+			m_Camera.SetRotation(Cam_Rot);
+			
+			glm::vec3 pos = {0.0f,0.0f,0.0f};
+			glm::mat4 transform;
+			glm::mat4 scale = glm::scale(glm::mat4(1.0f), glm::vec3(0.1f));
 
 			Renderer::BeginScene( m_Camera );
 			//RenderCommand::DrawIndexed(m_VAO);
+
 			if (Draxion::Input::IsKeyPressed(DRX_KEY_0))
 			{
-				Renderer::Submit(m_ShaderInv, m_VAO);
+				for (int y = 0; y <= y1; y++)
+				{
+					for (int x = 0; x <= x1; x++)
+					{
+						pos = { 0.11f * (float)x, 0.11f * (float)y, 0.0f };
+						transform = glm::translate(glm::mat4(1.0f), pos) * scale;
+						Renderer::Submit(m_ShaderInv, m_VAO, transform);
+					}
+				}
 			}
 			else
 			{
-				Renderer::Submit(m_Shader, m_VAO);
+				for(int y = 0;y <= y1;y++)
+				{
+					for(int x = 0;x <= x1;x++)
+					{
+						pos = { 0.11f * (float)x, 0.11f * (float)y, 0.0f };
+						transform = glm::translate(glm::mat4(1.0f), pos) * scale;
+						Renderer::Submit(m_Shader, m_VAO, transform);
+					}
+				}
 			}
 			
 			Renderer::EndScene();
@@ -118,15 +143,17 @@ namespace Draxion
 
 	void ExampleLayer::OnImGuiRender()
 	{
+		x1 = y1;
 		ImGui::Begin("TestImGuiLayerInExample");
 		ImGuiIO& io = ImGui::GetIO();
 		ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / io.Framerate, io.Framerate);
+		ImGui::SliderInt("Grid Slider", &y1, 0, 50);
 		ImGui::End();
 	}
 
 	void ExampleLayer::OnEvent(Event& e)
 	{
-		if (!IsHidden())
+		if (!IsHidden()) 
 		{
 			EventDispatcher d(e);
 

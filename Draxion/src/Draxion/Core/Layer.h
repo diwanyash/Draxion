@@ -15,7 +15,7 @@ namespace Draxion
 
 		virtual void OnAttach() {};
 		virtual void OnDetach() {};
-		virtual void OnUpdate() {};
+		virtual void OnUpdate(float delta_time) {};
 		virtual void OnImGuiRender() {};
 		virtual void OnEvent( Event& e ) {}
 		void HideLayer()

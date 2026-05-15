@@ -29,10 +29,12 @@ namespace Draxion
 
 		Window& GetWindow();
 	private:
-		std::unique_ptr<Window> m_Window;
+		Scope<Window> m_Window;
 		ImGuiLayer* m_ImGuiLayer;
 		static Application* s_Instance;
 		LayerStack m_Layer_Stack;
+	private:
+		float m_last_time = 0.0f;
 	};
 
 	Application* CreateApplication();

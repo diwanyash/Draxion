@@ -13,6 +13,10 @@
 #include "src/Draxion/Input/KeyCodes.h"
 //----------------------------------------
 
+//----------------------------------------
+#include "src/Draxion/Platform/Windows/OpenGL/OpenGLShader.h"
+//----------------------------------------
+
 //-------------Layers---------------------
 #include "src/Draxion/Core/Layer/ImGuiLayer.h"
 //----------------------------------------

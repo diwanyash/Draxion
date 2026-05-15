@@ -24,7 +24,7 @@ namespace Draxion
 		{
 			s_RenderAPI->Clear();
 		}
-		inline static void DrawIndexed( const std::shared_ptr<VertexArray>& vertexarray )
+		inline static void DrawIndexed( const Ref<VertexArray>& vertexarray )
 		{
 			s_RenderAPI->DrawIndexed( vertexarray );
 		}
