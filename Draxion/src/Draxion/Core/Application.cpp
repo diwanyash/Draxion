@@ -10,6 +10,9 @@
 #include "Draxion/Events/KeyEvent.h"
 #include "Draxion/Events/MouseEvents.h"
 
+////////////////////////////////
+#include "Draxion/Renderer/RendererCommand.h"
+
 /////////////////////////////
 #include <GLFW/glfw3.h>
 /////////////////////////////
@@ -25,6 +28,8 @@ namespace Draxion
 		m_Window.reset(Window::CreateWindow( 800, 600, "Lucky" ));
 		m_Window->SetEventCallback([this](Event& e) { this->OnEvent(e); });
 		s_Instance = this;
+
+		RenderCommand::Init();
 
 		m_ImGuiLayer = new ImGuiLayer();
 		PushOverLay(m_ImGuiLayer);

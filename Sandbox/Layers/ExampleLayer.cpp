@@ -57,6 +57,13 @@ namespace Draxion
 							 ,"E:/Engine_V1/Draxion/Draxion/src/Draxion/Asset/OpenGL/Shaders/Basicinverted.frag"));
 	
 		m_Neduko_SanGoku = Texture2D::Create("../Draxion/src/Draxion/Asset/Images/Neduko.jpg");
+		m_Pikachuuu = Texture2D::Create("../Draxion/src/Draxion/Asset/Images/Girl.png");
+
+		std::dynamic_pointer_cast<OpenGLShader>(m_Shader)->Bind();
+		std::dynamic_pointer_cast<OpenGLShader>(m_Shader)->UploadUniformInt("u_Texture", 0);
+
+		std::dynamic_pointer_cast<OpenGLShader>(m_ShaderInv)->Bind();
+		std::dynamic_pointer_cast<OpenGLShader>(m_ShaderInv)->UploadUniformInt("u_Texture", 0);
 
 	}
 	void ExampleLayer::OnDetach()
@@ -108,51 +115,38 @@ namespace Draxion
 			m_Camera.SetRotation(Cam_Rot);
 			
 			glm::vec3 pos = {0.0f,0.0f,0.0f};
+			glm::vec3 pos2 = {0.25f,0.25f,0.0f};
 			glm::mat4 transform;
-			glm::mat4 scale = glm::scale(glm::mat4(1.0f), glm::vec3(0.1f));
-
-
 
 			Renderer::BeginScene( m_Camera );
-			//RenderCommand::DrawIndexed(m_VAO);
-
+			
+			m_Neduko_SanGoku->Bind();
 
 			if (Draxion::Input::IsKeyPressed(DRX_KEY_0))
 			{
-				for (int y = 0; y <= y1; y++)
-				{
-					for (int x = 0; x <= x1; x++)
-					{
-						pos = { 0.11f * (float)x, 0.11f * (float)y, 0.0f };
-						transform = glm::translate(glm::mat4(1.0f), pos) * scale;
-						Renderer::Submit(m_ShaderInv, m_VAO, transform);
-					}
-				}
+				transform = glm::translate(glm::mat4(1.0f), pos);
+				Renderer::Submit(m_ShaderInv, m_VAO, transform);
 			}
 			else
 			{
-				for(int y = 0;y <= y1;y++)
-				{
-					for(int x = 0;x <= x1;x++)
-					{
-						pos = { 0.11f * (float)x, 0.11f * (float)y, 0.0f };
-						transform = glm::translate(glm::mat4(1.0f), pos) * scale;
-						Renderer::Submit(m_Shader, m_VAO, transform);
-					}
-				}
+				transform = glm::translate(glm::mat4(1.0f), pos);
+				Renderer::Submit(m_Shader, m_VAO, transform);
 			}
-			
+
+			m_Pikachuuu->Bind();
+			transform = glm::translate(glm::mat4(1.0f), pos2);
+			Renderer::Submit(m_Shader, m_VAO, transform);
+
 			Renderer::EndScene();
 		}
 	}
 
 	void ExampleLayer::OnImGuiRender()
 	{
-		x1 = y1;
 		ImGui::Begin("TestImGuiLayerInExample");
 		ImGuiIO& io = ImGui::GetIO();
 		ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / io.Framerate, io.Framerate);
-		ImGui::SliderInt("Grid Slider", &y1, 0, 50);
+		ImGui::ColorEdit4( "Nuduko Overlay Color", glm::value_ptr(NColor));
 		ImGui::End();
 	}
 

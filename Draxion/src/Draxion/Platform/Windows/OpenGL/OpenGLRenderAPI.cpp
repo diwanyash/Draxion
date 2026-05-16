@@ -3,6 +3,12 @@
 
 namespace Draxion
 {
+	void OpenGLRenderAPI::Init()
+	{ 
+		glEnable(GL_BLEND);
+		glDisable(GL_DEPTH_TEST);
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	}
 
 	void OpenGLRenderAPI::SetClearColor(const glm::vec4& color)
 	{

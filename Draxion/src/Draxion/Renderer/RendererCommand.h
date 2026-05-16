@@ -16,6 +16,10 @@ namespace Draxion
 	class DRX_API RenderCommand
 	{
 	public:
+		inline static void Init()
+		{
+			s_RenderAPI->Init();
+		}
 		inline static void SetClearColor(const glm::vec4& color)
 		{
 			s_RenderAPI->SetClearColor(color);

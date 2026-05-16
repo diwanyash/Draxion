@@ -22,20 +22,40 @@ namespace Draxion
 		m_Height = height;
 		//////////////////////////////////////////////////////////////////////////////////////////
 
-		glCreateTextures(GL_TEXTURE_2D,1, &m_RendererID);
-		glTextureStorage2D(m_RendererID, 1, GL_RGBA8, m_Width, m_Height);
+		GLenum InternalFormat = 0;
+		GLenum Format = 0;
+
+		if ( nrChannels == 4)
+		{
+			InternalFormat = GL_RGBA8;
+			Format = GL_RGBA;
+		}
+		else if ( nrChannels == 3 )
+		{
+			InternalFormat = GL_RGB8;
+			Format = GL_RGB;
+		}
+
+		glCreateTextures(GL_TEXTURE_2D, 1, &m_RendererID);
+		glTextureStorage2D(m_RendererID, 1, InternalFormat, m_Width, m_Height);
 
 		glTextureParameteri(m_RendererID, GL_TEXTURE_WRAP_S, GL_REPEAT);
 		glTextureParameteri(m_RendererID, GL_TEXTURE_WRAP_T, GL_REPEAT);
-		//glTexParameteri( m_RendererID, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR );
 		glTextureParameteri(m_RendererID, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 		glTextureParameteri(m_RendererID, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 
+		glTextureSubImage2D(
+			m_RendererID,
+			0,
+			0, 0,
+			m_Width,
+			m_Height,
+			Format,
+			GL_UNSIGNED_BYTE,
+			TexData
+		);
 
-		// change this if error occurs
-		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, TexData);
-
-		glGenerateMipmap(GL_TEXTURE_2D);
+		glGenerateTextureMipmap(m_RendererID);
 
 		stbi_image_free(TexData);
 	}
@@ -45,6 +65,7 @@ namespace Draxion
 	}
 	void OpenGLTexture2D::Bind(unsigned int slot)
 	{
-		glBindTextureUnit(0, m_RendererID);
+		glActiveTexture(GL_TEXTURE0 + slot);
+		glBindTextureUnit(slot, m_RendererID);
 	}
 }

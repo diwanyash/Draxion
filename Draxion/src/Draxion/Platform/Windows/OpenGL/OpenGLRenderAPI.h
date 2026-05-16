@@ -7,8 +7,9 @@ namespace Draxion
 	class OpenGLRenderAPI : public RenderAPI
 	{
 	public:
-		virtual void SetClearColor(const glm::vec4& color) override;
-		virtual void Clear() override;
+		void Init() override;
+		void SetClearColor(const glm::vec4& color) override;
+		void Clear() override;
 
 		virtual void DrawIndexed(const Ref<VertexArray>& vertexarray) override;
 	};

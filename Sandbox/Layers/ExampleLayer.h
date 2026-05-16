@@ -30,8 +30,8 @@ namespace Draxion
 		Ref<Shader>  m_Shader = nullptr;
 		Ref<Shader>  m_ShaderInv = nullptr;
 		Ref<Texture2D> m_Neduko_SanGoku;
+		Ref<Texture2D> m_Pikachuuu;
 		///////////TEST////////////////////
-		int x1 = 20;
-		int y1 = 20;
+		glm::vec4 NColor = { 1.0f, 1.0f, 1.0f, 1.0f };
 	};
 }
