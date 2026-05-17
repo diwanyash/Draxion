@@ -90,28 +90,28 @@ namespace Draxion
 			WindowData& Data = *(WindowData*)glfwGetWindowUserPointer(window);
 			switch (action)
 			{
-			case GLFW_PRESS:
-			{
-				//Draxion::Application::Get().OnEvent(event);
-				Draxion::KeyPressedEvent event(key);
-				Data.EventFn(event);
-				break;
-			}
-			case GLFW_RELEASE:
-			{
-				Draxion::KeyReleasedEvent event(key);
-				Data.EventFn(event);
-				break;
-			}
-			case GLFW_REPEAT:
-			{
-				Draxion::KeyRepeatEvent event(key, 1);
-				Data.EventFn(event);
-				break;
-			}
-			default:
-				break;
-			}
+				case GLFW_PRESS:
+				{
+					//Draxion::Application::Get().OnEvent(event);
+					Draxion::KeyPressedEvent event(key);
+					Data.EventFn(event);
+					break;
+				}
+				case GLFW_RELEASE:
+				{
+					Draxion::KeyReleasedEvent event(key);
+					Data.EventFn(event);
+					break;
+				}
+				case GLFW_REPEAT:
+				{
+					Draxion::KeyRepeatEvent event(key, 1);
+					Data.EventFn(event);
+					break;
+				}
+				default:
+					break;
+				}
 		});
 
 		glfwSetCharCallback(m_Window, [](GLFWwindow* window, unsigned int keycode)

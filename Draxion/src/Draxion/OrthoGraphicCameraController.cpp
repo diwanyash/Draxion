@@ -4,6 +4,7 @@
 #include "Draxion/Events/EventDispatcher.h"
 #include "Draxion/Events/ApplicationEvent.h"
 #include "Draxion/Events/MouseEvents.h"
+#include "Draxion/Events/KeyEvent.h"
 
 namespace Draxion
 {
@@ -56,6 +57,49 @@ namespace Draxion
 		d.Dispatch<MouseScrolledEvent>([&](MouseScrolledEvent& e)
 		{
 			m_Zoom_Ratio -= e.GetYOffset() * 0.05f;
+			m_Zoom_Ratio = std::max(m_Zoom_Ratio, 0.01f);
+			m_Camera.SetProjection(-m_AspectRatio * m_Zoom_Ratio, m_AspectRatio * m_Zoom_Ratio,
+				-m_Zoom_Ratio, m_Zoom_Ratio);
+
+			return false;
+		});
+
+		d.Dispatch<WindowsResizeEvent>([&](WindowsResizeEvent& e)
+		{
+			m_AspectRatio = (float)e.GetWidth() / (float)e.GetHeight();
+			m_Camera.SetProjection(-m_AspectRatio * m_Zoom_Ratio, m_AspectRatio * m_Zoom_Ratio,
+				-m_Zoom_Ratio, m_Zoom_Ratio);
+
+			return false;
+		});
+
+		d.Dispatch<KeyPressedEvent>([&](KeyPressedEvent& e)
+		{
+			if (e.GetKeyCode() == 'Z')
+			{
+				m_Zoom_Ratio -= 0.05f;
+			}
+			else if (e.GetKeyCode() == 'X')
+			{
+				m_Zoom_Ratio += 0.05f;
+			}
+			m_Zoom_Ratio = std::max(m_Zoom_Ratio, 0.01f);
+			m_Camera.SetProjection(-m_AspectRatio * m_Zoom_Ratio, m_AspectRatio * m_Zoom_Ratio,
+				-m_Zoom_Ratio, m_Zoom_Ratio);
+
+			return false;
+		});
+
+		d.Dispatch<KeyRepeatEvent>([&](KeyRepeatEvent& e)
+		{
+			if (e.GetKeyCode() == 'Z')
+			{
+				m_Zoom_Ratio -= 0.05f;
+			}
+			else if (e.GetKeyCode() == 'X')
+			{
+				m_Zoom_Ratio += 0.05f;
+			}
 			m_Zoom_Ratio = std::max(m_Zoom_Ratio, 0.01f);
 			m_Camera.SetProjection(-m_AspectRatio * m_Zoom_Ratio, m_AspectRatio * m_Zoom_Ratio,
 				-m_Zoom_Ratio, m_Zoom_Ratio);

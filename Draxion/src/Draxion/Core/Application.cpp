@@ -92,7 +92,7 @@ namespace Draxion
 			{
 				GetWindow().SetShouldClose(true);
 			}
-			return true;
+			return false;
 		});
 		
 		d.Dispatch<MouseMovedEvent>([](MouseMovedEvent& e)
