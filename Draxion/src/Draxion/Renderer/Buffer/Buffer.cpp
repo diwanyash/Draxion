@@ -19,28 +19,32 @@ namespace Draxion
 			{
 				return new OpenGLVertexBuffer( vertices, size_B );
 			}
+			default:
+			{
+				LOG_ENGINE_FATAL("Unsupported RenderAPI");
+				return nullptr;
+			}
 		}
-
-		LOG_ENGINE_FATAL( "Unsupported RenderAPI" );
-		return nullptr;
 	}
 
 	IndexBuffer* IndexBuffer::Create(unsigned int* indices, unsigned int count)
 	{
 		switch (Renderer::GetAPI())
 		{
-		case RenderAPI::API::None :
-		{
-			LOG_ENGINE_WARN("None RenderAPI was set!");
-			return nullptr;
+			case RenderAPI::API::None :
+			{
+				LOG_ENGINE_WARN("None RenderAPI was set!");
+				return nullptr;
+			}
+			case RenderAPI::API::OpenGL :
+			{
+				return new OpenGLIndexBuffer(indices, count);
+			}
+			default:
+			{
+				LOG_ENGINE_FATAL("Unsupported RenderAPI");
+				return nullptr;
+			}
 		}
-		case RenderAPI::API::OpenGL :
-		{
-			return new OpenGLIndexBuffer(indices, count);
-		}
-		}
-
-		LOG_ENGINE_FATAL("Unsupported RenderAPI");
-		return nullptr;
 	}
 }

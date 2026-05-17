@@ -8,6 +8,7 @@ namespace Draxion
 	{
 	public:
 		OrthoGraphicCamera(float left, float right, float bottom, float top);
+		void SetProjection( float left, float right, float bottom, float top );
 
 		void SetPosition(const glm::vec3& position) { m_Position = position; CalculateViewProjectMatrix();}
 		void SetRotation(const float rotation) { m_Rotation = rotation; CalculateViewProjectMatrix(); }

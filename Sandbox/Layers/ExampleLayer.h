@@ -8,7 +8,8 @@ namespace Draxion
 	public:
 		ExampleLayer()
 			:
-			Layer("Example_Layer")
+			Layer("Example_Layer"),
+			m_CameraController( 1920.0f / 1080.0f)
 		{}
 
 		void OnAttach() override;
@@ -18,20 +19,13 @@ namespace Draxion
 		void OnEvent(Event& e) override;
 	private:
 		Ref<VertexArray> m_VAO;
-		OrthoGraphicCamera m_Camera = { -1.2f, 1.2f, -0.9f, 0.9f };
+		OrthoGraphicCameraController m_CameraController;
 		///////////Camera/////////////////////
-		glm::vec3 Cam_Pos = m_Camera.GetPosition();
 		glm::vec3 m_SquarePosition = { 1.0f,1.0f,1.0f };
-		float Cam_Rot = 0.0f;
-		float Cam_Move_Speed = 1.0f;
-		float Cam_Rotation_Speed = 180.0f;
-		float TexScaler = 1.0f;
 		//////////////////////////////////////
 		Ref<Shader>  m_Shader = nullptr;
 		Ref<Shader>  m_ShaderInv = nullptr;
 		Ref<Texture2D> m_Neduko_SanGoku;
 		Ref<Texture2D> m_Pikachuuu;
-		///////////TEST////////////////////
-		glm::vec4 NColor = { 1.0f, 1.0f, 1.0f, 1.0f };
 	};
 }

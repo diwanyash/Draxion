@@ -19,9 +19,11 @@ namespace Draxion
 			{
 				return std::make_shared<OpenGLTexture2D>(path);
 			}
+			default:
+			{
+				LOG_ENGINE_FATAL("Unsupported RenderAPI");
+				return nullptr;
+			}
 		}
-
-		LOG_ENGINE_FATAL("Unsupported RenderAPI");
-		return nullptr;
 	}
 }

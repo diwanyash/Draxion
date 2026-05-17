@@ -33,6 +33,7 @@
 
 //---------Camera---------
 #include "src/Draxion/Renderer/OrthoGraphicCamera.h"
+#include "src/Draxion/OrthoGraphicCameraController.h"
 //------------------------
 
 

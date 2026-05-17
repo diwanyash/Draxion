@@ -7,8 +7,6 @@ namespace Draxion
 {
 	void ExampleLayer::OnAttach()
 	{
-		m_Camera.SetPosition({0.0f,0.0f,0.0f});
-
 		LOG_ENGINE_TRACE("Example Layer Attached");
 		float vertices[]
 		{
@@ -73,52 +71,17 @@ namespace Draxion
 
 	void ExampleLayer::OnUpdate(float dt)
 	{
+		m_CameraController.OnUpdate(dt);
+
 		RenderCommand::SetClearColor({ 0.2f, 0.3f, 0.8f, 1.0f });
 		RenderCommand::Clear();
 		if(!IsHidden())
-		{
-
-			if ( Draxion::Input::IsKeyPressed( DRX_KEY_W ) )
-			{
-				Cam_Pos.y += Cam_Move_Speed * dt;
-			}
-			if (Draxion::Input::IsKeyPressed(DRX_KEY_S))
-			{
-				Cam_Pos.y -= Cam_Move_Speed * dt;
-			}
-			if( Draxion::Input::IsKeyPressed(DRX_KEY_D) )
-			{
-				Cam_Pos.x += Cam_Move_Speed * dt;
-			}
-			if (Draxion::Input::IsKeyPressed(DRX_KEY_A))
-			{
-				Cam_Pos.x -= Cam_Move_Speed * dt;
-			}
-			if( Draxion::Input::IsKeyPressed(DRX_KEY_Q) )
-			{
-				Cam_Rot -= Cam_Rotation_Speed * dt;
-			}
-			if( Draxion::Input::IsKeyPressed(DRX_KEY_E) )
-			{
-				Cam_Rot += Cam_Rotation_Speed * dt;
-			}
-			if( Draxion::Input::IsKeyPressed(DRX_KEY_Z) )
-			{
-				TexScaler += 0.01f; 
-			}
-			if( Draxion::Input::IsKeyPressed(DRX_KEY_X) )
-			{
-				TexScaler -= 0.01f;
-			}
-
-			m_Camera.SetPosition(Cam_Pos);
-			m_Camera.SetRotation(Cam_Rot);
-			
+		{			
 			glm::vec3 pos = {0.0f,0.0f,0.0f};
 			glm::vec3 pos2 = {0.25f,0.25f,0.0f};
 			glm::mat4 transform;
 
-			Renderer::BeginScene( m_Camera );
+			Renderer::BeginScene( m_CameraController.GetCamera() );
 			
 			m_Neduko_SanGoku->Bind();
 
@@ -146,7 +109,6 @@ namespace Draxion
 		ImGui::Begin("TestImGuiLayerInExample");
 		ImGuiIO& io = ImGui::GetIO();
 		ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / io.Framerate, io.Framerate);
-		ImGui::ColorEdit4( "Nuduko Overlay Color", glm::value_ptr(NColor));
 		ImGui::End();
 	}
 
@@ -155,6 +117,7 @@ namespace Draxion
 		if (!IsHidden()) 
 		{
 			EventDispatcher d(e);
+			m_CameraController.OnEvent(e);
 
 			d.Dispatch<KeyPressedEvent>([](KeyPressedEvent& e)
 			{

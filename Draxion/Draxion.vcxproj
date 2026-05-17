@@ -109,6 +109,7 @@
     <ClCompile Include="src\Draxion\Input\Input.cpp" />
     <ClCompile Include="src\Draxion\Core\Logger.cpp" />
     <ClCompile Include="src\Draxion\Core\Window.cpp" />
+    <ClCompile Include="src\Draxion\OrthoGraphicCameraController.cpp" />
     <ClCompile Include="src\Draxion\Platform\Windows\OpenGL\OpenGLBuffer.cpp" />
     <ClCompile Include="src\Draxion\Platform\Windows\OpenGL\OpenGLContext.cpp" />
     <ClCompile Include="src\Draxion\Platform\Windows\OpenGL\OpenGLRenderAPI.cpp" />
@@ -155,6 +156,7 @@
     <ClInclude Include="src\Draxion\Input\KeyCodes.h" />
     <ClInclude Include="src\Draxion\Core\Logger.h" />
     <ClInclude Include="src\Draxion\Core\Window.h" />
+    <ClInclude Include="src\Draxion\OrthoGraphicCameraController.h" />
     <ClInclude Include="src\Draxion\Platform\Windows\OpenGL\OpenGLRenderAPI.h" />
     <ClInclude Include="src\Draxion\Platform\Windows\OpenGL\OpenGLShader.h" />
     <ClInclude Include="src\Draxion\Platform\Windows\OpenGL\OpenGLTexture.h" />

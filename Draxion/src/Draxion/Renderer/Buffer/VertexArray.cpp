@@ -19,9 +19,11 @@ namespace Draxion
 			{
 				return new OpenGLVertexArray();
 			}
+			default:
+			{
+				LOG_ENGINE_FATAL("Unsupported RenderAPI");
+				return nullptr;
+			}
 		}
-
-		LOG_ENGINE_FATAL("Unsupported RenderAPI");
-		return nullptr;
 	}
 }

@@ -10,18 +10,21 @@ namespace Draxion
 	{
 		switch (Renderer::GetAPI())
 		{
-		case RenderAPI::API::None:
-		{
-			LOG_ENGINE_WARN("None RenderAPI was set!");
-			return nullptr;
-		}
-		case RenderAPI::API::OpenGL:
-		{
-			return new OpenGLShader( vertexShader,  fragmentShader );
-		}
+			case RenderAPI::API::None:
+			{
+				LOG_ENGINE_WARN("None RenderAPI was set!");
+				return nullptr;
+			}
+			case RenderAPI::API::OpenGL:
+			{
+				return new OpenGLShader( vertexShader,  fragmentShader );
+			}
+			default:
+			{
+				LOG_ENGINE_FATAL("Unsupported RenderAPI");
+				return nullptr;
+			}
 		}
 
-		LOG_ENGINE_FATAL("Unsupported RenderAPI");
-		return nullptr;
 	}
 }
