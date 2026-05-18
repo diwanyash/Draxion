@@ -10,6 +10,11 @@ namespace Draxion
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	}
 
+	void OpenGLRenderAPI::SetViewport(unsigned int x, unsigned int y, unsigned int Width, unsigned int Height)
+	{
+		glViewport(x, y, Width, Height );
+	}
+
 	void OpenGLRenderAPI::SetClearColor(const glm::vec4& color)
 	{
 		glClearColor( color.r, color.g, color.b, color.a );

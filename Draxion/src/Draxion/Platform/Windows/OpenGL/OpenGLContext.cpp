@@ -24,9 +24,9 @@ namespace Draxion
 			LOG_ENGINE_FATAL("OPENGL failed At GLADLoadGLLoader");
 		}
 
-		LOG_ENGINE_TRACE( "Graphics Card Vendor :- " << glGetString( GL_VENDOR ));
-		LOG_ENGINE_TRACE( "Graphics Card Info :- " << glGetString( GL_RENDERER ));
-		LOG_ENGINE_TRACE( "Shading Lnaguage Support :- " << glGetString( GL_SHADING_LANGUAGE_VERSION ));
+		LOG_ENGINE_INFO( "Graphics Card Vendor :- " << glGetString( GL_VENDOR ));
+		LOG_ENGINE_INFO( "Graphics Card Info :- " << glGetString( GL_RENDERER ));
+		LOG_ENGINE_INFO( "Shading Lnaguage Support :- " << glGetString( GL_SHADING_LANGUAGE_VERSION ));
 	}
 	void OpenGLContext::SwapBuffers()
 	{

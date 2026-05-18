@@ -13,6 +13,10 @@ namespace Draxion
 	{
 		RenderCommand::Init();
 	}
+	void Renderer::OnWindowResize(unsigned int Width, unsigned int Height)
+	{
+		RenderCommand::SetViewport(0, 0, Width, Height);
+	}
 	void Renderer::BeginScene( OrthoGraphicCamera& camera )
 	{
 		m_SceneData->ViewProjectMatrix = camera.GetViewProjectMatrix();

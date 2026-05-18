@@ -9,7 +9,7 @@ namespace Draxion
 		ExampleLayer()
 			:
 			Layer("Example_Layer"),
-			m_CameraController( 1920.0f / 1080.0f)
+			m_CameraController( 1280.0f / 720.0f)
 		{}
 
 		void OnAttach() override;

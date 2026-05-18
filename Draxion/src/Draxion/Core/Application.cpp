@@ -12,7 +12,7 @@
 
 ////////////////////////////////
 #include "Draxion/Renderer/RendererCommand.h"
-
+#include "Draxion/Renderer/Renderer.h"
 /////////////////////////////
 #include <GLFW/glfw3.h>
 /////////////////////////////
@@ -25,7 +25,7 @@ namespace Draxion
 	Application::Application()
 	{
 		LOG_ENGINE_TRACE("Application Constructing");
-		m_Window.reset(Window::CreateWindow( 800, 600, "Lucky" ));
+		m_Window.reset(Window::CreateWindow( 1280, 720, "Lucky" ));
 		m_Window->SetEventCallback([this](Event& e) { this->OnEvent(e); });
 		s_Instance = this;
 
@@ -97,6 +97,14 @@ namespace Draxion
 		
 		d.Dispatch<MouseMovedEvent>([](MouseMovedEvent& e)
 		{
+			e.Handled = false;
+			return false;
+		});
+		
+		d.Dispatch<WindowsResizeEvent>([](WindowsResizeEvent& e)
+		{
+			Renderer::OnWindowResize( e.GetWidth(), e.GetHeight() );
+
 			e.Handled = false;
 			return false;
 		});

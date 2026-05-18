@@ -9,6 +9,7 @@ namespace Draxion
 	{
 	public:
 		static void Init();
+		static void OnWindowResize( unsigned int Width, unsigned int Height );
 		static void BeginScene( OrthoGraphicCamera& camera );
 		static void Submit(const Ref<Shader>& pShader, const Ref<VertexArray>& vertexarray, const glm::mat4& transform = glm::mat4(1.0f));
 		static void EndScene();

@@ -20,6 +20,10 @@ namespace Draxion
 		{
 			s_RenderAPI->Init();
 		}
+		inline static void SetViewport( unsigned int x,unsigned int y,unsigned int Width,unsigned int Height )
+		{
+			s_RenderAPI->SetViewport(x, y , Width, Height);
+		}
 		inline static void SetClearColor(const glm::vec4& color)
 		{
 			s_RenderAPI->SetClearColor(color);

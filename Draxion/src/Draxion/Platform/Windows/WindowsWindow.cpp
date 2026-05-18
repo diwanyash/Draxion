@@ -1,6 +1,5 @@
 #define GLFW_INCLUDE_NONE
 #include "WindowsWindow.h"
-#include "glad/glad.h"
 #include "GLFW/glfw3.h"
 #include <cassert>
 
@@ -10,11 +9,6 @@
 #include "Draxion/Events/MouseEvents.h"
 #include "Draxion/Renderer/Renderer.h"
 #include "Draxion/Core/Logger.h"
-////////////////IMGUI//////////
-#include <ImGui/imgui.h>
-#include <ImGui/imgui_impl_opengl3.h>
-#include <ImGui/imgui_impl_glfw.h>
-//////////////////////////////////
 
 #include "Draxion/Platform/Windows/OpenGL/OpenGLContext.h"
 
@@ -48,29 +42,11 @@ namespace Draxion
 		m_Window = glfwCreateWindow(width, height, title.c_str(), NULL, NULL);
 		assert(m_Window);
 		
+		// this OpenGlContext should not be here <Fix>
 		m_Context = new OpenGLContext(m_Window);
 		m_Context->Init();
-		
-	
-
-
-
-		//Renderer::Init();
-		
-		glEnable(GL_BLEND);
-		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-		glEnable(GL_DEPTH_TEST);
-
-		//auto ver = glGetString(GL_VERSION);
-		//LOG_ENGINE_TRACE(ver);
-		glViewport(0, 0, width, height);
-
 
 		glfwSetWindowUserPointer(m_Window, &m_Data);
-
-		//glfwSetFramebufferSizeCallback(m_Window, []( GLFWwindow* window, int width, int height) 
-		//{
-		//});
 
 		glfwSetWindowSizeCallback(m_Window, [](GLFWwindow* window, int width, int height)
 		{
@@ -80,9 +56,6 @@ namespace Draxion
 
 			Draxion::WindowsResizeEvent event(width, height);
 			data.EventFn(event);
-
-			glViewport(0, 0, width, height);
-			LOG_ENGINE_TRACE("W = " << data.m_Width << " H = " << data.m_Height);
 		});
 
 		glfwSetKeyCallback(m_Window, [](GLFWwindow* window, int key, int scancode, int action, int mods)
