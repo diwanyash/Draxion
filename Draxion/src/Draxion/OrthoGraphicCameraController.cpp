@@ -48,6 +48,9 @@ namespace Draxion
 		if( m_IsRotationOn )
 		m_Camera.SetRotation( Cam_Rot );
 
+		// Fix Camera Movement after Rotation as it rotate based on orientation of / Viewport??
+
+
 		Cam_Move_Speed = m_Zoom_Ratio;
 	}
 	void OrthoGraphicCameraController::OnEvent( Event& e )

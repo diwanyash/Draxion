@@ -27,5 +27,8 @@ namespace Draxion
 		Ref<Shader>  m_ShaderInv = nullptr;
 		Ref<Texture2D> m_Neduko_SanGoku;
 		Ref<Texture2D> m_Pikachuuu;
+		////////////////////TEST/////////////
+		glm::vec3 pos2 = { 0.60f,0.25f,0.0f };
+		float Occu = 1.0f;
 	};
 }

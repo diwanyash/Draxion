@@ -11,10 +11,10 @@ namespace Draxion
 		float vertices[]
 		{
 				// POS					// Color			  Tex-Coord
-			-0.5f,-0.5f, 0.0f,		1.0f, 0.0f, 0.0f,		0.0f, 0.0f, // Bottom-Left  0
-			-0.5f, 0.5f, 0.0f,		0.0f, 1.0f, 0.0f,		0.0f, 1.0f, // Top-Left     1
-			 0.5f, 0.5f, 0.0f,		0.0f, 0.0f, 1.0f,		1.0f, 1.0f, // Top-Right    2
-			 0.5f,-0.5f, 0.0f,		0.0f, 0.0f, 1.0f,		1.0f, 0.0f, // Bottom-Right 3
+			-0.85f,-0.5f, 0.0f,		1.0f, 0.0f, 0.0f,		0.0f, 0.0f, // Bottom-Left  0
+			-0.85f, 0.5f, 0.0f,		0.0f, 1.0f, 0.0f,		0.0f, 1.0f, // Top-Left     1
+			 0.85f, 0.5f, 0.0f,		0.0f, 0.0f, 1.0f,		1.0f, 1.0f, // Top-Right    2
+			 0.85f,-0.5f, 0.0f,		0.0f, 0.0f, 1.0f,		1.0f, 0.0f, // Bottom-Right 3
 		};
 
 		unsigned int indices[]
@@ -78,7 +78,6 @@ namespace Draxion
 		if(!IsHidden())
 		{			
 			glm::vec3 pos = {0.0f,0.0f,0.0f};
-			glm::vec3 pos2 = {0.25f,0.25f,0.0f};
 			glm::mat4 transform;
 
 			Renderer::BeginScene( m_CameraController.GetCamera() );
@@ -96,6 +95,9 @@ namespace Draxion
 				Renderer::Submit(m_Shader, m_VAO, transform);
 			}
 
+			std::dynamic_pointer_cast<OpenGLShader>(m_Shader)->Bind();
+			std::dynamic_pointer_cast<OpenGLShader>(m_Shader)->UploadUniformFloat("u_Alpha", Occu);
+
 			m_Pikachuuu->Bind();
 			transform = glm::translate(glm::mat4(1.0f), pos2);
 			Renderer::Submit(m_Shader, m_VAO, transform);
@@ -109,6 +111,8 @@ namespace Draxion
 		ImGui::Begin("TestImGuiLayerInExample");
 		ImGuiIO& io = ImGui::GetIO();
 		ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / io.Framerate, io.Framerate);
+		ImGui::SliderFloat2("Girl Pos", glm::value_ptr(pos2), -1.0f,1.0f);
+		ImGui::SliderFloat("Girl Alpha", &Occu, 0.0f,1.0f);
 		ImGui::End();
 	}
 
