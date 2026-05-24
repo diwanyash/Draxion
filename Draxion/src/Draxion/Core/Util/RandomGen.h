@@ -1,5 +1,7 @@
 #pragma once
+#ifdef DRX_ENGINE
 #include "Core.h"
+#endif
 #include <random>
 
 namespace Draxion

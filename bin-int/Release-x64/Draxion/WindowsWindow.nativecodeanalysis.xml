@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DEFECTS>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>E:\Engine_V1\Draxion\Draxion\src\Draxion\Platform\Windows\</FILEPATH>
+      <FILENAME>WindowsWindow.h</FILENAME>
+      <LINE>27</LINE>
+      <COLUMN>2</COLUMN>
+    </SFA>
+    <DEFECTCODE>26495</DEFECTCODE>
+    <DESCRIPTION>Variable 'Draxion::WindowsWindow::WindowData::m_Width' is uninitialized. Always initialize a member variable (type.6).</DESCRIPTION>
+    <FUNCTION>Draxion::WindowsWindow::WindowData::{ctor}</FUNCTION>
+    <DECORATED>??0WindowData@WindowsWindow@Draxion@@QEAA@XZ</DECORATED>
+    <FUNCLINE>27</FUNCLINE>
+    <ADDITIONALINFO>
+      <targetSymbol>Draxion::WindowsWindow::WindowData::m_Width</targetSymbol>
+    </ADDITIONALINFO>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>E:\Engine_V1\Draxion\Draxion\src\Draxion\Platform\Windows\</FILEPATH>
+      <FILENAME>WindowsWindow.h</FILENAME>
+      <LINE>27</LINE>
+      <COLUMN>2</COLUMN>
+    </SFA>
+    <DEFECTCODE>26495</DEFECTCODE>
+    <DESCRIPTION>Variable 'Draxion::WindowsWindow::WindowData::m_Height' is uninitialized. Always initialize a member variable (type.6).</DESCRIPTION>
+    <FUNCTION>Draxion::WindowsWindow::WindowData::{ctor}</FUNCTION>
+    <DECORATED>??0WindowData@WindowsWindow@Draxion@@QEAA@XZ</DECORATED>
+    <FUNCLINE>27</FUNCLINE>
+    <ADDITIONALINFO>
+      <targetSymbol>Draxion::WindowsWindow::WindowData::m_Height</targetSymbol>
+    </ADDITIONALINFO>
+    <PATH></PATH>
+  </DEFECT>
+</DEFECTS>

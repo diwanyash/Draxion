@@ -12,10 +12,13 @@ namespace Draxion
 
 		void OnUpdate( TimeStamp dt );
 		void OnEvent( Event& e );
+		inline const glm::vec3 GetPos() const { return Cam_Pos; }
+		inline const float GetZoomRatio() const { return m_Zoom_Ratio; }
+		inline const float GetAspectRatio() const { return m_AspectRatio; }
 		OrthoGraphicCamera& GetCamera() { return m_Camera; }
 	private:
 		float m_AspectRatio;
-		float m_Zoom_Ratio = 1.0f;
+		float m_Zoom_Ratio = 30.0f;
 		////////////Camera////////////////////
 		glm::vec3 Cam_Pos = { 0.0f, 0.0f, 0.0f };
 		float Cam_Rot = 0.0f;

@@ -1,0 +1,1440 @@
+{
+  "version": "2.1.0",
+  "$schema": "https://schemastore.azurewebsites.net/schemas/json/sarif-2.1.0-rtm.5.json",
+  "runs": [
+    {
+      "results": [
+        {
+          "ruleId": "C6011",
+          "message": {
+            "text": "Dereferencing NULL pointer 'state'. "
+          },
+          "analysisTarget": {
+            "uri": "file:///e:/engine_v1/draxion/draxion/vendor/imgui/imgui_widgets.cpp"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///E:/Engine_V1/Draxion/Draxion/Vendor/ImGui/imgui_widgets.cpp"
+                },
+                "region": {
+                  "startLine": 5485,
+                  "startColumn": 13,
+                  "endLine": 5485,
+                  "endColumn": 50
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "ImGui::InputTextEx",
+                  "decoratedName": "?InputTextEx@ImGui@@YA_NPEBD0PEADHAEBUImVec2@@HP6AHPEAUImGuiInputTextCallbackData@@@ZPEAX@Z",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///E:/Engine_V1/Draxion/Draxion/Vendor/ImGui/imgui_widgets.cpp"
+                          },
+                          "region": {
+                            "startLine": 4700,
+                            "startColumn": 18
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///E:/Engine_V1/Draxion/Draxion/Vendor/ImGui/imgui_widgets.cpp"
+                          },
+                          "region": {
+                            "startLine": 4701,
+                            "startColumn": 15
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///E:/Engine_V1/Draxion/Draxion/Vendor/ImGui/imgui_widgets.cpp"
+                          },
+                          "region": {
+                            "startLine": 4711,
+                            "startColumn": 19
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///E:/Engine_V1/Draxion/Draxion/Vendor/ImGui/imgui_widgets.cpp"
+                          },
+                          "region": {
+                            "startLine": 4712,
+                            "startColumn": 14
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///E:/Engine_V1/Draxion/Draxion/Vendor/ImGui/imgui_widgets.cpp"
+                          },
+                          "region": {
+                            "startLine": 4713,
+                            "startColumn": 23
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///E:/Engine_V1/Draxion/Draxion/Vendor/ImGui/imgui_widgets.cpp"
+                          },
+                          "region": {
+                            "startLine": 4715,
+                            "startColumn": 16
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///E:/Engine_V1/Draxion/Draxion/Vendor/ImGui/imgui_widgets.cpp"
+                          },
+                          "region": {
+                            "startLine": 4716,
+                            "startColumn": 16
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///E:/Engine_V1/Draxion/Draxion/Vendor/ImGui/imgui_widgets.cpp"
+                          },
+                          "region": {
+                            "startLine": 4718,
+                            "startColumn": 9
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///E:/Engine_V1/Draxion/Draxion/Vendor/ImGui/imgui_widgets.cpp"
+                          },
+                          "region": {
+                            "startLine": 4720,
+                            "startColumn": 19
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///E:/Engine_V1/Draxion/Draxion/Vendor/ImGui/imgui_widgets.cpp"
+                          },
+                          "region": {
+                            "startLine": 4721,
+                            "startColumn": 17
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///E:/Engine_V1/Draxion/Draxion/Vendor/ImGui/imgui_widgets.cpp"
+                          },
+                          "region": {
+                            "startLine": 4722,
+                            "startColumn": 18
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///E:/Engine_V1/Draxion/Draxion/Vendor/ImGui/imgui_widgets.cpp"
+                          },
+                          "region": {
+                            "startLine": 4723,
+                            "startColumn": 18
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///E:/Engine_V1/Draxion/Draxion/Vendor/ImGui/imgui_widgets.cpp"
+                          },
+                          "region": {
+                            "startLine": 4724,
+                            "startColumn": 18
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///E:/Engine_V1/Draxion/Draxion/Vendor/ImGui/imgui_widgets.cpp"
+                          },
+                          "region": {
+                            "startLine": 4726,
+                            "startColumn": 18
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///E:/Engine_V1/Draxion/Draxion/Vendor/ImGui/imgui_widgets.cpp"
+                          },
+                          "region": {
+                            "startLine": 4727,
+                            "startColumn": 18
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///E:/Engine_V1/Draxion/Draxion/Vendor/ImGui/imgui_widgets.cpp"
+                          },
+                          "region": {
+                            "startLine": 4729,
+                            "startColumn": 18
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///E:/Engine_V1/Draxion/Draxion/Vendor/ImGui/imgui_widgets.cpp"
+                          },
+                          "region": {
+                            "startLine": 4730,
+                            "startColumn": 12
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///E:/Engine_V1/Draxion/Draxion/Vendor/ImGui/imgui_widgets.cpp"
+                          },
+                          "region": {
+                            "startLine": 4731,
+                            "startColumn": 23
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///E:/Engine_V1/Draxion/Draxion/Vendor/ImGui/imgui_widgets.cpp"
+                          },
+                          "region": {
+                            "startLine": 4732,
+                            "startColumn": 9
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///E:/Engine_V1/Draxion/Draxion/Vendor/ImGui/imgui_widgets.cpp"
+                          },
+                          "region": {
+                            "startLine": 4782,
+                            "startColumn": 17
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///E:/Engine_V1/Draxion/Draxion/Vendor/ImGui/imgui_widgets.cpp"
+                          },
+                          "region": {
+                            "startLine": 4783,
+                            "startColumn": 13
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///E:/Engine_V1/Draxion/Draxion/Vendor/ImGui/imgui_widgets.cpp"
+                          },
+                          "region": {
+                            "startLine": 4789,
+                            "startColumn": 10
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///E:/Engine_V1/Draxion/Draxion/Vendor/ImGui/imgui_widgets.cpp"
+                          },
+                          "region": {
+                            "startLine": 4790,
+                            "startColumn": 9
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///E:/Engine_V1/Draxion/Draxion/Vendor/ImGui/imgui_widgets.cpp"
+                          },
+                          "region": {
+                            "startLine": 4792,
+                            "startColumn": 17
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///E:/Engine_V1/Draxion/Draxion/Vendor/ImGui/imgui_widgets.cpp"
+                          },
+                          "region": {
+                            "startLine": 4796,
+                            "startColumn": 26
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///E:/Engine_V1/Draxion/Draxion/Vendor/ImGui/imgui_widgets.cpp"
+                          },
+                          "region": {
+                            "startLine": 4798,
+                            "startColumn": 34
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///E:/Engine_V1/Draxion/Draxion/Vendor/ImGui/imgui_widgets.cpp"
+                          },
+                          "region": {
+                            "startLine": 4800,
+                            "startColumn": 16
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///E:/Engine_V1/Draxion/Draxion/Vendor/ImGui/imgui_widgets.cpp"
+                          },
+                          "region": {
+                            "startLine": 4801,
+                            "startColumn": 16
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///E:/Engine_V1/Draxion/Draxion/Vendor/ImGui/imgui_widgets.cpp"
+                          },
+                          "region": {
+                            "startLine": 4802,
+                            "startColumn": 16
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///E:/Engine_V1/Draxion/Draxion/Vendor/ImGui/imgui_widgets.cpp"
+                          },
+                          "region": {
+                            "startLine": 4803,
+                            "startColumn": 16
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///E:/Engine_V1/Draxion/Draxion/Vendor/ImGui/imgui_widgets.cpp"
+                          },
+                          "region": {
+                            "startLine": 4804,
+                            "startColumn": 9
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///E:/Engine_V1/Draxion/Draxion/Vendor/ImGui/imgui_widgets.cpp"
+                          },
+                          "region": {
+                            "startLine": 4809,
+                            "startColumn": 16
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///E:/Engine_V1/Draxion/Draxion/Vendor/ImGui/imgui_widgets.cpp"
+                          },
+                          "region": {
+                            "startLine": 4810,
+                            "startColumn": 11
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///E:/Engine_V1/Draxion/Draxion/Vendor/ImGui/imgui_widgets.cpp"
+                          },
+                          "region": {
+                            "startLine": 4811,
+                            "startColumn": 9
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///E:/Engine_V1/Draxion/Draxion/Vendor/ImGui/imgui_widgets.cpp"
+                          },
+                          "region": {
+                            "startLine": 4814,
+                            "startColumn": 16
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///E:/Engine_V1/Draxion/Draxion/Vendor/ImGui/imgui_widgets.cpp"
+                          },
+                          "region": {
+                            "startLine": 4815,
+                            "startColumn": 16
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///E:/Engine_V1/Draxion/Draxion/Vendor/ImGui/imgui_widgets.cpp"
+                          },
+                          "region": {
+                            "startLine": 4816,
+                            "startColumn": 16
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///E:/Engine_V1/Draxion/Draxion/Vendor/ImGui/imgui_widgets.cpp"
+                          },
+                          "region": {
+                            "startLine": 4817,
+                            "startColumn": 16
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///E:/Engine_V1/Draxion/Draxion/Vendor/ImGui/imgui_widgets.cpp"
+                          },
+                          "region": {
+                            "startLine": 4818,
+                            "startColumn": 19
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///E:/Engine_V1/Draxion/Draxion/Vendor/ImGui/imgui_widgets.cpp"
+                          },
+                          "region": {
+                            "startLine": 4819,
+                            "startColumn": 16
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///E:/Engine_V1/Draxion/Draxion/Vendor/ImGui/imgui_widgets.cpp"
+                          },
+                          "region": {
+                            "startLine": 4820,
+                            "startColumn": 16
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///E:/Engine_V1/Draxion/Draxion/Vendor/ImGui/imgui_widgets.cpp"
+                          },
+                          "region": {
+                            "startLine": 4821,
+                            "startColumn": 10
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///E:/Engine_V1/Draxion/Draxion/Vendor/ImGui/imgui_widgets.cpp"
+                          },
+                          "region": {
+                            "startLine": 4822,
+                            "startColumn": 10
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///E:/Engine_V1/Draxion/Draxion/Vendor/ImGui/imgui_widgets.cpp"
+                          },
+                          "region": {
+                            "startLine": 4824,
+                            "startColumn": 11
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///E:/Engine_V1/Draxion/Draxion/Vendor/ImGui/imgui_widgets.cpp"
+                          },
+                          "region": {
+                            "startLine": 4826,
+                            "startColumn": 16
+                          }
+                        },
+                        "message": {
+                          "text": "'state' may be NULL"
+                        }
+                      },
+                      "kinds": [
+                        "declaration"
+                      ],
+                      "importance": "essential"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///E:/Engine_V1/Draxion/Draxion/Vendor/ImGui/imgui_widgets.cpp"
+                          },
+                          "region": {
+                            "startLine": 4827,
+                            "startColumn": 16
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///E:/Engine_V1/Draxion/Draxion/Vendor/ImGui/imgui_widgets.cpp"
+                          },
+                          "region": {
+                            "startLine": 4828,
+                            "startColumn": 16
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///E:/Engine_V1/Draxion/Draxion/Vendor/ImGui/imgui_widgets.cpp"
+                          },
+                          "region": {
+                            "startLine": 4829,
+                            "startColumn": 16
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///E:/Engine_V1/Draxion/Draxion/Vendor/ImGui/imgui_widgets.cpp"
+                          },
+                          "region": {
+                            "startLine": 4830,
+                            "startColumn": 9
+                          }
+                        },
+                        "message": {
+                          "text": "Skip this branch, (assume 'init_reload_from_user_buf' is false)"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ]
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///E:/Engine_V1/Draxion/Draxion/Vendor/ImGui/imgui_widgets.cpp"
+                          },
+                          "region": {
+                            "startLine": 4842,
+                            "startColumn": 85
+                          }
+                        },
+                        "message": {
+                          "text": "Skip this branch, (assume '<branch condition>' is false)"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ]
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///E:/Engine_V1/Draxion/Draxion/Vendor/ImGui/imgui_widgets.cpp"
+                          },
+                          "region": {
+                            "startLine": 4901,
+                            "startColumn": 16
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///E:/Engine_V1/Draxion/Draxion/Vendor/ImGui/imgui_widgets.cpp"
+                          },
+                          "region": {
+                            "startLine": 4902,
+                            "startColumn": 26
+                          }
+                        },
+                        "message": {
+                          "text": "Skip this branch, (assume '<branch condition>' is false)"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ]
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///E:/Engine_V1/Draxion/Draxion/Vendor/ImGui/imgui_widgets.cpp"
+                          },
+                          "region": {
+                            "startLine": 4911,
+                            "startColumn": 20
+                          }
+                        },
+                        "message": {
+                          "text": "Skip this branch, (assume 'g.ActiveId==id' is false)"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ]
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///E:/Engine_V1/Draxion/Draxion/Vendor/ImGui/imgui_widgets.cpp"
+                          },
+                          "region": {
+                            "startLine": 4948,
+                            "startColumn": 15
+                          }
+                        },
+                        "message": {
+                          "text": "Skip this branch, (assume 'state!=0' is false)"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ]
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///E:/Engine_V1/Draxion/Draxion/Vendor/ImGui/imgui_widgets.cpp"
+                          },
+                          "region": {
+                            "startLine": 4952,
+                            "startColumn": 26
+                          }
+                        },
+                        "message": {
+                          "text": "Skip this branch, (assume 'g.ActiveId==id&&state==0' is false)"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ]
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///E:/Engine_V1/Draxion/Draxion/Vendor/ImGui/imgui_widgets.cpp"
+                          },
+                          "region": {
+                            "startLine": 4956,
+                            "startColumn": 48
+                          }
+                        },
+                        "message": {
+                          "text": "Skip this branch, (assume '<branch condition>' is false)"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ]
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///E:/Engine_V1/Draxion/Draxion/Vendor/ImGui/imgui_widgets.cpp"
+                          },
+                          "region": {
+                            "startLine": 4960,
+                            "startColumn": 10
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///E:/Engine_V1/Draxion/Draxion/Vendor/ImGui/imgui_widgets.cpp"
+                          },
+                          "region": {
+                            "startLine": 4961,
+                            "startColumn": 10
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///E:/Engine_V1/Draxion/Draxion/Vendor/ImGui/imgui_widgets.cpp"
+                          },
+                          "region": {
+                            "startLine": 4962,
+                            "startColumn": 10
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///E:/Engine_V1/Draxion/Draxion/Vendor/ImGui/imgui_widgets.cpp"
+                          },
+                          "region": {
+                            "startLine": 4963,
+                            "startColumn": 10
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///E:/Engine_V1/Draxion/Draxion/Vendor/ImGui/imgui_widgets.cpp"
+                          },
+                          "region": {
+                            "startLine": 4966,
+                            "startColumn": 16
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///E:/Engine_V1/Draxion/Draxion/Vendor/ImGui/imgui_widgets.cpp"
+                          },
+                          "region": {
+                            "startLine": 4967,
+                            "startColumn": 10
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///E:/Engine_V1/Draxion/Draxion/Vendor/ImGui/imgui_widgets.cpp"
+                          },
+                          "region": {
+                            "startLine": 4970,
+                            "startColumn": 21
+                          }
+                        },
+                        "message": {
+                          "text": "Skip this branch, (assume '<branch condition>' is false)"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ]
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///E:/Engine_V1/Draxion/Draxion/Vendor/ImGui/imgui_widgets.cpp"
+                          },
+                          "region": {
+                            "startLine": 4973,
+                            "startColumn": 23
+                          }
+                        },
+                        "message": {
+                          "text": "Skip this branch, (assume 'state!=0&&state->ID==id' is false)"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ]
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///E:/Engine_V1/Draxion/Draxion/Vendor/ImGui/imgui_widgets.cpp"
+                          },
+                          "region": {
+                            "startLine": 4987,
+                            "startColumn": 20
+                          }
+                        },
+                        "message": {
+                          "text": "Skip this branch, (assume 'g.ActiveId==id' is false)"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ]
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///E:/Engine_V1/Draxion/Draxion/Vendor/ImGui/imgui_widgets.cpp"
+                          },
+                          "region": {
+                            "startLine": 5104,
+                            "startColumn": 10
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///E:/Engine_V1/Draxion/Draxion/Vendor/ImGui/imgui_widgets.cpp"
+                          },
+                          "region": {
+                            "startLine": 5105,
+                            "startColumn": 56
+                          }
+                        },
+                        "message": {
+                          "text": "Skip this branch, (assume '<branch condition>' is false)"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ]
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///E:/Engine_V1/Draxion/Draxion/Vendor/ImGui/imgui_widgets.cpp"
+                          },
+                          "region": {
+                            "startLine": 5275,
+                            "startColumn": 17
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///E:/Engine_V1/Draxion/Draxion/Vendor/ImGui/imgui_widgets.cpp"
+                          },
+                          "region": {
+                            "startLine": 5276,
+                            "startColumn": 9
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///E:/Engine_V1/Draxion/Draxion/Vendor/ImGui/imgui_widgets.cpp"
+                          },
+                          "region": {
+                            "startLine": 5277,
+                            "startColumn": 20
+                          }
+                        },
+                        "message": {
+                          "text": "Skip this branch, (assume 'g.ActiveId==id' is false)"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ]
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///E:/Engine_V1/Draxion/Draxion/Vendor/ImGui/imgui_widgets.cpp"
+                          },
+                          "region": {
+                            "startLine": 5397,
+                            "startColumn": 40
+                          }
+                        },
+                        "message": {
+                          "text": "Skip this branch, (assume '<branch condition>' is false)"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ]
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///E:/Engine_V1/Draxion/Draxion/Vendor/ImGui/imgui_widgets.cpp"
+                          },
+                          "region": {
+                            "startLine": 5415,
+                            "startColumn": 24
+                          }
+                        },
+                        "message": {
+                          "text": "Skip this branch, (assume 'apply_new_text!=0' is false)"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ]
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///E:/Engine_V1/Draxion/Draxion/Vendor/ImGui/imgui_widgets.cpp"
+                          },
+                          "region": {
+                            "startLine": 5444,
+                            "startColumn": 26
+                          }
+                        },
+                        "message": {
+                          "text": "Skip this branch, (assume '<branch condition>' is false)"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ]
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///E:/Engine_V1/Draxion/Draxion/Vendor/ImGui/imgui_widgets.cpp"
+                          },
+                          "region": {
+                            "startLine": 5448,
+                            "startColumn": 9
+                          }
+                        },
+                        "message": {
+                          "text": "Enter this branch, (assume '!is_multiline')"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ]
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///E:/Engine_V1/Draxion/Draxion/Vendor/ImGui/imgui_widgets.cpp"
+                          },
+                          "region": {
+                            "startLine": 5450,
+                            "startColumn": 24
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///E:/Engine_V1/Draxion/Draxion/Vendor/ImGui/imgui_widgets.cpp"
+                          },
+                          "region": {
+                            "startLine": 5451,
+                            "startColumn": 20
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///E:/Engine_V1/Draxion/Draxion/Vendor/ImGui/imgui_widgets.cpp"
+                          },
+                          "region": {
+                            "startLine": 5454,
+                            "startColumn": 12
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///E:/Engine_V1/Draxion/Draxion/Vendor/ImGui/imgui_widgets.cpp"
+                          },
+                          "region": {
+                            "startLine": 5455,
+                            "startColumn": 12
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///E:/Engine_V1/Draxion/Draxion/Vendor/ImGui/imgui_widgets.cpp"
+                          },
+                          "region": {
+                            "startLine": 5456,
+                            "startColumn": 9
+                          }
+                        },
+                        "message": {
+                          "text": "Skip this branch, (assume 'is_multiline' is false)"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ]
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///E:/Engine_V1/Draxion/Draxion/Vendor/ImGui/imgui_widgets.cpp"
+                          },
+                          "region": {
+                            "startLine": 5462,
+                            "startColumn": 15
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///E:/Engine_V1/Draxion/Draxion/Vendor/ImGui/imgui_widgets.cpp"
+                          },
+                          "region": {
+                            "startLine": 5463,
+                            "startColumn": 17
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///E:/Engine_V1/Draxion/Draxion/Vendor/ImGui/imgui_widgets.cpp"
+                          },
+                          "region": {
+                            "startLine": 5464,
+                            "startColumn": 17
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///E:/Engine_V1/Draxion/Draxion/Vendor/ImGui/imgui_widgets.cpp"
+                          },
+                          "region": {
+                            "startLine": 5468,
+                            "startColumn": 16
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///E:/Engine_V1/Draxion/Draxion/Vendor/ImGui/imgui_widgets.cpp"
+                          },
+                          "region": {
+                            "startLine": 5469,
+                            "startColumn": 32
+                          }
+                        },
+                        "message": {
+                          "text": "Skip this branch, (assume '<branch condition>' is false)"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ]
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///E:/Engine_V1/Draxion/Draxion/Vendor/ImGui/imgui_widgets.cpp"
+                          },
+                          "region": {
+                            "startLine": 5477,
+                            "startColumn": 9
+                          }
+                        },
+                        "message": {
+                          "text": "Skip this branch, (assume 'is_displaying_hint' is false)"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ]
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///E:/Engine_V1/Draxion/Draxion/Vendor/ImGui/imgui_widgets.cpp"
+                          },
+                          "region": {
+                            "startLine": 5484,
+                            "startColumn": 47
+                          }
+                        },
+                        "message": {
+                          "text": "Enter this branch, (assume '<branch condition>')"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ]
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///E:/Engine_V1/Draxion/Draxion/Vendor/ImGui/imgui_widgets.cpp"
+                          },
+                          "region": {
+                            "startLine": 5485,
+                            "startColumn": 29
+                          }
+                        },
+                        "message": {
+                          "text": "'state' is dereferenced, but may still be NULL"
+                        }
+                      },
+                      "kinds": [
+                        "usage"
+                      ],
+                      "importance": "essential"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "tool": {
+        "driver": {
+          "name": "PREfast",
+          "fullName": "MSVC Code Analysis",
+          "version": "14.44.35211.0",
+          "informationUri": "https://aka.ms/cpp/ca"
+        }
+      },
+      "invocations": [
+        {
+          "executionSuccessful": true
+        }
+      ],
+      "artifacts": [
+        {
+          "location": {
+            "uri": "file:///e:/engine_v1/draxion/draxion/vendor/imgui/imgui_widgets.cpp"
+          },
+          "roles": [
+            "analysisTarget",
+            "resultFile"
+          ],
+          "hashes": {
+            "sha-256": "f13893af19b25abb22d95b12deee9dcdf366d83adab8feccbae53c022557b1d8"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///e:/engine_v1/draxion/draxion/vendor/imgui/imgui.h"
+          },
+          "hashes": {
+            "sha-256": "804b781e12ec5585df002b56850d2d08d69a55c1183af238def74b0de5488677"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///e:/engine_v1/draxion/draxion/vendor/imgui/imconfig.h"
+          },
+          "hashes": {
+            "sha-256": "1353bfa59da16eec481723fd4e5d910356f0406b79e3c4142e0c9867bafffab5"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///e:/engine_v1/draxion/draxion/vendor/imgui/imgui_internal.h"
+          },
+          "hashes": {
+            "sha-256": "f8d8ddcad461bb7965031d15fd57911931231cbdffec562b7631b0247c9d6e96"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///e:/engine_v1/draxion/draxion/vendor/imgui/imstb_textedit.h"
+          },
+          "hashes": {
+            "sha-256": "a985f5fa0ed97353d493b497961e9eef52082edcd045cf6954b69990ec9d0741"
+          }
+        }
+      ]
+    }
+  ]
+}

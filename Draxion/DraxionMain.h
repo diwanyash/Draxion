@@ -6,6 +6,7 @@
 #include "src/Draxion/Events/EventDispatcher.h"
 #include "src/Draxion/Events/KeyEvent.h"
 #include "src/Draxion/Core/Logger.h"
+#include "src/Draxion/Core/Util/RandomGen.h"
 #include "src/Draxion/Events/MouseEvents.h"
 
 //-------------Input----------------------

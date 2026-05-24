@@ -192,7 +192,10 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
     </None>
     <None Include="src\Draxion\Asset\OpenGL\Shaders\Basic.vert" />
+    <None Include="src\Draxion\Asset\OpenGL\Shaders\BasicColor.frag" />
     <None Include="src\Draxion\Asset\OpenGL\Shaders\basicinverted.frag" />
+    <None Include="src\Draxion\Asset\OpenGL\Shaders\Tiled.frag" />
+    <None Include="src\Draxion\Asset\OpenGL\Shaders\Tiled.vert" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="src\Draxion\Asset\Images\Keqing.jpg" />

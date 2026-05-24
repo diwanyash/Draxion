@@ -14,6 +14,7 @@ namespace Draxion
 
 
 		void UploadUniformInt(const std::string& name, const int value);
+		void UploadUniformInt2(const std::string& name, const glm::ivec2 ivec);
 
 		void UploadUniformFloat(const std::string& name, const float value);
 		void UploadUniformFloat2(const std::string& name, const glm::vec2& vec);

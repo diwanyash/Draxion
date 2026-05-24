@@ -262,6 +262,9 @@
     <None Include="src\Draxion\Asset\OpenGL\Shaders\Basic.vert" />
     <None Include="src\Draxion\Asset\OpenGL\Shaders\Basic.frag" />
     <None Include="src\Draxion\Asset\OpenGL\Shaders\basicinverted.frag" />
+    <None Include="src\Draxion\Asset\OpenGL\Shaders\Tiled.frag" />
+    <None Include="src\Draxion\Asset\OpenGL\Shaders\Tiled.vert" />
+    <None Include="src\Draxion\Asset\OpenGL\Shaders\BasicColor.frag" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="src\Draxion\Asset\Images\Keqing.jpg">

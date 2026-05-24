@@ -107,6 +107,12 @@ namespace Draxion
 		glUniform1i(location, value);
 	}
 
+	void OpenGLShader::UploadUniformInt2(const std::string& name, const glm::ivec2 ivec)
+	{
+		unsigned int location = glGetUniformLocation(m_RendererID, name.c_str());
+		glUniform2i(location, ivec.x, ivec.y);
+	}
+
 	void OpenGLShader::UploadUniformFloat(const std::string& name, const float value)
 	{
 		unsigned int location = glGetUniformLocation(m_RendererID, name.c_str());

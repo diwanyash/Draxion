@@ -1,0 +1,36 @@
+{
+    "activeFile": "",
+    "expandedProjectPaths": [
+        "."
+    ],
+    "file.lastUsedOpenFilter": "All Files (*)",
+    "fileStates": {
+        "32_Grass_Water.tsx": {
+            "scaleInDock": 2,
+            "scaleInEditor": 1
+        },
+        "basicTiles.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "untitled.tmx": {
+            "scale": 2,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 575.5,
+                "y": 330.75
+            }
+        }
+    },
+    "last.imagePath": "E:/Engine_V1/Draxion/Sandbox/Assets/Tileset/BasicTiles/Use",
+    "map.lastUsedFormat": "tmx",
+    "openFiles": [
+    ],
+    "project": "32_tile_TEst.tiled-project",
+    "recentFiles": [
+        "32_Grass_Water.tsx",
+        "untitled.tmx",
+        "basicTiles.tsx"
+    ],
+    "tileset.lastUsedFormat": "tsx"
+}

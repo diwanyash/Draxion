@@ -1,6 +1,5 @@
 #pragma once
 #include "Core.h"
-#include <string>
 #include <iostream>
 
 namespace Draxion
@@ -9,8 +8,9 @@ namespace Draxion
 	{
 	public:
 		static void Init();
-		static std::string GetTime();
-
+		static const char* GetTime();
+	private:
+		static char buffer[9];
 	};
 }
 
@@ -32,6 +32,10 @@ namespace Draxion
 // CLIENT LOGS
 #define LOG_CLIENT_TRACE(x) std::cout << "[" << Draxion::Logger::GetTime() << "] Client:: > " << x << "\n";
 #define LOG_CLIENT_INFO(x)  std::cout << DX_COLOR_GREEN  << "[" << Draxion::Logger::GetTime() << "] Client:: > " << x << DX_COLOR_RESET << "\n";
-#define LOG_CLIENT_WARN(x)  std::cout << DX_COLOR_YELLOW << "[" << Draxion::Logger::GetTime() << "] Client:: > " << x << DX_COLOR_RESET << "\n";
+#define LOG_CLIENT_WARN(x) do { \
+    const char* t = Draxion::Logger::GetTime(); \
+    std::cout << DX_COLOR_YELLOW << "[" << t << "] Engine:: > " << x << DX_COLOR_RESET << "\n"; \
+} while(0)
+//#define LOG_CLIENT_WARN(x)  std::cout << DX_COLOR_YELLOW << "[" << Draxion::Logger::GetTime() << "] Client:: > " << x << DX_COLOR_RESET << "\n";
 #define LOG_CLIENT_ERROR(x) std::cout << DX_COLOR_RED    << "[" << Draxion::Logger::GetTime() << "] Client:: > " << x << DX_COLOR_RESET << "\n";
 #define LOG_CLIENT_FATAL(x) std::cout << DX_FATAL_COLOR  << "[" << Draxion::Logger::GetTime() << "] Client:: > " << x << DX_COLOR_RESET << "\n";

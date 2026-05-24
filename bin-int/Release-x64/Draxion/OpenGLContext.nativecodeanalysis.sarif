@@ -1,0 +1,91 @@
+{
+  "version": "2.1.0",
+  "$schema": "https://schemastore.azurewebsites.net/schemas/json/sarif-2.1.0-rtm.5.json",
+  "runs": [
+    {
+      "results": [],
+      "tool": {
+        "driver": {
+          "name": "PREfast",
+          "fullName": "MSVC Code Analysis",
+          "version": "14.44.35211.0",
+          "informationUri": "https://aka.ms/cpp/ca"
+        }
+      },
+      "invocations": [
+        {
+          "executionSuccessful": true
+        }
+      ],
+      "artifacts": [
+        {
+          "location": {
+            "uri": "file:///e:/engine_v1/draxion/draxion/src/draxion/platform/windows/opengl/openglcontext.cpp"
+          },
+          "roles": [
+            "analysisTarget"
+          ],
+          "hashes": {
+            "sha-256": "7dab3f8fc0f36123809e50c89f9735e641e2869d992525fbd2143522c88b5ad5"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///e:/engine_v1/draxion/draxion/src/draxion/platform/windows/opengl/openglcontext.h"
+          },
+          "hashes": {
+            "sha-256": "d1e92d24551f902c2852938197fc520c9c4d456c4d5dc564a40f2e6e3c418513"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///e:/engine_v1/draxion/draxion/src/draxion/renderer/graphicscontext.h"
+          },
+          "hashes": {
+            "sha-256": "2630d3782d495d9bbb4915553b6ac70ec59054879e76dc326fab3070070526f0"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///e:/engine_v1/draxion/draxion/src/draxion/core/logger.h"
+          },
+          "hashes": {
+            "sha-256": "1bb0d334e1d11c15b89714f79afb949bf7cab32f2272b05061b5ac355a748cbb"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///e:/engine_v1/draxion/draxion/src/draxion/core/core.h"
+          },
+          "hashes": {
+            "sha-256": "d371bf25c50d420948dc4eae659127609cbb496de00a782c4f2842832e6eab52"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///e:/engine_v1/draxion/vendor/glad/include/glad/glad.h"
+          },
+          "hashes": {
+            "sha-256": "18a2cb476f03e653efc8e93cee19e4769321f25f7132c8227b0cb4578df2d4d5"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///e:/engine_v1/draxion/vendor/glad/include/khr/khrplatform.h"
+          },
+          "hashes": {
+            "sha-256": "7b1e01aaa7ad8f6fc34b5c7bdf79ebf5189bb09e2c4d2e79fc5d350623d11e83"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///e:/engine_v1/draxion/vendor/glfw/include/glfw/glfw3.h"
+          },
+          "hashes": {
+            "sha-256": "aa370985f6b493bbe0358a36ab49f5780a6397c0209c6d98a62143dea595b73c"
+          }
+        }
+      ]
+    }
+  ]
+}
