@@ -6,7 +6,7 @@
 
 namespace Draxion
 {
-	Shader* Shader::Create( const char* vertexShader, const char* fragmentShader )
+	Ref<Shader> Shader::Create( const char* vertexShader, const char* fragmentShader )
 	{
 		switch (Renderer::GetAPI())
 		{
@@ -17,7 +17,7 @@ namespace Draxion
 			}
 			case RenderAPI::API::OpenGL:
 			{
-				return new OpenGLShader( vertexShader,  fragmentShader );
+				return std::make_shared<OpenGLShader>( vertexShader,  fragmentShader );
 			}
 			default:
 			{

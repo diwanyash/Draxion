@@ -9,10 +9,10 @@ public:
 	Sandbox()
 	{
 		LOG_CLIENT_TRACE("SandBox Constructed"); 
-		//auto examplelayer = new Draxion::ExampleLayer();
-		//PushLayer( examplelayer );
-		auto TileSetLayer = new TileLayer();
-		PushLayer( TileSetLayer );
+		auto examplelayer = new Draxion::ExampleLayer();
+		PushLayer( examplelayer );
+		// auto TileSetLayer = new TileLayer();
+		// PushLayer( TileSetLayer );
 		
 		//PopOverLay(imguilayer);
 		//PopLayer( examplelayer );

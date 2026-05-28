@@ -101,6 +101,56 @@ namespace Draxion
 		glUseProgram(0);
 	}
 
+	void OpenGLShader::SetInt(const std::string& name, int value)
+	{
+		UploadUniformInt(name, value);
+	}
+
+	void OpenGLShader::SetInt2(const std::string& name, glm::ivec2 ivec)
+	{
+		UploadUniformInt2(name, ivec);
+	}
+
+	void OpenGLShader::SetInt3(const std::string& name, glm::ivec3 ivec)
+	{
+		UploadUniformInt3(name, ivec);
+	}
+
+	void OpenGLShader::SetInt4(const std::string& name, glm::ivec4 ivec)
+	{
+		UploadUniformInt4(name, ivec);
+	}
+
+	void OpenGLShader::SetFloat(const std::string& name, float value)
+	{
+		UploadUniformFloat(name, value);
+	}
+
+	void OpenGLShader::SetFloat2(const std::string& name, glm::vec2 vec)
+	{
+		UploadUniformFloat2(name, vec);
+	}
+
+	void OpenGLShader::SetFloat3(const std::string& name, glm::vec3 vec)
+	{
+		UploadUniformFloat3(name, vec);
+	}
+
+	void OpenGLShader::SetFloat4(const std::string& name, glm::vec4 vec)
+	{
+		UploadUniformFloat4(name, vec);
+	}
+
+	void OpenGLShader::SetMat3(const std::string& name, glm::mat3 mat)
+	{
+		UploadUniformMat3(name, mat);
+	}
+
+	void OpenGLShader::SetMat4(const std::string& name, glm::mat4 mat)
+	{
+		UploadUniformMat4(name, mat);
+	}
+
 	void OpenGLShader::UploadUniformInt(const std::string& name, const int value)
 	{
 		unsigned int location = glGetUniformLocation(m_RendererID, name.c_str());
@@ -111,6 +161,18 @@ namespace Draxion
 	{
 		unsigned int location = glGetUniformLocation(m_RendererID, name.c_str());
 		glUniform2i(location, ivec.x, ivec.y);
+	}
+
+	void OpenGLShader::UploadUniformInt3(const std::string& name, const glm::ivec3 ivec)
+	{
+		unsigned int location = glGetUniformLocation(m_RendererID, name.c_str());
+		glUniform3i(location, ivec.x, ivec.y, ivec.z);
+	}
+
+	void OpenGLShader::UploadUniformInt4(const std::string& name, const glm::ivec4 ivec)
+	{
+		unsigned int location = glGetUniformLocation(m_RendererID, name.c_str());
+		glUniform4i(location, ivec.x, ivec.y, ivec.z,ivec.w);
 	}
 
 	void OpenGLShader::UploadUniformFloat(const std::string& name, const float value)

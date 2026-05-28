@@ -15,7 +15,6 @@
 //----------------------------------------
 
 //----------------------------------------
-#include "src/Draxion/Platform/Windows/OpenGL/OpenGLShader.h"
 #include "src/Draxion/Renderer/Texture.h"
 //----------------------------------------
 
@@ -29,6 +28,7 @@
 #include "src/Draxion/Renderer/Shader/Shader.h"
 #include "src/Draxion/Renderer/RendererCommand.h"
 #include "src/Draxion/Renderer/Renderer.h"
+#include "src/Draxion/Renderer/Renderer2D.h"
 //-----------------------------------
 
 

@@ -13,6 +13,7 @@
 ////////////////////////////////
 #include "Draxion/Renderer/RendererCommand.h"
 #include "Draxion/Renderer/Renderer.h"
+#include "Draxion/Renderer/Renderer2D.h"
 /////////////////////////////
 #include <GLFW/glfw3.h>
 /////////////////////////////
@@ -29,7 +30,7 @@ namespace Draxion
 		m_Window->SetEventCallback([this](Event& e) { this->OnEvent(e); });
 		s_Instance = this;
 
-		RenderCommand::Init();
+		Renderer::Init();
 
 		m_ImGuiLayer = new ImGuiLayer();
 		PushOverLay(m_ImGuiLayer);
@@ -104,6 +105,7 @@ namespace Draxion
 		d.Dispatch<WindowsResizeEvent>([](WindowsResizeEvent& e)
 		{
 			Renderer::OnWindowResize( e.GetWidth(), e.GetHeight() );
+			Renderer2D::OnWindowResize( e.GetWidth(), e.GetHeight() );
 
 			e.Handled = false;
 			return false;

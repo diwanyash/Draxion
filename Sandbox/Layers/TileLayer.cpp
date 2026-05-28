@@ -3,6 +3,9 @@
 #include <glm/gtc/type_ptr.hpp>
 
 
+
+#include "src/Draxion/Platform/Windows/OpenGL/OpenGLShader.h"
+
 TileLayer::TileLayer()
 	:
 	Layer("TileSet")
@@ -30,7 +33,7 @@ void TileLayer::OnAttach()
 		1,3,2,
 	};
 
-	m_VAO.reset(Draxion::VertexArray::Create());
+	m_VAO = Draxion::VertexArray::Create();
 	
 	Draxion::Ref<Draxion::VertexBuffer> t_VBO;
 	t_VBO.reset(Draxion::VertexBuffer::Create(vertices, sizeof(vertices)));
@@ -51,11 +54,11 @@ void TileLayer::OnAttach()
 	m_VAO->AddVertexBuffers(t_VBO);
 	m_VAO->SetIndexBuffer(t_IBO);
 
-	m_TiledShader.reset( Draxion::Shader::Create("E:/Engine_V1/Draxion/Draxion/src/Draxion/Asset/OpenGL/Shaders/Tiled.vert"
-		, "E:/Engine_V1/Draxion/Draxion/src/Draxion/Asset/OpenGL/Shaders/Tiled.frag"));
+	m_TiledShader = Draxion::Shader::Create("E:/Engine_V1/Draxion/Draxion/src/Draxion/Asset/OpenGL/Shaders/Tiled.vert"
+		, "E:/Engine_V1/Draxion/Draxion/src/Draxion/Asset/OpenGL/Shaders/Tiled.frag");
 
-	m_BasicColorShader.reset( Draxion::Shader::Create("E:/Engine_V1/Draxion/Draxion/src/Draxion/Asset/OpenGL/Shaders/Tiled.vert"
-		, "E:/Engine_V1/Draxion/Draxion/src/Draxion/Asset/OpenGL/Shaders/BasicColor.frag"));
+	m_BasicColorShader = Draxion::Shader::Create("E:/Engine_V1/Draxion/Draxion/src/Draxion/Asset/OpenGL/Shaders/Tiled.vert"
+		, "E:/Engine_V1/Draxion/Draxion/src/Draxion/Asset/OpenGL/Shaders/BasicColor.frag");
 
 
 	m_Grass_Water = Draxion::Texture2D::Create("E:/Engine_V1/Draxion/Sandbox/Assets/Tileset/BasicTiles/Use/32_Grass-Water.png");
@@ -68,7 +71,7 @@ void TileLayer::OnUpdate(float dt)
 {
 	m_Camera_Control.OnUpdate(dt);
 
-	Draxion::RenderCommand::SetClearColor({0.2f,0.3f,0.3f,1.0f});
+	Draxion::RenderCommand::SetClearColor({ 0.2f,0.3f,0.3f,1.0f });
 	Draxion::RenderCommand::Clear();
 
 	Draxion::Renderer::BeginScene(m_Camera_Control.GetCamera());
@@ -83,11 +86,11 @@ void TileLayer::OnUpdate(float dt)
 
 	// TRS transform
 	std::dynamic_pointer_cast<Draxion::OpenGLShader>(m_TiledShader)->Bind();
-	for(int y = 0; y < GridSize_y; y++)
+	for (int y = 0; y < GridSize_y; y++)
 	{
-		for(int x = 0; x < GridSize_x; x++)
+		for (int x = 0; x < GridSize_x; x++)
 		{
-			transform = 
+			transform =
 				glm::translate(glm::mat4(1.0f), glm::vec3(GridOffset.x + float(x), GridOffset.y + float(y), 0.0f)) // * Rotation
 				* glm::scale(glm::mat4(1.0f), glm::vec3(1.0f, 1.0f, 1.0f));
 
@@ -100,8 +103,7 @@ void TileLayer::OnUpdate(float dt)
 		}
 	}
 
-	HoveredTile.x = std::floor(MouseCamPos.x);
-	HoveredTile.y = std::floor(MouseCamPos.y);
+	HoveredTile = glm::ivec2{ std::floor(MouseCamPos.x), std::floor(MouseCamPos.y)};
 
 	transform =
 		glm::translate(glm::mat4(1.0f), glm::vec3(HoveredTile,0.0f));

@@ -18,7 +18,7 @@ namespace Draxion
 		OrthoGraphicCamera& GetCamera() { return m_Camera; }
 	private:
 		float m_AspectRatio;
-		float m_Zoom_Ratio = 30.0f;
+		float m_Zoom_Ratio = 1.0f;
 		////////////Camera////////////////////
 		glm::vec3 Cam_Pos = { 0.0f, 0.0f, 0.0f };
 		float Cam_Rot = 0.0f;

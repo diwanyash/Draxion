@@ -1,4 +1,5 @@
 #include "Renderer.h"
+#include "Renderer2D.h"
 #include "RendererCommand.h"
 #include "OrthoGraphicCamera.h"
 
@@ -12,6 +13,7 @@ namespace Draxion
 	void Renderer::Init()
 	{
 		RenderCommand::Init();
+		Renderer2D::Init();
 	}
 	void Renderer::OnWindowResize(unsigned int Width, unsigned int Height)
 	{
@@ -26,8 +28,8 @@ namespace Draxion
 		vertexarray->Bind();
 		pShader->Bind();
 
-		std::dynamic_pointer_cast<OpenGLShader>(pShader)->UploadUniformMat4( "u_ViewProjection", m_SceneData->ViewProjectMatrix );
-		std::dynamic_pointer_cast<OpenGLShader>(pShader)->UploadUniformMat4( "u_Transform", transform );
+		pShader->SetMat4( "u_ViewProjection", m_SceneData->ViewProjectMatrix );
+		pShader->SetMat4( "u_Transform", transform );
 		RenderCommand::DrawIndexed(vertexarray);
 	}
 	void Renderer::EndScene()

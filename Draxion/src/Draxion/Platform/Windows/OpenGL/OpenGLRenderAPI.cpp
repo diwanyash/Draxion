@@ -6,7 +6,7 @@ namespace Draxion
 	void OpenGLRenderAPI::Init()
 	{ 
 		glEnable(GL_BLEND);
-		glDisable(GL_DEPTH_TEST);
+		glEnable(GL_DEPTH_TEST);
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	}
 
@@ -27,7 +27,7 @@ namespace Draxion
 
 	void OpenGLRenderAPI::DrawIndexed(const Ref<VertexArray>& vertexarray)
 	{
-		glDrawElements( GL_TRIANGLES, vertexarray->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, nullptr );
+		glDrawElements(GL_TRIANGLES, vertexarray->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, nullptr );
 	}
 
 }
