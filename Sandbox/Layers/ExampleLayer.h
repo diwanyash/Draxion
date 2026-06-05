@@ -29,6 +29,7 @@ namespace Draxion
 		Ref<Texture2D> m_WhiteBG;
 		////////////////////TEST/////////////
 		glm::vec3 pos2 = { 0.60f,0.25f,0.0f };
+		float zoom = 1.0f;
 		float Occu = 1.0f;
 		float zR = 0.0f;
 		float zB = 0.0f;

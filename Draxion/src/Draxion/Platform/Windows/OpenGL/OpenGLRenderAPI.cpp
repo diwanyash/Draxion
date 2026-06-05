@@ -8,7 +8,7 @@ namespace Draxion
 		glEnable(GL_BLEND);
 		glEnable(GL_DEPTH_TEST);
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-	}
+	} 
 
 	void OpenGLRenderAPI::SetViewport(unsigned int x, unsigned int y, unsigned int Width, unsigned int Height)
 	{
@@ -25,9 +25,11 @@ namespace Draxion
 		glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
 	}
 
-	void OpenGLRenderAPI::DrawIndexed(const Ref<VertexArray>& vertexarray)
+	void OpenGLRenderAPI::DrawIndexed(const Ref<VertexArray>& vertexarray, unsigned int indexcount)
 	{
-		glDrawElements(GL_TRIANGLES, vertexarray->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, nullptr );
+		// Why idxCount is 60,000
+		unsigned int idxCount = indexcount ? vertexarray->GetIndexBuffer()->GetCount() : indexcount;
+		glDrawElements(GL_TRIANGLES, idxCount, GL_UNSIGNED_INT, nullptr );
 	}
 
 }

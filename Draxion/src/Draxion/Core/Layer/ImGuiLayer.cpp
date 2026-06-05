@@ -57,6 +57,16 @@ void Draxion::ImGuiLayer::OnDetach()
         ImGui::DestroyContext();
 }
 
+void Draxion::ImGuiLayer::OnEvent(Event& e)
+{
+    Draxion::EventDispatcher d(e);
+
+    d.Dispatch<Draxion::MouseButtonPressed>([](Draxion::MouseButtonPressed& e)
+    {
+        return false;
+    });
+}
+
 void Draxion::ImGuiLayer::OnImGuiRender()
 {
     // static bool show = true;

@@ -53,6 +53,14 @@ namespace Draxion
 
 		Cam_Move_Speed = m_Zoom_Ratio;
 	}
+	
+	void OrthoGraphicCameraController::RecalculateZoom()
+	{
+		m_Zoom_Ratio = std::max(m_Zoom_Ratio, 0.01f);
+		m_Camera.SetProjection(-m_AspectRatio * m_Zoom_Ratio, m_AspectRatio * m_Zoom_Ratio,
+			-m_Zoom_Ratio, m_Zoom_Ratio);
+	}
+
 	void OrthoGraphicCameraController::OnEvent( Event& e )
 	{
 		EventDispatcher d(e);
@@ -86,9 +94,7 @@ namespace Draxion
 			{
 				m_Zoom_Ratio += 0.05f;
 			}
-			m_Zoom_Ratio = std::max(m_Zoom_Ratio, 0.01f);
-			m_Camera.SetProjection(-m_AspectRatio * m_Zoom_Ratio, m_AspectRatio * m_Zoom_Ratio,
-				-m_Zoom_Ratio, m_Zoom_Ratio);
+			RecalculateZoom();
 
 			return false;
 		});
@@ -103,10 +109,7 @@ namespace Draxion
 			{
 				m_Zoom_Ratio += 0.05f;
 			}
-			m_Zoom_Ratio = std::max(m_Zoom_Ratio, 0.01f);
-			m_Camera.SetProjection(-m_AspectRatio * m_Zoom_Ratio, m_AspectRatio * m_Zoom_Ratio,
-				-m_Zoom_Ratio, m_Zoom_Ratio);
-
+			RecalculateZoom();
 			return false;
 		});
 	}

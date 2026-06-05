@@ -1,12 +1,15 @@
 #version 410 core
-out vec4 FragOut;
+layout (location = 0) out vec4 FragOut;
 
-in vec2 TexCoord;
+in vec4 v_Color;
+in vec2 v_TexCoord;
+in float v_TextureIndex;
 
-uniform sampler2D u_Texture;
-uniform vec4 u_Color;
+uniform sampler2D u_Texture[32];
 
 void main()
 {
-	FragOut = texture(u_Texture, TexCoord  * 10.0f) * u_Color;
+// int(v_TextureIndex)
+	FragOut = texture( u_Texture[int(v_TextureIndex)], v_TexCoord ) * v_Color ;
+	// FragOut = v_Color;
 };

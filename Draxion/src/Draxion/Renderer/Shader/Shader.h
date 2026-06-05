@@ -14,6 +14,7 @@ namespace Draxion
 		virtual void Unbind() const = 0;
 
 		virtual void SetInt(const std::string& name, int value) = 0;
+		virtual void SetIntArray(const std::string& name, int* values, unsigned int count) = 0;
 		virtual void SetInt2(const std::string& name, glm::ivec2 ivec) = 0;
 		virtual void SetInt3(const std::string& name, glm::ivec3 ivec) = 0;
 		virtual void SetInt4(const std::string& name, glm::ivec4 ivec) = 0;

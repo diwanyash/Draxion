@@ -12,6 +12,9 @@ namespace Draxion
 
 		void OnUpdate( TimeStamp dt );
 		void OnEvent( Event& e );
+		
+		inline void SetZoomRatio(const float ZoomRatio) { m_Zoom_Ratio = ZoomRatio; RecalculateZoom(); }
+		
 		inline const glm::vec3 GetPos() const { return Cam_Pos; }
 		inline const float GetZoomRatio() const { return m_Zoom_Ratio; }
 		inline const float GetAspectRatio() const { return m_AspectRatio; }
@@ -27,5 +30,7 @@ namespace Draxion
 		//////////////////////////////////////
 		bool m_IsRotationOn;
 		OrthoGraphicCamera m_Camera;
+	private:
+		void RecalculateZoom();
 	};
 }

@@ -63,6 +63,7 @@ namespace Draxion
 		// std::dynamic_pointer_cast<OpenGLShader>(m_ShaderInv)->UploadUniformInt("u_Texture", 0);
 
 		m_Neduko_SanGoku = Texture2D::Create("E:/Engine_V1/Draxion/Draxion/src/Draxion/Asset/Images/Neduko.jpg");
+		m_WhiteBG = Texture2D::Create("E:/Engine_V1/Draxion/Draxion/src/Draxion/Asset/Images/Girl.png");
 
 	}
 	void ExampleLayer::OnDetach()
@@ -85,13 +86,21 @@ namespace Draxion
 			//m_Neduko_SanGoku->Bind();
 			//transform = glm::translate(glm::mat4(1.0f), pos);
 			//m_Neduko_SanGoku->Bind();
-			
+			m_CameraController.SetZoomRatio(zoom);
+
 			Renderer2D::BeginScene( m_CameraController.GetCamera() );
 			
-			Renderer2D::DrawSquare(m_Neduko_SanGoku, { -1.0f,1.0f }, { 1.0f,1.0f }); // RED
-			Renderer2D::DrawSquare(m_Neduko_SanGoku, { -1.0f,-1.0f,zR }, { 1.25f,1.25f }, {0.5f,1.0f,1.0f,0.1f}); // BLUE
-			Renderer2D::DrawSquare({  1.0f,-1.0f }, { 1.75f,1.75f }, {0.2f,0.8f,0.3f,1.0f}); // BLUE
-			Renderer2D::DrawSquare({  1.0f,1.0f }, { 1.25f,1.25f }, {1.0f,1.0f,0.0f,zB}); // BLUE
+			//Renderer2D::DrawSquare({ -1.0f,1.0f }, { 1.0f,1.0f }); // RED
+			// Renderer2D::DrawSquare(m_Neduko_SanGoku, { -1.0f,-1.0f,zR }, { 1.25f,1.25f }, {0.5f,1.0f,1.0f,0.1f}); // BLUE
+			//	for(float y = 0.0f; y < 80.0f;y++)
+			//		for(float x = 0.0f; x < 80.0f; x++)
+			//			Renderer2D::DrawSquare({  x + 0.25f, y + 0.25f }, { 0.60f,0.60f }, {0.8f,0.1f,0.8f,1.0f});
+
+			//	Renderer2D::DrawSquare(m_WhiteBG, { 1.0f,0.0f,0.0f }, { 1.0f,1.0f }, {0.8f,0.2f,1.0f,1.0f}); // BLUE
+			//	Renderer2D::DrawSquare(m_Neduko_SanGoku,{  -0.25f,-0.25f }, { 1.0f,1.0f }); // BLUE
+			//	Renderer2D::DrawSquare(m_WhiteBG,{ 1.25f,0.25f }, { 1.0f,1.0f }); // BLUE
+			//	Renderer2D::DrawSquare(m_Neduko_SanGoku,{  -1.25f,-0.25f }, { 1.0f,1.0f }); // BLUE
+			Renderer2D::DrawSquare({ 0.0f,0.0f,0.0f }, { 1.0f,1.0f }, {0.8f,0.2f,0.2f,1.0f}); // BLUE
 			
 			Renderer2D::EndScene();
 		}
@@ -103,8 +112,7 @@ namespace Draxion
 		ImGuiIO& io = ImGui::GetIO();
 		ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / io.Framerate, io.Framerate);
 		ImGui::Text("Zoom Ratio ( %.2f )", m_CameraController.GetZoomRatio());
-		ImGui::SliderFloat("Z of RED", &zR, -0.5f,0.5f,"%.2f");
-		ImGui::SliderFloat("Z of BLUE", &zB, -0.5f, 0.5f,"%.2f");
+		ImGui::SliderFloat("Zoom", &zoom, 0.001f,300.0f,"%.3f");
 		//	ImGui::SliderFloat("Girl Alpha", &Occu, 0.0f,1.0f);
 		ImGui::End();
 	}

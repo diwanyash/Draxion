@@ -32,9 +32,9 @@ namespace Draxion
 		{
 			s_RenderAPI->Clear();
 		}
-		inline static void DrawIndexed( const Ref<VertexArray>& vertexarray )
+		inline static void DrawIndexed( const Ref<VertexArray>& vertexarray, unsigned int indexcount = 0)
 		{
-			s_RenderAPI->DrawIndexed( vertexarray );
+			s_RenderAPI->DrawIndexed( vertexarray, indexcount );
 		}
 	private:
 		static RenderAPI* s_RenderAPI;

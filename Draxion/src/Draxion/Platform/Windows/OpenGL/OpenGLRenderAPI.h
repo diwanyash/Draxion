@@ -12,7 +12,7 @@ namespace Draxion
 		void SetClearColor(const glm::vec4& color) override;
 		void Clear() override;
 
-		virtual void DrawIndexed(const Ref<VertexArray>& vertexarray) override;
+		virtual void DrawIndexed(const Ref<VertexArray>& vertexarray, unsigned int indexcount) override;
 	};
 
 }

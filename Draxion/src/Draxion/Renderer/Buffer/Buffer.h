@@ -136,13 +136,15 @@ namespace Draxion
 	public:
 		virtual ~VertexBuffer() {};
 
-		static VertexBuffer* Create( float* vertices, unsigned int size_B );
+		static Ref<VertexBuffer> Create( unsigned int size_B );
+		static Ref<VertexBuffer> Create( float* vertices, unsigned int size_B );
 	
 		virtual void Bind() const = 0;
 		virtual void Unbind() const = 0;
 
 		virtual const BufferLayout& GetLayout() const = 0;
 		virtual void SetLayout(const BufferLayout& layout ) = 0;
+		virtual void SetData(const void* data, unsigned int size ) = 0;
 	};
 
 	class DRX_API IndexBuffer
@@ -150,7 +152,7 @@ namespace Draxion
 	public:
 		virtual ~IndexBuffer() {};
 
-		static IndexBuffer* Create(unsigned int* indices, unsigned int count );
+		static Ref<IndexBuffer> Create(unsigned int* indices, unsigned int count );
 		
 		virtual unsigned int GetCount() const = 0;
 	

@@ -6,7 +6,28 @@
 namespace Draxion
 {
 
-	VertexBuffer* VertexBuffer::Create(float* vertices, unsigned int size_B)
+	Ref<VertexBuffer> VertexBuffer::Create(unsigned int size_B)
+	{
+		switch (Renderer::GetAPI())
+		{
+		case RenderAPI::API::None:
+		{
+			LOG_ENGINE_WARN("None RenderAPI was set!");
+			return nullptr;
+		}
+		case RenderAPI::API::OpenGL:
+		{
+			return std::make_shared<OpenGLVertexBuffer>(size_B);
+		}
+		default:
+		{
+			LOG_ENGINE_FATAL("Unsupported RenderAPI");
+			return nullptr;
+		}
+		}
+	}
+
+	Ref<VertexBuffer> VertexBuffer::Create(float* vertices, unsigned int size_B)
 	{
 		switch ( Renderer::GetAPI() )
 		{
@@ -17,7 +38,7 @@ namespace Draxion
 			}
 			case RenderAPI::API::OpenGL :
 			{
-				return new OpenGLVertexBuffer( vertices, size_B );
+				return std::make_shared<OpenGLVertexBuffer>( vertices, size_B );
 			}
 			default:
 			{
@@ -27,7 +48,7 @@ namespace Draxion
 		}
 	}
 
-	IndexBuffer* IndexBuffer::Create(unsigned int* indices, unsigned int count)
+	Ref<IndexBuffer> IndexBuffer::Create(unsigned int* indices, unsigned int count)
 	{
 		switch (Renderer::GetAPI())
 		{
@@ -38,7 +59,7 @@ namespace Draxion
 			}
 			case RenderAPI::API::OpenGL :
 			{
-				return new OpenGLIndexBuffer(indices, count);
+				return std::make_shared<OpenGLIndexBuffer>(indices, count);
 			}
 			default:
 			{
