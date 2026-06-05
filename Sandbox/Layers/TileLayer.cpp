@@ -11,7 +11,6 @@ TileLayer::TileLayer()
 {
 	DisplayGridMap.resize((GridSize_x - 1) * (GridSize_y - 1));
 	MapSize = {0.0f, 0.0f, GridSize_x, GridSize_y};
-	Regen();
 }
 
 void TileLayer::OnAttach()
@@ -25,13 +24,16 @@ void TileLayer::OnAttach()
 		for (int x = 0; x < Gridx; x++)
 			GridVec.emplace_back( std::make_shared<TileMap>(x,y) );
 	}
-	
+
 	for (int y = 0; y < GridSize_y; y++)
 	{
 		for (int x = 0; x < GridSize_x; x++)
-			WorldGridMap.emplace_back( std::make_shared<WorldGrid>(WorldGrid::TileType::Grass) );
+			WorldGridMap.emplace_back(std::make_shared<WorldGrid>(WorldGrid::TileType::Grass));
+		//	Draxion::RandomGen::Get<int>(0, 1) ? std::make_shared<WorldGrid>(WorldGrid::TileType::Water) :
+		//	std::make_shared<WorldGrid>(WorldGrid::TileType::Grass) );
 	}
 
+	Regen();
 	m_Camera_Control.SetZoomRatio(5.0f);
 }
 
@@ -96,7 +98,7 @@ void TileLayer::OnUpdate(float dt)
 		int y = HoveredTile.y;
 		if( x >= 0 && y >= 0)
 		{
-			WorldGridMap[y * GridSize_y + x]->SetType(WorldGrid::TileType::Water);
+			WorldGridMap[y * GridSize_x + x]->SetType(WorldGrid::TileType::Water);
 		}
 		RegenWorldGrid();
 	}
@@ -106,7 +108,7 @@ void TileLayer::OnUpdate(float dt)
 		int y = HoveredTile.y;
 		if (x >= 0 && y >= 0)
 		{
-			WorldGridMap[y * GridSize_y + x]->SetType(WorldGrid::TileType::Grass);
+			WorldGridMap[y * GridSize_x + x]->SetType(WorldGrid::TileType::Grass);
 		}
 		RegenWorldGrid();
 	}
@@ -148,11 +150,18 @@ void TileLayer::OnEvent(Draxion::Event& e)
 
 void TileLayer::Regen()
 {
+	for (int y = 0; y < GridSize_y; y++)
+	{
+		for (int x = 0; x < GridSize_x; x++)
+			WorldGridMap[y * GridSize_x + x]->SetType(WorldGrid::TileType::Grass);
+		//	Draxion::RandomGen::Get<int>(0, 1) ? std::make_shared<WorldGrid>(WorldGrid::TileType::Water) :
+		//	std::make_shared<WorldGrid>(WorldGrid::TileType::Grass) );
+	}
 	for (int y = 0; y < GridSize_y - 1; y++)
 	{
 		for (int x = 0; x < GridSize_x - 1; x++)
 		{
-			DisplayGridMap[(GridSize - 1) * y + x] = { Draxion::RandomGen::Get<int>(0, 3),Draxion::RandomGen::Get<int>(0, 3) };
+			DisplayGridMap[(GridSize - 1) * y + x] = { 2,2 };//{ Draxion::RandomGen::Get<int>(0, 3),Draxion::RandomGen::Get<int>(0, 3) };
 		}
 	}
 }
@@ -163,165 +172,66 @@ void TileLayer::RegenWorldGrid()
 	{
 		for (int x = 0; x < GridSize_x - 1; x++)
 		{
-			DisplayGridMap[y * (GridSize_y - 1) +x] = SetDisplayGrid(x, y);
+			DisplayGridMap[y * (GridSize_x - 1) +x] = SetDisplayGrid(x, y);
 		}
 	}
 }
 
 std::pair<int, int> TileLayer::SetDisplayGrid( int x, int y )
 {
-	WorldGrid::TileType BL = WorldGridMap[y       * GridSize_y +  x]->GetType();
-	WorldGrid::TileType TL = WorldGridMap[(y + 1) * GridSize_y +  x]->GetType();
-	WorldGrid::TileType TR = WorldGridMap[(y + 1) * GridSize_y + (x + 1)]->GetType();
-	WorldGrid::TileType BR = WorldGridMap[y       * GridSize_y + (x + 1)]->GetType();
+	WorldGrid::TileType BL = WorldGridMap[y       * GridSize_x +  x]->GetType();
+	WorldGrid::TileType TL = WorldGridMap[(y + 1) * GridSize_x +  x]->GetType();
+	WorldGrid::TileType TR = WorldGridMap[(y + 1) * GridSize_x + (x + 1)]->GetType();
+	WorldGrid::TileType BR = WorldGridMap[y       * GridSize_x + (x + 1)]->GetType();
 
 
 
 	return GetVector(BL,TL,TR,BR);;
 }
 
-enum Tile4
+
+static const std::pair<int, int> TileLookup[16] =
 {
-	WWWW,
-	WWWG,
-	GWGW,
-	WGWW,
-	WWGW,
-	WGGW,
-	WGGG,
-	GGWW,
-	WGWG,
-	GWGG,
-	GGGG,
-	GGGW,
-	GWWW,
-	WWGG,
-	GGWG,
-	GWWG
+	{0,0}, // 0000 0 
+	{1,0}, // 0001 1
+	{0,1}, // 0010 2
+	{1,3}, // 0011 3
+
+	{3,0}, // 0100 4
+	{0,2}, // 0101 5
+	{1,1}, // 0110 6
+	{2,1}, // 0111 7
+
+	{0,3}, // 1000 8 
+	{3,3}, // 1001 9 
+	{2,0}, // 1010 10
+	{1,2}, // 1011 11
+
+	{3,1}, // 1100 12
+	{2,3}, // 1101 13
+	{3,2}, // 1110 14
+	{2,2}, // 1111 15
 };
 
 std::pair<int, int> TileLayer::GetVector(WorldGrid::TileType BL, WorldGrid::TileType TL, WorldGrid::TileType TR, WorldGrid::TileType BR)
 {
-	if ( BL == WorldGrid::TileType::Water &&
-		 TL == WorldGrid::TileType::Water && 
-		 TR == WorldGrid::TileType::Water && 
-		 BR == WorldGrid::TileType::Water)
-	{
-		return {0,0};
-	}
-	else if (BL == WorldGrid::TileType::Water &&
-			 TL == WorldGrid::TileType::Water &&
-			 TR == WorldGrid::TileType::Water &&
-			 BR == WorldGrid::TileType::Grass)
-	{
-		return { 1,0 };
-	}
-	else if (BL == WorldGrid::TileType::Grass &&
-			 TL == WorldGrid::TileType::Water &&
-			 TR == WorldGrid::TileType::Grass &&
-			 BR == WorldGrid::TileType::Water)
-	{
-		return { 2,0 };
-	}
-	else if (BL == WorldGrid::TileType::Water &&
-			 TL == WorldGrid::TileType::Grass &&
-			 TR == WorldGrid::TileType::Water &&
-			 BR == WorldGrid::TileType::Water)
-	{
-		return { 3,0 };
-	}
-	else if (BL == WorldGrid::TileType::Water &&
-			 TL == WorldGrid::TileType::Water &&
-			 TR == WorldGrid::TileType::Grass &&
-			 BR == WorldGrid::TileType::Water)
-	{
-		return { 0,1 };
-	}
-	else if (BL == WorldGrid::TileType::Water &&
-			 TL == WorldGrid::TileType::Grass &&
-			 TR == WorldGrid::TileType::Grass &&
-			 BR == WorldGrid::TileType::Water)
-	{
-		return { 1,1 };
-	}
-	else if (BL == WorldGrid::TileType::Water &&
-			 TL == WorldGrid::TileType::Grass &&
-			 TR == WorldGrid::TileType::Grass &&
-			 BR == WorldGrid::TileType::Grass)
-	{
-		return { 2,1 };
-	}
-	else if (BL == WorldGrid::TileType::Grass &&
-			 TL == WorldGrid::TileType::Grass &&
-			 TR == WorldGrid::TileType::Water &&
-			 BR == WorldGrid::TileType::Water)
-	{
-		return { 3,1 };
-	}
-	else if (BL == WorldGrid::TileType::Water &&
-			 TL == WorldGrid::TileType::Grass &&
-			 TR == WorldGrid::TileType::Water &&
-			 BR == WorldGrid::TileType::Grass)
-	{
-		return { 0,2 };
-	}
-	else if (BL == WorldGrid::TileType::Grass &&
-			 TL == WorldGrid::TileType::Water &&
-			 TR == WorldGrid::TileType::Grass &&
-			 BR == WorldGrid::TileType::Grass)
-	{
-		return { 1,2 };
-	}
-	else if (BL == WorldGrid::TileType::Grass &&
-			 TL == WorldGrid::TileType::Grass &&
-			 TR == WorldGrid::TileType::Grass &&
-			 BR == WorldGrid::TileType::Grass)
-	{
-		return { 2,2 };
-	}
-	else if (BL == WorldGrid::TileType::Grass &&
-			 TL == WorldGrid::TileType::Grass &&
-			 TR == WorldGrid::TileType::Grass &&
-			 BR == WorldGrid::TileType::Water)
-	{
-		return { 3,2 };
-	}
-	else if (BL == WorldGrid::TileType::Grass &&
-			 TL == WorldGrid::TileType::Water &&
-			 TR == WorldGrid::TileType::Water &&
-			 BR == WorldGrid::TileType::Water)
-	{
-		return { 0,3 };
-	}
-	else if (BL == WorldGrid::TileType::Water &&
-			 TL == WorldGrid::TileType::Water &&
-			 TR == WorldGrid::TileType::Grass &&
-			 BR == WorldGrid::TileType::Grass)
-	{
-		return { 1,3 };
-	}
-	else if (BL == WorldGrid::TileType::Grass &&
-			 TL == WorldGrid::TileType::Grass &&
-			 TR == WorldGrid::TileType::Water &&
-			 BR == WorldGrid::TileType::Grass)
-	{
-		return { 2,3 };
-	}
-	else if (BL == WorldGrid::TileType::Grass &&
-			 TL == WorldGrid::TileType::Water &&
-			 TR == WorldGrid::TileType::Water &&
-			 BR == WorldGrid::TileType::Grass)
-	{
-		return { 3,3 };
-	}
-	else
-	{
-		return { 0,0 };
-	}
+	uint8_t mask = 0;
+	
+	if (BL == WorldGrid::TileType::Grass)
+		mask |= (1 << 3);
+	
+	if (TL == WorldGrid::TileType::Grass)
+		mask |= (1 << 2);
+	
+	if (TR == WorldGrid::TileType::Grass)
+		mask |= (1 << 1);
+	
+	if (BR == WorldGrid::TileType::Grass)
+		mask |= (1 << 0);
 
-	LOG_CLIENT_ERROR("Invalid Return Type in GetVector");
-	return std::pair<int, int>();
+	return TileLookup[mask];
 }
+
 
 
 
