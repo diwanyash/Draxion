@@ -12,19 +12,20 @@ namespace Draxion
 	{
 		m_Player_Texture = Texture2D::Create(SpriteTextPath);
 
-		int SpriteUV_Size = 16 * 4;
-		int Index = 0;
-
 		for ( int y = 0; y < 4; y++)
 		{
 			for (int x = 0; x < 4; x++)
 			{
-				auto result = CalculateTilesUV( x, y );
-				m_SpriteUV[0 + Index] = result.x;
-				m_SpriteUV[1 + Index] = result.y;
-				m_SpriteUV[2 + Index] = result.z;
-				m_SpriteUV[3 + Index] = result.w;
-				Index += 4;
+				auto result = CalculateTilesUV(x, y);
+				m_SpriteUV.push_back(glm::vec4{ result.x,result.y,result.z,result.w });
+			}
+		}
+		for (int y = 4; y < 8; y++)
+		{
+			for (int x = 0; x < 2; x++)
+			{
+				auto result = CalculateTilesUV(x, y);
+				m_SpriteUV.push_back(glm::vec4{result.x,result.y,result.z,result.w});
 			}
 		}
 
@@ -33,56 +34,77 @@ namespace Draxion
 
 	void Player::OnUpdate(float dt)
 	{
+		m_Moving = false;
+
 		if ( Input::IsKeyPressed( DRX_KEY_W ))
 		{
 			m_Position.y += m_Player_Speed * dt;
 			m_Direction = Face::Back;
-		}
-		else if ( Input::IsKeyPressed(DRX_KEY_A))
-		{
-			m_Position.x -= m_Player_Speed * dt;
-			m_Direction = Face::Left;
+			m_Moving = true;
 		}
 		else if ( Input::IsKeyPressed( DRX_KEY_S ))
 		{
 			m_Position.y -= m_Player_Speed * dt;
 			m_Direction = Face::Front;
+			m_Moving = true;
+		}
+
+
+		if ( Input::IsKeyPressed(DRX_KEY_A))
+		{
+			m_Position.x -= m_Player_Speed * dt;
+			m_Direction = Face::Left;
+			m_Moving = true;
 		}
 		else if ( Input::IsKeyPressed( DRX_KEY_D ))
 		{
 			m_Position.x += m_Player_Speed * dt;
 			m_Direction = Face::Right;
+			m_Moving = true;
 		}
+
+		m_State = m_Moving ? State::Walking : State::Idle;
 	}
 	void Player::Draw(float dt)
 	{
 		FrameTime += dt;
-		if( FrameTime < 0.25f )
+
+		// WALKING
+		if( m_State == State::Walking && FrameTime < 0.25f )
 		{
-			Renderer2D::DrawSquare(m_Player_Texture, m_Position, { m_SpriteUV[0 + (16 * m_Direction)],m_SpriteUV[1 + (16 * m_Direction)],m_SpriteUV[2 + (16 * m_Direction)],m_SpriteUV[3 + (16 * m_Direction)],}, m_Player_Size);
+			Renderer2D::DrawSquare(m_Player_Texture, m_Position , m_SpriteUV[0 + (4 * m_Direction)], m_Player_Size);
 		}
-		else if( FrameTime < 0.5f )
+		else if(m_State == State::Walking && FrameTime < 0.5f )
 		{
-			Renderer2D::DrawSquare(m_Player_Texture, m_Position, { m_SpriteUV[4 + (16 * m_Direction)],m_SpriteUV[5 + (16 * m_Direction)],m_SpriteUV[6 + (16 * m_Direction)],m_SpriteUV[7 + (16 * m_Direction)], }, m_Player_Size);
+			Renderer2D::DrawSquare(m_Player_Texture, m_Position, m_SpriteUV[1 + (4 * m_Direction)], m_Player_Size);
 		}
-		else if( FrameTime < 0.75f )
+		else if(m_State == State::Walking && FrameTime < 0.75f )
 		{
-			Renderer2D::DrawSquare(m_Player_Texture, m_Position, { m_SpriteUV[8 + (16 * m_Direction)],m_SpriteUV[9 + (16 * m_Direction)],m_SpriteUV[10 + (16 * m_Direction)],m_SpriteUV[11 + (16 * m_Direction)], }, m_Player_Size);
+			Renderer2D::DrawSquare(m_Player_Texture, m_Position, m_SpriteUV[2 + (4 * m_Direction)], m_Player_Size);
 		}
-		else if( FrameTime < 1.0f )
+		else if(m_State == State::Walking && FrameTime < 1.0f )
 		{
-			Renderer2D::DrawSquare(m_Player_Texture, m_Position, { m_SpriteUV[12 + (16 * m_Direction)],m_SpriteUV[13 + (16 * m_Direction)],m_SpriteUV[14 + (16 * m_Direction)],m_SpriteUV[15 + (16 * m_Direction)], }, m_Player_Size);
+			Renderer2D::DrawSquare(m_Player_Texture, m_Position, m_SpriteUV[3 + (4 * m_Direction)], m_Player_Size);
 		}
-		else
+
+		// IDLE
+		if(m_State == State::Idle && FrameTime < 0.5f)
 		{
-			FrameTime = 0.0f;
+			Renderer2D::DrawSquare(m_Player_Texture, m_Position, m_SpriteUV[16 + (2 * m_Direction)], m_Player_Size);
 		}
+		else if (m_State == State::Idle && FrameTime < 1.0f)
+		{
+			Renderer2D::DrawSquare(m_Player_Texture, m_Position, m_SpriteUV[17 + (2 * m_Direction)], m_Player_Size);
+		}
+
+		if( FrameTime >= 1.0f )
+		FrameTime = 0.0f;
 	}
 
 	glm::vec4 Player::CalculateTilesUV(int x, int y)
 	{
 		float TileWidth = 1.0f / 4.0f;
-		float TileHeight = 1.0f / 4.0f;
+		float TileHeight = 1.0f / 8.0f;
 
 		float u0 = (float)x * TileWidth;
 		float v0 = (float)y * TileHeight;

@@ -11,7 +11,7 @@ void TileMapLayer::OnAttach()
 {
 	LOG_CLIENT_INFO( "TileMap Layer Attached");
 
-	m_Map = Draxion::TileMap( m_TileMap, m_Grass_Full, { 16,25 }, { 4,4 }, { -3.0f,-3.0f,0.0f } );
+	m_Map = Draxion::TileMap( m_TileMap, m_Grass_Full, { 32,25 }, { 4,4 }, { -3.0f,-3.0f,0.0f } );
 	m_Player = Draxion::Player(m_Joe_Sprite_Full, {1.0f,1.0f,1.0f});
 	m_Camera_Con.SetZoomRatio(3.5f);
 
@@ -25,7 +25,7 @@ void TileMapLayer::OnUpdate(float dt)
 {
 	m_Camera_Con.OnUpdateOnly();
 	m_Player.OnUpdate( dt );
-	auto i = m_Player.GetPos();
+	auto i = m_Player.GetPos() - glm::vec3{ -0.5f, -0.5f, 0.0f };
 	m_Camera_Con.SetPos({i.x,i.y,0.0f});
 
 	Draxion::RenderCommand::SetClearColor({0.3f,0.7f,0.7f,1.0f});

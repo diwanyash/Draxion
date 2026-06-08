@@ -37,11 +37,12 @@ namespace Draxion
 		State m_State = State::Walking;
 		Draxion::Ref<Texture2D> m_Player_Texture = nullptr;
 		glm::vec3 m_Position = { 0.0f, 0.0f, 0.0f };
-		float m_SpriteUV[16 * 4] = {0.0f};
+		std::vector<glm::vec4> m_SpriteUV;
 		float FrameTime = 0.0f;
 	private:
 		// Magic Variables
 		float m_Player_Speed = 3.0f;
 		glm::vec2 m_Player_Size = { 1.0f,1.0f };
+		bool m_Moving = false;
 	};
 }
