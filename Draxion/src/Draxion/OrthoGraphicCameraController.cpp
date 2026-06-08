@@ -53,6 +53,13 @@ namespace Draxion
 
 		Cam_Move_Speed = m_Zoom_Ratio;
 	}
+	void OrthoGraphicCameraController::OnUpdateOnly()
+	{
+		m_Camera.SetPosition(Cam_Pos);
+
+		if (m_IsRotationOn)
+			m_Camera.SetRotation(Cam_Rot);
+	}
 	
 	void OrthoGraphicCameraController::RecalculateZoom()
 	{
