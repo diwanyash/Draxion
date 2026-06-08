@@ -6,7 +6,6 @@ public:
 	TileLayer();
 	~TileLayer() {};
 
-
 	void OnAttach() override;
 	void OnUpdate(float dt) override;
 	void OnImGuiRender() override;
@@ -25,7 +24,7 @@ private:
 	struct WorldGrid
 	{
 	public:
-		static enum TileType
+		enum TileType
 		{
 			Water = 0,
 			Grass = 1,
@@ -82,9 +81,8 @@ public:
 
 	// TestDisplayGridMap
 	std::vector<std::pair<int,int>> DisplayGridMap;
-	glm::vec2 GridOffset = {0.0f,0.0f};
 	glm::vec4 MapSize = {0.0f,0.0f,0.0f,0.0f};
-	int GridSize_x = 50;
-	int GridSize_y = 50;
-	int GridSize   = 50;
+	int GridSize_x = 2;
+	int GridSize_y = 2;
+	int GridSize   = 2;
 };

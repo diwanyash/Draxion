@@ -1,6 +1,7 @@
 #include "DraxionMain.h"
 #include "Layers/ExampleLayer.h"
 #include "Layers/TileLayer.h"
+#include "Layers/TileMapLayer.h"
 #include "../Draxion/src/Draxion/Core/EntryPoint.h"
 
 class Sandbox : public Draxion::Application
@@ -11,8 +12,12 @@ public:
 		LOG_CLIENT_TRACE("SandBox Constructed"); 
 		// auto examplelayer = new Draxion::ExampleLayer();
 		// PushLayer( examplelayer );
-		auto TileSetLayer = new TileLayer();
-		PushLayer( TileSetLayer );
+		
+		// auto TileSetLayer = new TileLayer();
+		// PushLayer( TileSetLayer );
+
+		Draxion::Layer* TileMapLayerVar = new TileMapLayer();
+		PushLayer( TileMapLayerVar );
 		
 		// PopOverLay(imguilayer);
 		// PopLayer( examplelayer );

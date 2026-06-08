@@ -176,7 +176,7 @@ namespace Draxion
 		//	s_Data.SquareVertexArray->Bind();
 		//	RenderCommand::DrawIndexed(s_Data.SquareVertexArray);
 	}
-	void Renderer2D::DrawSquare(Ref<Texture2D>& texture, const glm::vec3& Position, const glm::vec2& Size, const glm::vec4& Color)
+	void Renderer2D::DrawSquare(const Ref<Texture2D>& texture, const glm::vec3& Position, const glm::vec2& Size, const glm::vec4& Color)
 	{
 		// Test Only!!!!!!!
 		// s_Data.Shader->Bind();
@@ -238,11 +238,11 @@ namespace Draxion
 		//	s_Data.SquareVertexArray->Bind();
 		//	RenderCommand::DrawIndexed(s_Data.SquareVertexArray);
 	}
-	void Renderer2D::DrawSquare(Ref<Texture2D>& texture, const glm::vec2& Position, const glm::vec4& UV, const glm::vec2& Size, const glm::vec4& Color)
+	void Renderer2D::DrawSquare(const Ref<Texture2D>& texture, const glm::vec2& Position, const glm::vec4& UV, const glm::vec2& Size, const glm::vec4& Color)
 	{
 		DrawSquare(texture, {Position.x,Position.y,0.0f}, UV, Size, Color);
 	}
-	void Renderer2D::DrawSquare(Ref<Texture2D>& texture, const glm::vec3& Position,const glm::vec4& UV, const glm::vec2& Size, const glm::vec4& Color)
+	void Renderer2D::DrawSquare(const Ref<Texture2D>& texture, const glm::vec3& Position,const glm::vec4& UV, const glm::vec2& Size, const glm::vec4& Color)
 	{
 		float textureIndex = 0.0f;
 

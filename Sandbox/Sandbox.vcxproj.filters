@@ -24,12 +24,18 @@
     <ClCompile Include="Layers\TileLayer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Layers\TileMapLayer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Layers\ExampleLayer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Layers\TileLayer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Layers\TileMapLayer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

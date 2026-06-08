@@ -2,9 +2,6 @@
 #include "imgui/imgui.h"
 #include <glm/gtc/type_ptr.hpp>
 
-
-#include "src/Draxion/Platform/Windows/OpenGL/OpenGLShader.h"
-
 TileLayer::TileLayer()
 	:
 	Layer("TileSet")
@@ -83,10 +80,12 @@ void TileLayer::OnUpdate(float dt)
 				as all data are sent once
 			Draxion::Renderer2D::DrawSquare(m_Grass_BSlash, , {1.0f,1.0f});
 			*/
-			Draxion::Renderer2D::DrawSquare(m_Grass_Full, { GridOffset.x + float(x), GridOffset.y + float(y),0.0f },
+			Draxion::Renderer2D::DrawSquare(m_Grass_Full, {float(x),float(y),0.0f },
 				GridVec[grid_y * 4 + grid_x]->GetUVPos(), { 1.0f,1.0f });
 		}
 	}
+
+	// Draxion::DrawTileMap(m_TileTexture,/*in string format*/ Map, /*Tiles per Tileset*/{4, 4},/*Pos*/{0.0f,0.0f,0.0f});
 
 	//	Draxion::Renderer2D::DrawSquare(m_Grass_Full, { 0.0f,0.0f },GridVec[6]->GetUVPos(), {1.0f,1.0f});
 
@@ -96,7 +95,7 @@ void TileLayer::OnUpdate(float dt)
 	{
 		int x = HoveredTile.x;
 		int y = HoveredTile.y;
-		if( x >= 0 && y >= 0)
+		if( x >= 0 && y >= 0 && x < GridSize_x && y < GridSize_y)
 		{
 			WorldGridMap[y * GridSize_x + x]->SetType(WorldGrid::TileType::Water);
 		}
@@ -177,17 +176,6 @@ void TileLayer::RegenWorldGrid()
 	}
 }
 
-std::pair<int, int> TileLayer::SetDisplayGrid( int x, int y )
-{
-	WorldGrid::TileType BL = WorldGridMap[y       * GridSize_x +  x]->GetType();
-	WorldGrid::TileType TL = WorldGridMap[(y + 1) * GridSize_x +  x]->GetType();
-	WorldGrid::TileType TR = WorldGridMap[(y + 1) * GridSize_x + (x + 1)]->GetType();
-	WorldGrid::TileType BR = WorldGridMap[y       * GridSize_x + (x + 1)]->GetType();
-
-
-
-	return GetVector(BL,TL,TR,BR);;
-}
 
 
 static const std::pair<int, int> TileLookup[16] =
@@ -212,6 +200,31 @@ static const std::pair<int, int> TileLookup[16] =
 	{3,2}, // 1110 14
 	{2,2}, // 1111 15
 };
+
+
+std::pair<int, int> TileLayer::SetDisplayGrid( int x, int y )
+{
+	WorldGrid::TileType BL = WorldGridMap[y       * GridSize_x +  x]->GetType();
+	WorldGrid::TileType TL = WorldGridMap[(y + 1) * GridSize_x +  x]->GetType();
+	WorldGrid::TileType TR = WorldGridMap[(y + 1) * GridSize_x + (x + 1)]->GetType();
+	WorldGrid::TileType BR = WorldGridMap[y       * GridSize_x + (x + 1)]->GetType();
+
+	uint8_t mask = 0;
+
+	if (BL == WorldGrid::TileType::Grass)
+		mask |= (1 << 3);
+
+	if (TL == WorldGrid::TileType::Grass)
+		mask |= (1 << 2);
+
+	if (TR == WorldGrid::TileType::Grass)
+		mask |= (1 << 1);
+
+	if (BR == WorldGrid::TileType::Grass)
+		mask |= (1 << 0);
+
+	return TileLookup[mask];
+}
 
 std::pair<int, int> TileLayer::GetVector(WorldGrid::TileType BL, WorldGrid::TileType TL, WorldGrid::TileType TR, WorldGrid::TileType BR)
 {

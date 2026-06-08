@@ -94,6 +94,7 @@
   <ItemGroup>
     <ClCompile Include="Layers\ExampleLayer.cpp" />
     <ClCompile Include="Layers\TileLayer.cpp" />
+    <ClCompile Include="Layers\TileMapLayer.cpp" />
     <ClCompile Include="Sandbox.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -104,6 +105,7 @@
   <ItemGroup>
     <ClInclude Include="Layers\ExampleLayer.h" />
     <ClInclude Include="Layers\TileLayer.h" />
+    <ClInclude Include="Layers\TileMapLayer.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
