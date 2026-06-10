@@ -275,6 +275,15 @@
     <ClInclude Include="src\Draxion\Renderer\Sprite\Player.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\Draxion\Debug\Profiler\Profiler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Draxion\Debug\Profiler\ProfileTimer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Draxion\Debug\Profiler\ProfileDumper.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="src\Draxion\Asset\OpenGL\Shaders\Basic.vert" />

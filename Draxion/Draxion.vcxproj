@@ -150,6 +150,9 @@
     <ClInclude Include="src\Draxion\Core\Layer\ImGuiLayer.h" />
     <ClInclude Include="src\Draxion\Core\Util\RandomGen.h" />
     <ClInclude Include="src\Draxion\Core\Util\TimeStamp.h" />
+    <ClInclude Include="src\Draxion\Debug\Profiler\ProfileDumper.h" />
+    <ClInclude Include="src\Draxion\Debug\Profiler\Profiler.h" />
+    <ClInclude Include="src\Draxion\Debug\Profiler\ProfileTimer.h" />
     <ClInclude Include="src\Draxion\Events\ApplicationEvent.h" />
     <ClInclude Include="src\Draxion\Events\Event.h" />
     <ClInclude Include="src\Draxion\Events\EventDispatcher.h" />
