@@ -3,6 +3,8 @@ E:\Engine_V1\Draxion\Draxion\src\Draxion\Core\Application.cpp;E:\Engine_V1\Draxi
 E:\Engine_V1\Draxion\Draxion\src\Draxion\Core\LayerStack.cpp;E:\Engine_V1\Draxion\bin-int\Debug-x64\Draxion\LayerStack.obj
 E:\Engine_V1\Draxion\Draxion\src\Draxion\Core\Layer\ImGuiLayer.cpp;E:\Engine_V1\Draxion\bin-int\Debug-x64\Draxion\ImGuiLayer.obj
 E:\Engine_V1\Draxion\Draxion\src\Draxion\Core\Util\RandomGen.cpp;E:\Engine_V1\Draxion\bin-int\Debug-x64\Draxion\RandomGen.obj
+E:\Engine_V1\Draxion\Draxion\src\Draxion\Debug\Profiler\Profiler.cpp;E:\Engine_V1\Draxion\bin-int\Debug-x64\Draxion\Profiler.obj
+E:\Engine_V1\Draxion\Draxion\src\Draxion\Debug\Profiler\ProfileTimer.cpp;E:\Engine_V1\Draxion\bin-int\Debug-x64\Draxion\ProfileTimer.obj
 E:\Engine_V1\Draxion\Draxion\src\Draxion\Input\Input.cpp;E:\Engine_V1\Draxion\bin-int\Debug-x64\Draxion\Input.obj
 E:\Engine_V1\Draxion\Draxion\src\Draxion\Core\Logger.cpp;E:\Engine_V1\Draxion\bin-int\Debug-x64\Draxion\Logger.obj
 E:\Engine_V1\Draxion\Draxion\src\Draxion\Core\Window.cpp;E:\Engine_V1\Draxion\bin-int\Debug-x64\Draxion\Window.obj

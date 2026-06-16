@@ -1,5 +1,6 @@
 #include "OpenGLVertexArray.h"
 #include "STB/stb_image.h"
+#include <Draxion/Debug/Profiler/ProfileTimer.h>
 
 namespace Draxion
 {
@@ -27,22 +28,32 @@ namespace Draxion
 
 	OpenGLVertexArray::OpenGLVertexArray()
 	{
+		DX_PROFILE_FUNCTION();
+
 		glCreateVertexArrays(1, &m_RendererID);
 	}
 	OpenGLVertexArray::~OpenGLVertexArray()
-	{ 
+	{
+		DX_PROFILE_FUNCTION();
+
 		glDeleteVertexArrays(1, &m_RendererID);
 	}
 	void OpenGLVertexArray::Bind() const
 	{
+		DX_PROFILE_FUNCTION();
+
 		glBindVertexArray(m_RendererID);
 	}
 	void OpenGLVertexArray::Unbind() const
 	{
+		DX_PROFILE_FUNCTION();
+
 		glBindVertexArray(0);
 	}
 	void OpenGLVertexArray::AddVertexBuffers(const Ref<VertexBuffer>& vertexBuffer)
 	{
+		DX_PROFILE_FUNCTION();
+
 		if (vertexBuffer->GetLayout().GetElements().size() == 0)
 		{
 			LOG_ENGINE_ERROR( "No Layout Was Bound Before Calling func AddVertexBuffers()" );
@@ -94,6 +105,8 @@ namespace Draxion
 	}
 	void OpenGLVertexArray::SetIndexBuffer(const Ref<IndexBuffer>& indexBuffer)
 	{
+		DX_PROFILE_FUNCTION();
+
 		glBindVertexArray(m_RendererID);
 		indexBuffer->Bind();
 

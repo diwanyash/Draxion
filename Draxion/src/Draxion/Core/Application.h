@@ -4,6 +4,7 @@
 #include "LayerStack.h"
 #include <memory>
 #include "Layer/ImGuiLayer.h"
+#include "Draxion/Debug/Profiler/ProfileTimer.h"
 
 namespace Draxion
 {

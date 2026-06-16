@@ -1,5 +1,6 @@
 #include "OpenGLContext.h"
 #include "Draxion/Core/Logger.h"
+#include "Draxion/Debug/Profiler/ProfileTimer.h"
 
 #include "glad/glad.h"
 #include "glfw/glfw3.h"
@@ -15,6 +16,8 @@ namespace Draxion
 	}
 	void OpenGLContext::Init()
 	{
+		DX_PROFILE_FUNCTION();
+	
 		glfwMakeContextCurrent(m_Windowhandle);
 		// IF V-SYNC IS DISABLED
 		glfwSwapInterval(1);
@@ -30,6 +33,8 @@ namespace Draxion
 	}
 	void OpenGLContext::SwapBuffers()
 	{
+		DX_PROFILE_FUNCTION();
+
 		glfwSwapBuffers(m_Windowhandle);
 	}
 }

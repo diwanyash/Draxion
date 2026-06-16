@@ -1,5 +1,6 @@
 #include "TileMap.h"
 #include "Draxion/Renderer/Renderer2D.h"
+#include <Draxion/Debug/Profiler/ProfileTimer.h>
 
 namespace Draxion
 {
@@ -33,6 +34,8 @@ namespace Draxion
 		m_TextureDiv(TextureDiv),
 		m_Position(Position)
 	{
+		DX_PROFILE_FUNCTION();
+
 		m_TileSetTexture = Texture2D::Create(TileSetTexPath);
 		m_Tiles.resize( m_TextureDiv.x * m_TextureDiv.y);
 		for (int y = 0; y < m_TextureDiv.y; y ++)
@@ -48,6 +51,8 @@ namespace Draxion
 
 	void TileMap::Draw( float dt ) const
 	{
+		DX_PROFILE_FUNCTION();
+
 		for (int y = 0; y < m_MapSize.y - 1; y++)
 		{
 			for (int x = 0; x < m_MapSize.x - 1; x++)
@@ -65,6 +70,8 @@ namespace Draxion
 
 	glm::vec4 TileMap::CalculateTilesUV(int x, int y) const
 	{
+		DX_PROFILE_FUNCTION();
+
 		float TileWidth = 1.0f / (float)m_TextureDiv.x;
 		float TileHeight = 1.0f / (float)m_TextureDiv.y;
 
@@ -79,6 +86,8 @@ namespace Draxion
 
 	void TileMap::DisplayGridMapGen() 
 	{
+		DX_PROFILE_FUNCTION();
+
 		for (int y = 0; y < m_MapSize.y - 1; y++)
 		{
 			for (int x = 0; x < m_MapSize.x - 1; x++)

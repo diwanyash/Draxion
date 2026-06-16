@@ -106,6 +106,8 @@
     <ClCompile Include="src\Draxion\Core\LayerStack.cpp" />
     <ClCompile Include="src\Draxion\Core\Layer\ImGuiLayer.cpp" />
     <ClCompile Include="src\Draxion\Core\Util\RandomGen.cpp" />
+    <ClCompile Include="src\Draxion\Debug\Profiler\Profiler.cpp" />
+    <ClCompile Include="src\Draxion\Debug\Profiler\ProfileTimer.cpp" />
     <ClCompile Include="src\Draxion\Input\Input.cpp" />
     <ClCompile Include="src\Draxion\Core\Logger.cpp" />
     <ClCompile Include="src\Draxion\Core\Window.cpp" />
@@ -150,7 +152,6 @@
     <ClInclude Include="src\Draxion\Core\Layer\ImGuiLayer.h" />
     <ClInclude Include="src\Draxion\Core\Util\RandomGen.h" />
     <ClInclude Include="src\Draxion\Core\Util\TimeStamp.h" />
-    <ClInclude Include="src\Draxion\Debug\Profiler\ProfileDumper.h" />
     <ClInclude Include="src\Draxion\Debug\Profiler\Profiler.h" />
     <ClInclude Include="src\Draxion\Debug\Profiler\ProfileTimer.h" />
     <ClInclude Include="src\Draxion\Events\ApplicationEvent.h" />

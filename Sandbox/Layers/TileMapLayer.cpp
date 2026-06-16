@@ -5,10 +5,14 @@ TileMapLayer::TileMapLayer()
 	:
 	Layer("TileMapLayer")
 {
+	DX_PROFILE_FUNCTION();
+
 }
 
 void TileMapLayer::OnAttach()
 {
+	DX_PROFILE_FUNCTION();
+
 	LOG_CLIENT_INFO( "TileMap Layer Attached");
 
 	m_Map = Draxion::TileMap( m_TileMap, m_Grass_Full, { 32,25 }, { 4,4 }, { -3.0f,-3.0f,0.0f } );
@@ -19,21 +23,33 @@ void TileMapLayer::OnAttach()
 
 void TileMapLayer::OnDetach()
 {
+	DX_PROFILE_FUNCTION();
+
 }
 
 void TileMapLayer::OnUpdate(float dt)
 {
-	m_Camera_Con.OnUpdateOnly();
-	m_Player.OnUpdate( dt );
-	auto i = m_Player.GetPos() - glm::vec3{ -0.5f, -0.5f, 0.0f };
-	m_Camera_Con.SetPos({i.x,i.y,0.0f});
+	DX_PROFILE_FUNCTION();
+
+
+
+	{
+		DX_PROFILE_SCOPE("TileMap Calculate");
+		m_Camera_Con.OnUpdateOnly();
+		m_Player.OnUpdate(dt);
+		auto i = m_Player.GetPos() - glm::vec3{ -0.5f, -0.5f, 0.0f };
+		m_Camera_Con.SetPos({ i.x,i.y,0.0f });
+	}
 
 	Draxion::RenderCommand::SetClearColor({0.3f,0.7f,0.7f,1.0f});
 	Draxion::RenderCommand::Clear();
 
 	Draxion::Renderer2D::BeginScene( m_Camera_Con.GetCamera() );
-	m_Map.Draw(dt);
-	m_Player.Draw(dt);
+	{
+		DX_PROFILE_SCOPE("TileMap Draw");
+		m_Map.Draw(dt);
+		m_Player.Draw(dt);
+	}
 	Draxion::Renderer2D::EndScene();
 }
 
@@ -44,9 +60,39 @@ void TileMapLayer::OnEvent(Draxion::Event& e)
 
 void TileMapLayer::OnImGuiRender()
 {
+	DX_PROFILE_FUNCTION();
+
+	static float FrameTimes[1000] = {};
+	static int Offset = 0;
+
+	ImGui::SetNextWindowBgAlpha(0.35f);
 	ImGui::Begin("Grid_Control");
 	ImGuiIO& io = ImGui::GetIO();
-	ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / io.Framerate, io.Framerate);
+
+	float FrameTimeMs = 1000.0f * io.DeltaTime;
+
+	FrameTimes[Offset] = FrameTimeMs;
+	Offset = (Offset + 1) % IM_ARRAYSIZE(FrameTimes);
+
+	ImGui::Text("FPS: %.1f", ImGui::GetIO().Framerate);
+	ImGui::Text("Frame Time: %.3f ms", FrameTimeMs);
+
+	ImGui::PushStyleColor(ImGuiCol_PlotLines, ImVec4(0.2f, 1.0f, 0.2f, 1.0f));
+	ImGui::PushStyleColor(ImGuiCol_PlotLinesHovered, ImVec4(0.4f, 1.0f, 0.4f, 1.0f));
+	
+	ImGui::PlotLines(
+		"Frame Time (ms)",
+		FrameTimes,
+		IM_ARRAYSIZE(FrameTimes),
+		Offset,
+		nullptr,
+		0.0f,
+		50.0f,
+		ImVec2(0,80)
+	);
+
+	ImGui::PopStyleColor(2);
+	
 	ImGui::Text("Zoom Level %.2f", m_Camera_Con.GetZoomRatio());
 	ImGui::End();
 }

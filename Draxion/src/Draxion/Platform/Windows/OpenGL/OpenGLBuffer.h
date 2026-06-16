@@ -1,5 +1,6 @@
 #pragma once
 #include "Draxion/Renderer/Buffer/Buffer.h"
+#include <Draxion/Debug/Profiler/ProfileTimer.h>
 
 namespace Draxion
 {
@@ -17,7 +18,9 @@ namespace Draxion
 
 		inline const BufferLayout& GetLayout() const override { return m_Layout; }
 		inline void SetLayout(const BufferLayout& layout) override
-		{ 
+		{
+			DX_PROFILE_FUNCTION();
+
 			m_Layout = layout; 
 		}
 	private:

@@ -1,6 +1,7 @@
 #include "Logger.h"
 #include <iomanip>
 #include <chrono>
+#include "Draxion/Debug/Profiler/ProfileTimer.h"
 
 namespace Draxion
 {
@@ -8,6 +9,8 @@ namespace Draxion
 
 	void Logger::Init()
 	{
+		DX_PROFILE_FUNCTION();
+
 		std::ios::sync_with_stdio(false);
 		std::cin.tie(nullptr);
 		
@@ -15,6 +18,8 @@ namespace Draxion
 	}
 	const char* Logger::GetTime()
 	{
+		DX_PROFILE_FUNCTION();
+
 		auto now = std::chrono::system_clock::now();
 		auto time = std::chrono::system_clock::to_time_t(now);
 

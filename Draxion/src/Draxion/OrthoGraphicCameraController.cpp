@@ -5,6 +5,7 @@
 #include "Draxion/Events/ApplicationEvent.h"
 #include "Draxion/Events/MouseEvents.h"
 #include "Draxion/Events/KeyEvent.h"
+#include "Debug/Profiler/ProfileTimer.h"
 
 namespace Draxion
 {
@@ -14,10 +15,12 @@ namespace Draxion
 		m_Camera( -m_AspectRatio * m_Zoom_Ratio, m_AspectRatio * m_Zoom_Ratio, -m_Zoom_Ratio, m_Zoom_Ratio ),
 		m_IsRotationOn(rotation)
 	{
-		
+		DX_PROFILE_FUNCTION();
 	}
 	void OrthoGraphicCameraController::OnUpdate( TimeStamp dt )
 	{
+		DX_PROFILE_FUNCTION();
+
 		if (Input::IsKeyPressed(DRX_KEY_W))
 		{
 			Cam_Pos.y += Cam_Move_Speed * dt;
@@ -55,6 +58,8 @@ namespace Draxion
 	}
 	void OrthoGraphicCameraController::OnUpdateOnly()
 	{
+		DX_PROFILE_FUNCTION();
+
 		m_Camera.SetPosition(Cam_Pos);
 
 		if (m_IsRotationOn)
@@ -63,6 +68,8 @@ namespace Draxion
 	
 	void OrthoGraphicCameraController::RecalculateZoom()
 	{
+		DX_PROFILE_FUNCTION();
+
 		m_Zoom_Ratio = std::max(m_Zoom_Ratio, 0.01f);
 		m_Camera.SetProjection(-m_AspectRatio * m_Zoom_Ratio, m_AspectRatio * m_Zoom_Ratio,
 			-m_Zoom_Ratio, m_Zoom_Ratio);
@@ -84,6 +91,8 @@ namespace Draxion
 
 		d.Dispatch<WindowsResizeEvent>([&](WindowsResizeEvent& e)
 		{
+			DX_PROFILE_FUNCTION();
+
 			m_AspectRatio = (float)e.GetWidth() / (float)e.GetHeight();
 			m_Camera.SetProjection(-m_AspectRatio * m_Zoom_Ratio, m_AspectRatio * m_Zoom_Ratio,
 				-m_Zoom_Ratio, m_Zoom_Ratio);

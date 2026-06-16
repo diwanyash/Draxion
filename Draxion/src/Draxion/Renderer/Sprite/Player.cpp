@@ -3,6 +3,7 @@
 #include "Draxion/Input/KeyCodes.h"
 #include "Draxion/Renderer/Renderer2D.h"
 #include <Logger.h>
+#include <Draxion/Debug/Profiler/ProfileTimer.h>
 
 namespace Draxion
 {
@@ -10,6 +11,8 @@ namespace Draxion
 		:
 		m_Position(pos)
 	{
+		DX_PROFILE_FUNCTION();
+
 		m_Player_Texture = Texture2D::Create(SpriteTextPath);
 
 		for ( int y = 0; y < 4; y++)
@@ -34,6 +37,8 @@ namespace Draxion
 
 	void Player::OnUpdate(float dt)
 	{
+		DX_PROFILE_FUNCTION();
+
 		m_Moving = false;
 
 		if ( Input::IsKeyPressed( DRX_KEY_W ))
@@ -67,6 +72,8 @@ namespace Draxion
 	}
 	void Player::Draw(float dt)
 	{
+		DX_PROFILE_FUNCTION();
+
 		FrameTime += dt;
 
 		// WALKING
@@ -103,6 +110,8 @@ namespace Draxion
 
 	glm::vec4 Player::CalculateTilesUV(int x, int y)
 	{
+		DX_PROFILE_FUNCTION();
+
 		float TileWidth = 1.0f / 4.0f;
 		float TileHeight = 1.0f / 8.0f;
 

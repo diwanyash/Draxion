@@ -1,4 +1,5 @@
 #include "RandomGen.h"
+#include "Draxion/Debug/Profiler/ProfileTimer.h"
 namespace Draxion
 {
 	std::mt19937 RandomGen::rng(std::random_device{}());

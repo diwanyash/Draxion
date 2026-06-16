@@ -16,6 +16,8 @@
 
 void Draxion::ImGuiLayer::OnAttach()
 {
+    DX_PROFILE_FUNCTION();
+
     // Setup Dear ImGui context
     IMGUI_CHECKVERSION();
     ImGui::CreateContext();
@@ -52,9 +54,11 @@ void Draxion::ImGuiLayer::OnAttach()
 
 void Draxion::ImGuiLayer::OnDetach()
 {
-        ImGui_ImplOpenGL3_Shutdown();
-        ImGui_ImplGlfw_Shutdown();
-        ImGui::DestroyContext();
+    DX_PROFILE_FUNCTION();
+
+    ImGui_ImplOpenGL3_Shutdown();
+    ImGui_ImplGlfw_Shutdown();
+    ImGui::DestroyContext();
 }
 
 void Draxion::ImGuiLayer::OnEvent(Event& e)
@@ -69,12 +73,16 @@ void Draxion::ImGuiLayer::OnEvent(Event& e)
 
 void Draxion::ImGuiLayer::OnImGuiRender()
 {
+    DX_PROFILE_FUNCTION();
+
     // static bool show = true;
     // ImGui::ShowDemoWindow(&show);
 }
 
 void Draxion::ImGuiLayer::Begin()
 {
+    DX_PROFILE_FUNCTION();
+
     ImGui_ImplOpenGL3_NewFrame();
     ImGui_ImplGlfw_NewFrame();
     ImGui::NewFrame();
@@ -82,6 +90,8 @@ void Draxion::ImGuiLayer::Begin()
 
 void Draxion::ImGuiLayer::End()
 {
+    DX_PROFILE_FUNCTION();
+
     ImGuiIO& io = ImGui::GetIO(); (void)io;
     Application& app = Application::Get();
     io.DisplaySize = ImVec2{ app.GetWindow().GetWidth(), app.GetWindow().GetHeight()};
