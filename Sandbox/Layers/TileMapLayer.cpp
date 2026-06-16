@@ -68,31 +68,7 @@ void TileMapLayer::OnImGuiRender()
 	ImGui::SetNextWindowBgAlpha(0.35f);
 	ImGui::Begin("Grid_Control");
 	ImGuiIO& io = ImGui::GetIO();
-
-	float FrameTimeMs = 1000.0f * io.DeltaTime;
-
-	FrameTimes[Offset] = FrameTimeMs;
-	Offset = (Offset + 1) % IM_ARRAYSIZE(FrameTimes);
-
-	ImGui::Text("FPS: %.1f", ImGui::GetIO().Framerate);
-	ImGui::Text("Frame Time: %.3f ms", FrameTimeMs);
-
-	ImGui::PushStyleColor(ImGuiCol_PlotLines, ImVec4(0.2f, 1.0f, 0.2f, 1.0f));
-	ImGui::PushStyleColor(ImGuiCol_PlotLinesHovered, ImVec4(0.4f, 1.0f, 0.4f, 1.0f));
-	
-	ImGui::PlotLines(
-		"Frame Time (ms)",
-		FrameTimes,
-		IM_ARRAYSIZE(FrameTimes),
-		Offset,
-		nullptr,
-		0.0f,
-		50.0f,
-		ImVec2(0,80)
-	);
-
-	ImGui::PopStyleColor(2);
-	
+	ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / io.Framerate, io.Framerate);
 	ImGui::Text("Zoom Level %.2f", m_Camera_Con.GetZoomRatio());
 	ImGui::End();
 }
