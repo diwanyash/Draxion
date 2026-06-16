@@ -22,6 +22,11 @@
 #include "src/Draxion/Core/Layer/ImGuiLayer.h"
 //----------------------------------------
 
+//-------------Debug---------------------
+#include "src/Draxion/Debug/Profiler/ProfileTimer.h"
+//----------------------------------------
+
+
 //---------Rendering_Helpers---------
 #include "src/Draxion/Renderer/Buffer/VertexArray.h"
 #include "src/Draxion/Renderer/Buffer/Buffer.h"

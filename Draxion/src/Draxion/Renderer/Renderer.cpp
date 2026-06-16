@@ -5,6 +5,7 @@
 
 ///////////////////////////
 #include "Draxion/Platform/Windows/OpenGL/OpenGLShader.h"
+#include <Draxion/Debug/Profiler/ProfileTimer.h>
 
 namespace Draxion
 {
@@ -25,6 +26,8 @@ namespace Draxion
 	}
 	void Renderer::Submit(const Ref<Shader>& pShader, const Ref<VertexArray>& vertexarray, const glm::mat4& transform)
 	{
+		DX_PROFILE_FUNCTION();
+
 		vertexarray->Bind();
 		pShader->Bind();
 
@@ -34,5 +37,8 @@ namespace Draxion
 	}
 	void Renderer::EndScene()
 	{
+		DX_PROFILE_FUNCTION();
+
+
 	}
 }

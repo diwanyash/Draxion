@@ -1,10 +1,13 @@
 #include "OpenGLRenderAPI.h"
 #include <glad/glad.h>
+#include "Draxion/Debug/Profiler/ProfileTimer.h"
 
 namespace Draxion
 {
 	void OpenGLRenderAPI::Init()
-	{ 
+	{
+		DX_PROFILE_FUNCTION();
+
 		glEnable(GL_BLEND);
 		glEnable(GL_DEPTH_TEST);
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);

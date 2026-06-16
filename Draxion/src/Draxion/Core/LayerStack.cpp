@@ -1,4 +1,5 @@
 #include "LayerStack.h"
+#include <Draxion/Debug/Profiler/ProfileTimer.h>
 
 namespace Draxion
 {
@@ -14,12 +15,10 @@ namespace Draxion
 	{
 		Layers_Vec.emplace( begin() + LayerInsertIndex, iLayer );
 		LayerInsertIndex++;
-		iLayer->OnAttach();
 	}
 	void LayerStack::PushOverLay(Layer* iOverLay)
 	{
 		Layers_Vec.emplace_back( iOverLay );
-		iOverLay->OnAttach();
 	}
 	void LayerStack::PopLayer(Layer* iLayer)
 	{

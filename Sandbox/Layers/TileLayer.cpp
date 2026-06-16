@@ -6,12 +6,16 @@ TileLayer::TileLayer()
 	:
 	Layer("TileSet")
 {
+	DX_PROFILE_FUNCTION();
+
 	DisplayGridMap.resize((GridSize_x - 1) * (GridSize_y - 1));
 	MapSize = {0.0f, 0.0f, GridSize_x, GridSize_y};
 }
 
 void TileLayer::OnAttach()
 {
+	DX_PROFILE_FUNCTION();
+
 	LOG_ENGINE_INFO("TileSet Layer Attached");
 
 	m_Grass_Full = Draxion::Texture2D::Create("E:/Engine_V1/Draxion/Sandbox/Assets/Tileset/BasicTiles/Use/32_Grass-Water.png");
@@ -36,6 +40,8 @@ void TileLayer::OnAttach()
 
 void TileLayer::OnUpdate(float dt)
 {
+	DX_PROFILE_FUNCTION();
+
 	m_Camera_Control.OnUpdate(dt);
 
 	Draxion::RenderCommand::SetClearColor({ 0.2f,0.3f,0.3f,1.0f });
@@ -116,6 +122,8 @@ void TileLayer::OnUpdate(float dt)
 }
 void TileLayer::OnImGuiRender()
 {
+	DX_PROFILE_FUNCTION();
+
 	ImGui::Begin("Grid_Control");
 	ImGuiIO& io = ImGui::GetIO();
 	ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / io.Framerate, io.Framerate);

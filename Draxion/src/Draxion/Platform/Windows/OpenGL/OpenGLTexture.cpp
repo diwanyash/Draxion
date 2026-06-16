@@ -2,6 +2,7 @@
 #include "Logger.h"
 #include <glad/glad.h>
 #include <stb/stb_image.h>
+#include <Draxion/Debug/Profiler/ProfileTimer.h>
 
 namespace Draxion
 {
@@ -9,11 +10,17 @@ namespace Draxion
 		:
 		m_path(path)
 	{
+		DX_PROFILE_FUNCTION();
+
 		//////////////////////////STB_IMAGE///////////////////////////////////////////////////////
 		int width, height, nrChannels;
 		const char* TexPath = path.c_str();
 		stbi_set_flip_vertically_on_load(true); // Flip on Loading
-		unsigned char* TexData = stbi_load(TexPath, &width, &height, &nrChannels, 0);
+		unsigned char* TexData = nullptr;
+		{
+			DX_PROFILE_SCOPE("Stbi_load::Image_Loading");
+			TexData = stbi_load(TexPath, &width, &height, &nrChannels, 0);
+		}
 		if (TexData == NULL)
 		{
 			LOG_ENGINE_ERROR("Texture Failed to Load::Path:- " << TexPath);
@@ -63,11 +70,17 @@ namespace Draxion
 		:
 		m_path(path)
 	{
+		DX_PROFILE_FUNCTION();
+
 		//////////////////////////STB_IMAGE///////////////////////////////////////////////////////
 		int width, height, nrChannels;
 		const char* TexPath = path.c_str();
 		stbi_set_flip_vertically_on_load(true); // Flip on Loading
-		unsigned char* TexData = stbi_load(TexPath, &width, &height, &nrChannels, 0);
+			unsigned char* TexData = nullptr;
+		{
+			DX_PROFILE_SCOPE("Stbi_load::Image_Loading");
+			TexData = stbi_load(TexPath, &width, &height, &nrChannels, 0);
+		}
 		if (TexData == NULL)
 		{
 			LOG_ENGINE_ERROR("Texture Failed to Load::Path:- " << TexPath);
@@ -116,10 +129,14 @@ namespace Draxion
 	}
 	OpenGLTexture2D::~OpenGLTexture2D()
 	{
+		DX_PROFILE_FUNCTION();
+
 		glDeleteTextures(1, &m_RendererID);
 	}
 	void OpenGLTexture2D::Bind(unsigned int slot)
 	{
+		DX_PROFILE_FUNCTION();
+
 		//glActiveTexture(GL_TEXTURE0 + slot);
 		glBindTextureUnit(slot, m_RendererID);
 	}

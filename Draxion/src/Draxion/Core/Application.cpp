@@ -25,6 +25,8 @@ namespace Draxion
 	// CTOR
 	Application::Application()
 	{
+		DX_PROFILE_FUNCTION();
+	
 		LOG_ENGINE_TRACE("Application Constructing");
 		m_Window.reset(Window::CreateWindow( 1280, 720, "Lucky" ));
 		m_Window->SetEventCallback([this](Event& e) { this->OnEvent(e); });
@@ -42,19 +44,36 @@ namespace Draxion
 
 	void Application::Run()
 	{
+		DX_PROFILE_FUNCTION();
 
 		while (!m_Window->ShouldClose())
 		{
+			DX_PROFILE_SCOPE("----Frame----");
+
 			float time = (float)glfwGetTime();
 			TimeStamp dt = time - m_last_time;
 			m_last_time = time;
 
-			for (Layer* lay : m_Layer_Stack)
-				lay->OnUpdate(dt);
+			{
+				DX_PROFILE_SCOPE("LayerStack OnUpdate");
+
+				for (Layer* lay : m_Layer_Stack)
+				{
+
+					lay->OnUpdate(dt);
+				}
+			}
 
 			m_ImGuiLayer->Begin();
-			for (Layer* lay : m_Layer_Stack)
-				lay->OnImGuiRender();
+			{
+				DX_PROFILE_SCOPE("LayerStack OnImGuiRender");
+
+				for (Layer* lay : m_Layer_Stack)
+				{
+
+					lay->OnImGuiRender();
+				}
+			}
 			m_ImGuiLayer->End();
 
 			m_Window->OnUpdate();
@@ -66,26 +85,40 @@ namespace Draxion
 	}
 	void Application::OnUpdate()
 	{
+		DX_PROFILE_FUNCTION();
+
 		//Later // to avoid warnings 
 	}
 	void Application::PushLayer( Layer* iLayer )
 	{
+		DX_PROFILE_FUNCTION();
+
 		m_Layer_Stack.PushLayer( iLayer );
+		iLayer->OnAttach();
 	}
 	void Application::PushOverLay( Layer* iOverLay )
 	{
+		DX_PROFILE_FUNCTION();
+
 		m_Layer_Stack.PushOverLay( iOverLay );
+		iOverLay->OnAttach();
 	}
 	void Application::PopLayer( Layer* iLayer )
 	{
+		DX_PROFILE_FUNCTION();
+
 		m_Layer_Stack.PopLayer( iLayer );
 	}
 	void Application::PopOverLay( Layer* iOverLay )
 	{
+		DX_PROFILE_FUNCTION();
+
 		m_Layer_Stack.PopOverLay( iOverLay );
 	}
 	void Application::OnEvent(Event& e)
 	{
+		DX_PROFILE_FUNCTION();
+
 		EventDispatcher d(e);
 		d.Dispatch<KeyPressedEvent>([&](KeyPressedEvent& e)
 		{
@@ -104,6 +137,8 @@ namespace Draxion
 		
 		d.Dispatch<WindowsResizeEvent>([](WindowsResizeEvent& e)
 		{
+			DX_PROFILE_SCOPE("Window Resize");
+
 			Renderer::OnWindowResize( e.GetWidth(), e.GetHeight() );
 			Renderer2D::OnWindowResize( e.GetWidth(), e.GetHeight() );
 

@@ -9,6 +9,8 @@ class Sandbox : public Draxion::Application
 public:
 	Sandbox()
 	{
+		DX_PROFILE_FUNCTION();
+
 		LOG_CLIENT_TRACE("SandBox Constructed"); 
 		// auto examplelayer = new Draxion::ExampleLayer();
 		// PushLayer( examplelayer );
@@ -31,6 +33,8 @@ public:
 
 Draxion::Application* Draxion::CreateApplication()
 {
+	DX_PROFILE_FUNCTION();
+
 	return new Sandbox();
 }
 

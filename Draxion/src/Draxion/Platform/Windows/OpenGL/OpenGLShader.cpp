@@ -5,11 +5,14 @@
 #include <sstream>
 #include <fstream>
 #include <string>
+#include <Draxion/Debug/Profiler/ProfileTimer.h>
 
 namespace Draxion
 {
 	static unsigned int Compile(unsigned int type, const char* path)
 	{
+		DX_PROFILE_FUNCTION();
+
 		unsigned int id = glCreateShader(type);
 
 		// Load Shader form file
@@ -21,6 +24,8 @@ namespace Draxion
 
 		try
 		{
+			DX_PROFILE_SCOPE("Shader_File_Opening");
+
 			ShaderFile.open(path);
 
 			std::stringstream ShaderStream;
@@ -60,6 +65,8 @@ namespace Draxion
 
 	OpenGLShader::OpenGLShader(const char* vertexShaderPath, const char* fragmentShaderPath)
 	{
+		DX_PROFILE_SCOPE("OpenGLShader::OpenGLShader");
+
 		m_RendererID = glCreateProgram();
 
 		// compiling
@@ -90,69 +97,97 @@ namespace Draxion
 	}
 	OpenGLShader::~OpenGLShader()
 	{
+		DX_PROFILE_FUNCTION();
+
 		glDeleteProgram(m_RendererID);
 	}
 	void OpenGLShader::Bind() const
 	{
+		DX_PROFILE_FUNCTION();
+
 		glUseProgram(m_RendererID);
 	}
 	void OpenGLShader::Unbind() const
 	{
+		DX_PROFILE_FUNCTION();
+
 		glUseProgram(0);
 	}
 
 	void OpenGLShader::SetInt(const std::string& name, int value)
 	{
+		DX_PROFILE_FUNCTION();
+
 		UploadUniformInt(name, value);
 	}
 
 	void OpenGLShader::SetIntArray(const std::string& name, int* values, unsigned int count)
 	{
+		DX_PROFILE_FUNCTION();
+
 		UploadUniformIntArray( name, values, count );
 	}
 
 	void OpenGLShader::SetInt2(const std::string& name, glm::ivec2 ivec)
 	{
+		DX_PROFILE_FUNCTION();
+
 		UploadUniformInt2(name, ivec);
 	}
 
 	void OpenGLShader::SetInt3(const std::string& name, glm::ivec3 ivec)
 	{
+		DX_PROFILE_FUNCTION();
+
 		UploadUniformInt3(name, ivec);
 	}
 
 	void OpenGLShader::SetInt4(const std::string& name, glm::ivec4 ivec)
 	{
+		DX_PROFILE_FUNCTION();
+
 		UploadUniformInt4(name, ivec);
 	}
 
 	void OpenGLShader::SetFloat(const std::string& name, float value)
 	{
+		DX_PROFILE_FUNCTION();
+
 		UploadUniformFloat(name, value);
 	}
 
 	void OpenGLShader::SetFloat2(const std::string& name, glm::vec2 vec)
 	{
+		DX_PROFILE_FUNCTION();
+
 		UploadUniformFloat2(name, vec);
 	}
 
 	void OpenGLShader::SetFloat3(const std::string& name, glm::vec3 vec)
 	{
+		DX_PROFILE_FUNCTION();
+
 		UploadUniformFloat3(name, vec);
 	}
 
 	void OpenGLShader::SetFloat4(const std::string& name, glm::vec4 vec)
 	{
+		DX_PROFILE_FUNCTION();
+
 		UploadUniformFloat4(name, vec);
 	}
 
 	void OpenGLShader::SetMat3(const std::string& name, glm::mat3 mat)
 	{
+		DX_PROFILE_FUNCTION();
+
 		UploadUniformMat3(name, mat);
 	}
 
 	void OpenGLShader::SetMat4(const std::string& name, glm::mat4 mat)
 	{
+		DX_PROFILE_FUNCTION();
+
 		UploadUniformMat4(name, mat);
 	}
 

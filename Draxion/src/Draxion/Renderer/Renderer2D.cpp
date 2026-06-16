@@ -9,6 +9,7 @@
 
 #include "Draxion/Core/Util/RandomGen.h"
 #include "Draxion/Platform/Windows/OpenGL/OpenGLShader.h"
+#include <Draxion/Debug/Profiler/ProfileTimer.h>
 
 namespace Draxion
 {
@@ -43,7 +44,8 @@ namespace Draxion
 	static Renderer2DStorage s_Data;
 	
 	void Renderer2D::Init()
-	{		
+	{
+		DX_PROFILE_FUNCTION();
 
 		// float vertices[]
 		// {
@@ -117,6 +119,8 @@ namespace Draxion
 	}
 	void Shutdown()
 	{
+		DX_PROFILE_FUNCTION();
+
 	}
 	void Renderer2D::OnWindowResize(unsigned int Width, unsigned int Height)
 	{
@@ -124,6 +128,8 @@ namespace Draxion
 	}
 	void Renderer2D::BeginScene(OrthoGraphicCamera& camera)
 	{
+		DX_PROFILE_FUNCTION();
+
 		s_Data.Shader->Bind();
 		s_Data.Shader->SetMat4("u_ViewProjection", camera.GetViewProjectMatrix());
 
@@ -137,7 +143,8 @@ namespace Draxion
 		DrawSquare({Position.x,Position.y,0.0f}, Size, Color);
 	}
 	void Renderer2D::DrawSquare(const glm::vec3& Position, const glm::vec2& Size, const glm::vec4& Color)
-	{	
+	{
+		DX_PROFILE_FUNCTION();
 
 		float textureIndex = 0.0f;
 
@@ -178,6 +185,8 @@ namespace Draxion
 	}
 	void Renderer2D::DrawSquare(const Ref<Texture2D>& texture, const glm::vec3& Position, const glm::vec2& Size, const glm::vec4& Color)
 	{
+		DX_PROFILE_FUNCTION();
+
 		// Test Only!!!!!!!
 		// s_Data.Shader->Bind();
 		// s_Data.Shader->SetInt2("u_Grid", glm::ivec2(RandomGen::Get<int>(0,3), RandomGen::Get<int>(0, 3)));
@@ -244,6 +253,8 @@ namespace Draxion
 	}
 	void Renderer2D::DrawSquare(const Ref<Texture2D>& texture, const glm::vec3& Position,const glm::vec4& UV, const glm::vec2& Size, const glm::vec4& Color)
 	{
+		DX_PROFILE_FUNCTION();
+
 		float textureIndex = 0.0f;
 
 		for (unsigned int i = 1; i < s_Data.TextureSlotIndex; i++)
@@ -295,6 +306,8 @@ namespace Draxion
 	}
 	void Renderer2D::EndScene()
 	{
+		DX_PROFILE_FUNCTION();
+
 		__int64 datasize = (uint8_t*)s_Data.SquareVertexptr - (uint8_t*)s_Data.SquareVertexBase;
 		s_Data.SquareVertexBuffer->SetData( s_Data.SquareVertexBase, datasize );
 

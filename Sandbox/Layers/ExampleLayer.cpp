@@ -9,6 +9,8 @@ namespace Draxion
 {
 	void ExampleLayer::OnAttach()
 	{
+		DX_PROFILE_FUNCTION();
+
 		LOG_ENGINE_TRACE("Example Layer Attached");
 		//		float vertices[]
 		//		{
@@ -68,11 +70,15 @@ namespace Draxion
 	}
 	void ExampleLayer::OnDetach()
 	{
+		DX_PROFILE_FUNCTION();
+
 		LOG_ENGINE_TRACE("Example Layer Detached");
 	}
 
 	void ExampleLayer::OnUpdate(float dt)
 	{
+		DX_PROFILE_FUNCTION();
+
 		m_CameraController.OnUpdate(dt);
 
 		RenderCommand::SetClearColor({ 0.2f, 0.3f, 0.8f, 1.0f });
@@ -108,6 +114,8 @@ namespace Draxion
 
 	void ExampleLayer::OnImGuiRender()
 	{
+		DX_PROFILE_FUNCTION();
+
 		ImGui::Begin("TestImGuiLayerInExample");
 		ImGuiIO& io = ImGui::GetIO();
 		ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / io.Framerate, io.Framerate);

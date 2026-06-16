@@ -1,17 +1,22 @@
 #include "OrthoGraphicCamera.h"
 #include <glm/gtc/matrix_transform.hpp>
+#include <Draxion/Debug/Profiler/ProfileTimer.h>
 
 namespace Draxion
 {
 	OrthoGraphicCamera::OrthoGraphicCamera(float left, float right, float bottom, float top)
 		:
 		m_ProjectionMatrix( glm::ortho( left, right, bottom, top, -1.0f, 1.0f ) ), m_ViewMatrix(1.0f) 
-	{	
+	{
+		DX_PROFILE_FUNCTION();
+
 		m_ViewProjectMatrix = m_ProjectionMatrix * m_ViewMatrix;
 	}
 
 	void OrthoGraphicCamera::SetProjection(float left, float right, float bottom, float top)
 	{
+		DX_PROFILE_FUNCTION();
+
 		m_ProjectionMatrix = glm::ortho(left, right, bottom, top, -1.0f, 1.0f);
 
 		m_ViewProjectMatrix = m_ProjectionMatrix * m_ViewMatrix;
@@ -19,6 +24,8 @@ namespace Draxion
 
 	void OrthoGraphicCamera::CalculateViewProjectMatrix()
 	{
+		DX_PROFILE_FUNCTION();
+
 		glm::mat4 transform = glm::translate(glm::mat4(1.0f), m_Position) *
 			glm::rotate( glm::mat4(1.0f),glm::radians(m_Rotation), glm::vec3( 0, 0, 1 ) );
 

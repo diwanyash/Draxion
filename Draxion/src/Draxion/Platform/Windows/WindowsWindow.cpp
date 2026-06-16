@@ -9,6 +9,7 @@
 #include "Draxion/Events/MouseEvents.h"
 #include "Draxion/Renderer/Renderer.h"
 #include "Draxion/Core/Logger.h"
+#include "Draxion/Debug/Profiler/ProfileTimer.h"
 
 #include "Draxion/Platform/Windows/OpenGL/OpenGLContext.h"
 
@@ -29,6 +30,8 @@ namespace Draxion
 	}
 	void WindowsWindow::Init( int width, int height, const std::string& title )
 	{
+		DX_PROFILE_FUNCTION();
+
 		m_Data.m_Width = width;
 		m_Data.m_Height = height;
 		m_Data.m_Title = title;
@@ -135,6 +138,8 @@ namespace Draxion
 	}
 	void WindowsWindow::Shutdown()
 	{
+		DX_PROFILE_FUNCTION();
+
 		delete m_Context;
 		m_Context = nullptr;
 
@@ -143,6 +148,8 @@ namespace Draxion
 	}
 	void WindowsWindow::OnUpdate()
 	{
+		DX_PROFILE_FUNCTION();
+
 		glfwPollEvents();
 		m_Context->SwapBuffers();
 	}
@@ -153,6 +160,8 @@ namespace Draxion
 
 	void WindowsWindow::SetShouldClose(bool flag)
 	{
+		DX_PROFILE_FUNCTION();
+
 		LOG_ENGINE_TRACE("Shutting Down...");
 		glfwSetWindowShouldClose(m_Window, flag);
 	}
