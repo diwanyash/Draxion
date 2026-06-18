@@ -34,6 +34,7 @@
 #include "src/Draxion/Renderer/RendererCommand.h"
 #include "src/Draxion/Renderer/Renderer.h"
 #include "src/Draxion/Renderer/Renderer2D.h"
+#include "src/Draxion/Core/ECS/System.h"
 //-----------------------------------
 
 

@@ -104,6 +104,7 @@
     <ClCompile Include="src\Draxion\Core\Application.cpp" />
     <ClInclude Include="src\Draxion\Core\Core.h" />
     <ClCompile Include="src\Draxion\Core\ECS\Entity.cpp" />
+    <ClCompile Include="src\Draxion\Core\ECS\GameWorld\WorldGenerator.cpp" />
     <ClCompile Include="src\Draxion\Core\ECS\World.cpp" />
     <ClCompile Include="src\Draxion\Core\LayerStack.cpp" />
     <ClCompile Include="src\Draxion\Core\Layer\ImGuiLayer.cpp" />
@@ -150,6 +151,8 @@
     <ClInclude Include="src\Draxion\Core\Application.h" />
     <ClInclude Include="src\Draxion\Core\ECS\Component.h" />
     <ClInclude Include="src\Draxion\Core\ECS\Entity.h" />
+    <ClInclude Include="src\Draxion\Core\ECS\GameWorld\WorldGenerator.h" />
+    <ClInclude Include="src\Draxion\Core\ECS\System.h" />
     <ClInclude Include="src\Draxion\Core\ECS\World.h" />
     <ClInclude Include="src\Draxion\Core\EntryPoint.h" />
     <ClInclude Include="src\Draxion\Core\Layer.h" />

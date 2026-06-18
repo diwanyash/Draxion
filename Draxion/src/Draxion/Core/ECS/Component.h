@@ -16,8 +16,11 @@ namespace Draxion
 		glm::vec3 Rotation{0.0f};
 		glm::vec3 Scale{1.0f};
 	};
+
+	// TODO TilePosiitonComponent
 	struct SpriteComponent
 	{
-		Ref<Texture2D> Texture = nullptr;
+		SpriteComponent(const Ref<Texture2D>& tex = nullptr) : Texture(tex) {}
+		Ref<Texture2D> Texture;
 	};
 }
