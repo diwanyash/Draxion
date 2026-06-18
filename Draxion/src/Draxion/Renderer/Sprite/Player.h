@@ -13,16 +13,16 @@ namespace Draxion
 
 		void OnUpdate(float dt);
 		void Draw(float dt);
-		
+
 		glm::vec3& GetPos() { return m_Position; }
 
 		glm::vec4 CalculateTilesUV(int x, int y);
 	public:
 		enum Face
 		{
-			Left  = 0,
+			Left = 0,
 			Right = 1,
-			Back  = 2,
+			Back = 2,
 			Front = 3,
 		};
 		enum State

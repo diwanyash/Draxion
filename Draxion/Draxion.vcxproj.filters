@@ -129,6 +129,12 @@
     <ClCompile Include="src\Draxion\Debug\Profiler\ProfileTimer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Draxion\Core\ECS\Entity.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Draxion\Core\ECS\World.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Draxion\Core\Logger.h">
@@ -285,6 +291,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Draxion\Debug\Profiler\ProfileTimer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Draxion\Core\ECS\World.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Draxion\Core\ECS\Entity.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Draxion\Core\ECS\Component.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

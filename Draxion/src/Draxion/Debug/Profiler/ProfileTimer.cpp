@@ -16,7 +16,7 @@ namespace Draxion
 		event.Start = start;
 		event.Duration = finish - start;
 
-		event.Thread_ID = std::hash<std::thread::id>{}(std::this_thread::get_id());
+		event.Thread_ID = (uint32_t)std::hash<std::thread::id>{}(std::this_thread::get_id());
 
 		Profiler::Get().WriteProfiler(event);
 	}

@@ -144,7 +144,7 @@ namespace Draxion
 
 		virtual const BufferLayout& GetLayout() const = 0;
 		virtual void SetLayout(const BufferLayout& layout ) = 0;
-		virtual void SetData(const void* data, unsigned int size ) = 0;
+		virtual void SetData(const void* data, long long int size ) = 0;
 	};
 
 	class DRX_API IndexBuffer

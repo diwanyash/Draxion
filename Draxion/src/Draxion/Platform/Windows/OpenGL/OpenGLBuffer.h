@@ -14,7 +14,7 @@ namespace Draxion
 
 		void Bind() const override;
 		void Unbind() const override;
-		void SetData(const void* data, unsigned int size) override;
+		void SetData(const void* data, long long int size) override;
 
 		inline const BufferLayout& GetLayout() const override { return m_Layout; }
 		inline void SetLayout(const BufferLayout& layout) override

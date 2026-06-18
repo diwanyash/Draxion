@@ -28,7 +28,20 @@ namespace Draxion
 		static void SetGrid(const glm::ivec2& value);
 
 		static void EndScene();
+		static void ResetStates();
+	public:
+		struct Statistics
+		{
+			uint32_t DrawCalls = 0;
+			uint32_t SquareCount = 0;
+
+			uint32_t GetTotalVertexCount() { return SquareCount * 4; }
+			uint32_t GetTotalIndexCount() { return SquareCount * 6; }
+		};
+	public:
+		static Statistics GetStates();
 	private:
+		static void FlushAndReset();
 		static void Flush();
 	};
 }

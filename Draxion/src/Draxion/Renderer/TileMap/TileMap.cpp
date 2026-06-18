@@ -45,7 +45,7 @@ namespace Draxion
 				m_Tiles[y * m_TextureDiv.x + x ] = CalculateTilesUV( x, y );
 			}
 		}
-		m_DisplayMap.resize((m_MapSize.x - 1) * (m_MapSize.y - 1));
+		m_DisplayMap.resize(( (int)m_MapSize.x - 1) * (int)(m_MapSize.y - 1) );
 		DisplayGridMapGen();
 	}
 
@@ -57,7 +57,7 @@ namespace Draxion
 		{
 			for (int x = 0; x < m_MapSize.x - 1; x++)
 			{
-				auto pair = m_DisplayMap[y * (m_MapSize.x - 1) + x];
+				auto pair = m_DisplayMap[(int)(y * (m_MapSize.x - 1) + x)];
 				int grid_x = pair.first;
 				int grid_y = pair.second;
 
@@ -92,7 +92,7 @@ namespace Draxion
 		{
 			for (int x = 0; x < m_MapSize.x - 1; x++)
 			{
-				m_DisplayMap[y * (m_MapSize.x - 1) + x] = SetDisplayGrid(x, y);//{ Draxion::RandomGen::Get<int>(0, 3),Draxion::RandomGen::Get<int>(0, 3) };
+				m_DisplayMap[(int)(y * (m_MapSize.x - 1) + x)] = SetDisplayGrid(x, y);//{ Draxion::RandomGen::Get<int>(0, 3),Draxion::RandomGen::Get<int>(0, 3) };
 			}
 		}
 	}
@@ -100,13 +100,13 @@ namespace Draxion
 	std::pair<int, int> TileMap::SetDisplayGrid( int x, int y ) const
 	{
 		// Flip The Y-axis as string read from Top->Bottom
-		int row0 = (m_MapSize.y - 1 - y);
-		int row1 = (m_MapSize.y - 2 - y);
+		int row0 = (int)(m_MapSize.y - 1 - y);
+		int row1 = (int)(m_MapSize.y - 2 - y);
 
-		TileType BL = m_TextMap[row0 * m_MapSize.x + x] == 'G' ? TileType::Grass : TileType::Water ;
-		TileType TL = m_TextMap[row1 * m_MapSize.x + x] == 'G' ? TileType::Grass : TileType::Water;
-		TileType TR = m_TextMap[row1 * m_MapSize.x + (x + 1)] == 'G' ? TileType::Grass : TileType::Water;
-		TileType BR = m_TextMap[row0 * m_MapSize.x + (x + 1)] == 'G' ? TileType::Grass : TileType::Water;
+		TileType BL = m_TextMap[row0 * (int)m_MapSize.x + x] == 'G' ? TileType::Grass : TileType::Water ;
+		TileType TL = m_TextMap[row1 * (int)m_MapSize.x + x] == 'G' ? TileType::Grass : TileType::Water;
+		TileType TR = m_TextMap[row1 * (int)m_MapSize.x + (x + 1)] == 'G' ? TileType::Grass : TileType::Water;
+		TileType BR = m_TextMap[row0 * (int)m_MapSize.x + (x + 1)] == 'G' ? TileType::Grass : TileType::Water;
 
 		uint8_t mask = 0;
 

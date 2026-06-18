@@ -44,7 +44,7 @@ namespace Draxion
 		glBindBuffer(GL_ARRAY_BUFFER, 0);
 	}
 
-	void OpenGLVertexBuffer::SetData(const void* data, unsigned int size)
+	void OpenGLVertexBuffer::SetData(const void* data, long long int size)
 	{
 		DX_PROFILE_FUNCTION();
 

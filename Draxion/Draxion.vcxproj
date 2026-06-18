@@ -103,6 +103,8 @@
     <ClCompile Include="..\Vendor\glad\src\glad.c" />
     <ClCompile Include="src\Draxion\Core\Application.cpp" />
     <ClInclude Include="src\Draxion\Core\Core.h" />
+    <ClCompile Include="src\Draxion\Core\ECS\Entity.cpp" />
+    <ClCompile Include="src\Draxion\Core\ECS\World.cpp" />
     <ClCompile Include="src\Draxion\Core\LayerStack.cpp" />
     <ClCompile Include="src\Draxion\Core\Layer\ImGuiLayer.cpp" />
     <ClCompile Include="src\Draxion\Core\Util\RandomGen.cpp" />
@@ -146,6 +148,9 @@
   <ItemGroup>
     <ClInclude Include="DraxionMain.h" />
     <ClInclude Include="src\Draxion\Core\Application.h" />
+    <ClInclude Include="src\Draxion\Core\ECS\Component.h" />
+    <ClInclude Include="src\Draxion\Core\ECS\Entity.h" />
+    <ClInclude Include="src\Draxion\Core\ECS\World.h" />
     <ClInclude Include="src\Draxion\Core\EntryPoint.h" />
     <ClInclude Include="src\Draxion\Core\Layer.h" />
     <ClInclude Include="src\Draxion\Core\LayerStack.h" />

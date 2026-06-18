@@ -54,15 +54,18 @@ void TileLayer::OnUpdate(float dt)
 	//////Input//////////////////////////////////////
 	/////////////////////////////////////////////////
 
-	std::pair<int, int> CurMousePos = Draxion::Input::GetMousePosition();
-
+	std::pair<int, int> CurMousePos;
+	
+	CurMousePos.first = (int)Draxion::Input::GetMousePosition().first;
+	CurMousePos.second = (int)Draxion::Input::GetMousePosition().second;
+	
 	glm::vec2 MousePos = { 2.0f * (float)CurMousePos.first / (float)Win_Width - 1.0f ,
 		1.0f - (2.0f * (float)CurMousePos.second / (float)Win_Height) };
-
+	
 	MouseCamPos.x = MousePos.x * m_Camera_Control.GetAspectRatio()
 		* m_Camera_Control.GetZoomRatio()
 		+ m_Camera_Control.GetPos().x;
-
+	
 	MouseCamPos.y = MousePos.y * m_Camera_Control.GetZoomRatio() + m_Camera_Control.GetPos().y;
 	HoveredTile = glm::ivec2{ std::floor(MouseCamPos.x + 0.5f), std::floor(MouseCamPos.y + 0.5f) }; // +0.5f
 
@@ -75,7 +78,7 @@ void TileLayer::OnUpdate(float dt)
 	{
 		for (int x = 0; x < GridSize_x - 1; x++)
 		{
-			auto pair = DisplayGridMap[(GridSize - 1) * y + x];
+			auto& pair = DisplayGridMap[(GridSize - 1) * y + x];
 			int grid_x = pair.first;
 			int grid_y = pair.second;
 

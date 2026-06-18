@@ -9,6 +9,7 @@ namespace Draxion
 	public:
 		static void Init();
 		static const char* GetTime();
+		// operator glm::mat4() {}
 	private:
 		static char buffer[9];
 	};

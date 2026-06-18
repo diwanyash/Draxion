@@ -23,9 +23,9 @@ namespace Draxion
 	};
 	struct Renderer2DStorage
 	{
-		const unsigned int MaxSquares = 10;
-		const unsigned int MaxVertices = MaxSquares * 4;
-		const unsigned int MaxIndices = MaxSquares * 6;\
+		static const unsigned int MaxSquares = 10000;
+		static const unsigned int MaxVertices = MaxSquares * 4;
+		static const unsigned int MaxIndices = MaxSquares * 6;
 		static const unsigned int MaxTextureSlots = 32;
 
 		Ref<VertexArray> SquareVertexArray;
@@ -38,8 +38,9 @@ namespace Draxion
 		unsigned int IndexCount = 0;
 		unsigned int TextureSlotIndex = 1;
 		std::array<Ref<Texture2D>, MaxTextureSlots> TextureSlots;
-	};
 
+		Renderer2D::Statistics State;
+	};
 
 	static Renderer2DStorage s_Data;
 	
@@ -144,6 +145,9 @@ namespace Draxion
 	}
 	void Renderer2D::DrawSquare(const glm::vec3& Position, const glm::vec2& Size, const glm::vec4& Color)
 	{
+		if (s_Data.IndexCount >= Renderer2DStorage::MaxIndices || s_Data.TextureSlotIndex >= 32)
+			FlushAndReset();
+
 		DX_PROFILE_FUNCTION();
 
 		float textureIndex = 0.0f;
@@ -174,6 +178,8 @@ namespace Draxion
 
 		s_Data.IndexCount += 6;
 
+
+		s_Data.State.SquareCount++;
 		//	glm::mat4 transform = glm::translate(glm::mat4(1.0f), Position) * glm::scale(glm::mat4(1.0f), { Size.x,Size.y,1.0f });
 		//	
 		//	s_Data.Shader->SetMat4("u_Transform", transform);
@@ -185,6 +191,9 @@ namespace Draxion
 	}
 	void Renderer2D::DrawSquare(const Ref<Texture2D>& texture, const glm::vec3& Position, const glm::vec2& Size, const glm::vec4& Color)
 	{
+		if (s_Data.IndexCount >= Renderer2DStorage::MaxIndices || s_Data.TextureSlotIndex >= 32)
+			FlushAndReset();
+
 		DX_PROFILE_FUNCTION();
 
 		// Test Only!!!!!!!
@@ -236,6 +245,8 @@ namespace Draxion
 
 		s_Data.IndexCount += 6;
 
+
+		s_Data.State.SquareCount++;
 		//	texture->Bind();
 		//	
 		//	glm::mat4 transform = glm::translate(glm::mat4(1.0f), Position) * glm::scale(glm::mat4(1.0f), { Size.x,Size.y,1.0f });
@@ -253,8 +264,10 @@ namespace Draxion
 	}
 	void Renderer2D::DrawSquare(const Ref<Texture2D>& texture, const glm::vec3& Position,const glm::vec4& UV, const glm::vec2& Size, const glm::vec4& Color)
 	{
-		DX_PROFILE_FUNCTION();
+		if (s_Data.IndexCount >= Renderer2DStorage::MaxIndices || s_Data.TextureSlotIndex >= 32)
+			FlushAndReset();
 
+		DX_PROFILE_FUNCTION();
 		float textureIndex = 0.0f;
 
 		for (unsigned int i = 1; i < s_Data.TextureSlotIndex; i++)
@@ -298,6 +311,9 @@ namespace Draxion
 		s_Data.SquareVertexptr++;
 
 		s_Data.IndexCount += 6;
+
+
+		s_Data.State.SquareCount++;
 	}
 	void Renderer2D::SetGrid(const glm::ivec2& value)
 	{
@@ -309,9 +325,26 @@ namespace Draxion
 		DX_PROFILE_FUNCTION();
 
 		__int64 datasize = (uint8_t*)s_Data.SquareVertexptr - (uint8_t*)s_Data.SquareVertexBase;
-		s_Data.SquareVertexBuffer->SetData( s_Data.SquareVertexBase, datasize );
+		s_Data.SquareVertexBuffer->SetData( s_Data.SquareVertexBase, (long long int)datasize );
 
 		Flush(); 
+	}
+	void Renderer2D::ResetStates()
+	{
+		memset( &s_Data.State, 0, sizeof(Statistics) );
+	}
+	Renderer2D::Statistics Renderer2D::GetStates()
+	{
+		return s_Data.State;
+	}
+	void Renderer2D::FlushAndReset()
+	{
+		EndScene();
+
+		s_Data.IndexCount = 0;
+		s_Data.SquareVertexptr = s_Data.SquareVertexBase;
+
+		s_Data.TextureSlotIndex = 1;
 	}
 	void Renderer2D::Flush()
 	{
@@ -321,5 +354,7 @@ namespace Draxion
 		}
 
 		RenderCommand::DrawIndexed(s_Data.SquareVertexArray, s_Data.IndexCount );
+
+		s_Data.State.DrawCalls++;
 	}
 }
