@@ -32,6 +32,9 @@ void TileMapLayer::OnUpdate(float dt)
 {
 	DX_PROFILE_FUNCTION();
 
+	auto entt = m_World.View<Draxion::HealthComponent, Draxion::SpriteComponent>();
+	auto entt2 = m_World.View<Draxion::HealthComponent, Draxion::TagComponent>();
+
 	Draxion::Renderer2D::ResetStates();
 
 	{

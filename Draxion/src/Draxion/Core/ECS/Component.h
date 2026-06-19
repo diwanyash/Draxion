@@ -23,4 +23,11 @@ namespace Draxion
 		SpriteComponent(const Ref<Texture2D>& tex = nullptr) : Texture(tex) {}
 		Ref<Texture2D> Texture;
 	};
+
+	struct HealthComponent
+	{
+		HealthComponent(const int maxhealth = 0) : MaxHealth(maxhealth) { CurHealth = maxhealth; }
+		int CurHealth = 0;
+		int MaxHealth;
+	};
 }

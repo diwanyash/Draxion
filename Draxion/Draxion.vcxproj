@@ -152,7 +152,7 @@
     <ClInclude Include="src\Draxion\Core\ECS\Component.h" />
     <ClInclude Include="src\Draxion\Core\ECS\Entity.h" />
     <ClInclude Include="src\Draxion\Core\ECS\GameWorld\WorldGenerator.h" />
-    <ClInclude Include="src\Draxion\Core\ECS\System.h" />
+    <ClInclude Include="src\Draxion\Core\ECS\Systems.h" />
     <ClInclude Include="src\Draxion\Core\ECS\World.h" />
     <ClInclude Include="src\Draxion\Core\EntryPoint.h" />
     <ClInclude Include="src\Draxion\Core\Layer.h" />

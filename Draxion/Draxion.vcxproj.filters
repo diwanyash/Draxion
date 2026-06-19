@@ -305,7 +305,7 @@
     <ClInclude Include="src\Draxion\Core\ECS\Component.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Draxion\Core\ECS\System.h">
+    <ClInclude Include="src\Draxion\Core\ECS\Systems.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Draxion\Core\ECS\GameWorld\WorldGenerator.h">

@@ -33,10 +33,25 @@ namespace Draxion
 			return storage.at(entity.GetID());
 		}
 
+		template<typename... Components>
+		std::vector<Entity> View() const
+		{
+			std::vector<Entity> OutVec;
+
+			for (const Entity& entity : m_Entities)
+			{
+				if ((HasComponent<Components>(entity)&& ...))
+				{
+					OutVec.push_back(entity);
+				}
+			}
+			return OutVec;
+		}
+
 		inline std::vector<Entity>& GetEntities() { return m_Entities; };
 
 		template<typename T>
-		bool HasComponent(Entity entity);
+		bool HasComponent(Entity entity) const;
 
 		template<typename T>
 		std::unordered_map<uint32_t, T>& GetStorage();
@@ -47,21 +62,27 @@ namespace Draxion
 		std::unordered_map<uint32_t, TransformComponent> m_Transform;
 		std::unordered_map<uint32_t, SpriteComponent> m_Sprite;
 		std::unordered_map<uint32_t, TagComponent> m_Tag;
+		std::unordered_map<uint32_t, HealthComponent> m_Health;
 	};
 	template<>
-	inline bool World::HasComponent<TransformComponent>(Entity entity)
+	inline bool World::HasComponent<TransformComponent>(Entity entity) const
 	{
 		return m_Transform.find(entity.GetID()) != m_Transform.end();
 	}
 	template<>
-	inline bool World::HasComponent<SpriteComponent>(Entity entity)
+	inline bool World::HasComponent<SpriteComponent>(Entity entity) const
 	{
 		return m_Sprite.find(entity.GetID()) != m_Sprite.end();
 	}
 	template<>
-	inline bool World::HasComponent<TagComponent>(Entity entity)
+	inline bool World::HasComponent<TagComponent>(Entity entity) const
 	{
 		return m_Tag.find(entity.GetID()) != m_Tag.end();
+	}
+	template<>
+	inline bool World::HasComponent<HealthComponent>(Entity entity) const
+	{
+		return m_Health.find(entity.GetID()) != m_Health.end();
 	}
 	template<>
 	inline std::unordered_map<uint32_t, TransformComponent>& World::GetStorage()
@@ -77,5 +98,10 @@ namespace Draxion
 	inline std::unordered_map<uint32_t, TagComponent>& World::GetStorage()
 	{
 		return m_Tag;
+	}
+	template<>
+	inline std::unordered_map<uint32_t, HealthComponent>& World::GetStorage()
+	{
+		return m_Health;
 	}
 }
