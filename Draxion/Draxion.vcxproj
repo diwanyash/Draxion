@@ -132,6 +132,7 @@
     <ClCompile Include="src\Draxion\Renderer\RendererCommand.cpp" />
     <ClCompile Include="src\Draxion\Renderer\Shader\Shader.cpp" />
     <ClCompile Include="src\Draxion\Renderer\Sprite\Player.cpp" />
+    <ClCompile Include="src\Draxion\Renderer\Sprite\SpriteSheet.cpp" />
     <ClCompile Include="src\Draxion\Renderer\Texture.cpp" />
     <ClCompile Include="src\Draxion\Renderer\TileMap\TileMap.cpp" />
     <ClCompile Include="Vendor\ImGui\imgui.cpp" />
@@ -191,6 +192,7 @@
     <ClInclude Include="src\Draxion\Renderer\Shader\LoadShader.h" />
     <ClInclude Include="src\Draxion\Renderer\Shader\Shader.h" />
     <ClInclude Include="src\Draxion\Renderer\Sprite\Player.h" />
+    <ClInclude Include="src\Draxion\Renderer\Sprite\SpriteSheet.h" />
     <ClInclude Include="src\Draxion\Renderer\Texture.h" />
     <ClInclude Include="src\Draxion\Renderer\TileMap\TileMap.h" />
     <ClInclude Include="Vendor\ImGui\imconfig.h" />

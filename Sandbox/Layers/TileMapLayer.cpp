@@ -17,7 +17,11 @@ void TileMapLayer::OnAttach()
 	m_WorldGenerator.Generate(m_World);
 
 	m_Map = Draxion::TileMap( m_TileMap, m_Grass_Full, { 32,25 }, { 4,4 }, { -3.0f,-3.0f,0.0f } );
-	m_Player = Draxion::Player(m_Joe_Sprite_Full, {1.0f,1.0f,1.0f});
+
+	Draxion::Entity& Player = m_World.GetControlledEntity();
+	auto& PlayerTransform = m_World.GetComponent<Draxion::TransformComponent>(Player);
+
+	m_Player = Draxion::Player(m_Joe_Sprite_Full, PlayerTransform.Position );
 	m_Camera_Con.SetZoomRatio(3.5f);
 
 }
@@ -32,18 +36,21 @@ void TileMapLayer::OnUpdate(float dt)
 {
 	DX_PROFILE_FUNCTION();
 
-	auto entt = m_World.View<Draxion::HealthComponent, Draxion::SpriteComponent>();
-	auto entt2 = m_World.View<Draxion::HealthComponent, Draxion::TagComponent>();
-
 	Draxion::Renderer2D::ResetStates();
+
 
 	{
 		DX_PROFILE_SCOPE("TileMap Calculate");
 		m_Camera_Con.OnUpdateOnly();
-		m_Player.OnUpdate(dt);
+
+		Draxion::ControllableSystem::Update(m_World, dt);
+		m_Player.OnUpdate( m_World );
 		auto i = m_Player.GetPos() - glm::vec3{ -0.5f, -0.5f, 0.0f };
+		
 		m_Camera_Con.SetPos({ i.x,i.y,0.0f });
+		Draxion::MovementSystem::Update(m_World, dt);
 	}
+
 
 	Draxion::RenderCommand::SetClearColor({0.3f,0.7f,0.7f,1.0f});
 	Draxion::RenderCommand::Clear();

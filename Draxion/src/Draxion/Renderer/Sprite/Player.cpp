@@ -2,6 +2,7 @@
 #include "Draxion/Input/Input.h"
 #include "Draxion/Input/KeyCodes.h"
 #include "Draxion/Renderer/Renderer2D.h"
+#include "Draxion/Core/ECS/World.h"
 #include <Logger.h>
 #include <Draxion/Debug/Profiler/ProfileTimer.h>
 
@@ -35,40 +36,51 @@ namespace Draxion
 		LOG_ENGINE_WARN("Delta Time in Player Draw : " << m_Player_Size.x << " | " << m_Player_Size.y);
 	}
 
-	void Player::OnUpdate(float dt)
+	void Player::OnUpdate(World& world)
 	{
 		DX_PROFILE_FUNCTION();
 
-		m_Moving = false;
+		Entity& Player = world.GetControlledEntity();
+		auto& PlayerTransform = world.GetComponent<TransformComponent>(Player);
+		auto& PlayerAnimation = world.GetComponent<AnimationComponent>(Player);
 
-		if ( Input::IsKeyPressed( DRX_KEY_W ))
+		if (!(m_Position == PlayerTransform.Position))
 		{
-			m_Position.y += m_Player_Speed * dt;
-			m_Direction = Face::Back;
-			m_Moving = true;
-		}
-		else if ( Input::IsKeyPressed( DRX_KEY_S ))
-		{
-			m_Position.y -= m_Player_Speed * dt;
-			m_Direction = Face::Front;
-			m_Moving = true;
+			m_Position = PlayerTransform.Position;
+			m_Direction = (Face)PlayerAnimation.Direction;
 		}
 
-
-		if ( Input::IsKeyPressed(DRX_KEY_A))
-		{
-			m_Position.x -= m_Player_Speed * dt;
-			m_Direction = Face::Left;
-			m_Moving = true;
-		}
-		else if ( Input::IsKeyPressed( DRX_KEY_D ))
-		{
-			m_Position.x += m_Player_Speed * dt;
-			m_Direction = Face::Right;
-			m_Moving = true;
-		}
-
-		m_State = m_Moving ? State::Walking : State::Idle;
+		m_State = (State)PlayerAnimation.State;
+		// m_Moving = false;
+		// 
+		// if ( Input::IsKeyPressed( DRX_KEY_W ))
+		// {
+		// 	m_Position.y += m_Player_Speed * dt;
+		// 	m_Direction = Face::Back;
+		// 	m_Moving = true;
+		// }
+		// else if ( Input::IsKeyPressed( DRX_KEY_S ))
+		// {
+		// 	m_Position.y -= m_Player_Speed * dt;
+		// 	m_Direction = Face::Front;
+		// 	m_Moving = true;
+		// }
+		// 
+		// 
+		// if ( Input::IsKeyPressed(DRX_KEY_A))
+		// {
+		// 	m_Position.x -= m_Player_Speed * dt;
+		// 	m_Direction = Face::Left;
+		// 	m_Moving = true;
+		// }
+		// else if ( Input::IsKeyPressed( DRX_KEY_D ))
+		// {
+		// 	m_Position.x += m_Player_Speed * dt;
+		// 	m_Direction = Face::Right;
+		// 	m_Moving = true;
+		// }
+		// 
+		// m_State = m_Moving ? State::Walking : State::Idle;
 	}
 	void Player::Draw(float dt)
 	{

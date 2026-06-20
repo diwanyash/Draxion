@@ -5,13 +5,14 @@
 
 namespace Draxion
 {
+	class World;
 	class Player
 	{
 	public:
 		Player() = default;
 		Player(const std::string& SpriteTextPath, const glm::vec3& pos);
 
-		void OnUpdate(float dt);
+		void OnUpdate( World& world );
 		void Draw(float dt);
 
 		glm::vec3& GetPos() { return m_Position; }
